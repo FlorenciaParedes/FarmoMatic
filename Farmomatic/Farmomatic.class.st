@@ -20,22 +20,20 @@ producerOwner inviteProducer: aProducer toFarm: aFarm.
 ]
 
 { #category : #'as yet unclassified' }
-Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aProducer [
-	"Recibe los datos para crear una granja y el productor a la q le pertenece NO SE SI DEBO RETORNARLA.........!!!!!!!!!!!!!!!!!!"
-
+Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
+	"Recibe los datos para crear una granja y el productor a la q le pertenece"
 	| farm |
-	farm := Farm Name: aName andDescription: aDescription andAddress: aAddress.
-	aProducer registerFarm: farm.
+	farm := Farm Name: aName  andDescription: aDescription andAddress: aAddress.
+	aUser registerFarm: farm.
 	^farm
 ]
 
 { #category : #'as yet unclassified' }
-Farmomatic >> registerFarmWithName: aName andDescription: aDescription ofProducer: aProducer [
+Farmomatic >> registerFarmWithName: aName andDescription: aDescription ofProducer: aUser [
 	"Recibe los datos para crear una granja y el productor a la q le pertenece NO SE SI DEBO RETORNARLA.........!!!!!!!!!!!!!!!!!!"
-
 	| farm |
-	farm := Farm Name: aName andDescription: aDescription.
-	aProducer registerFarm: farm.
+	farm := Farm Name: aName andDescription: aDescription . 
+	aUser registerFarm: farm. 
 	^farm
 ]
 
@@ -54,7 +52,7 @@ Farmomatic >> registerPlotWithId: anId andDescription: aDesc andSurface: aSurf a
 { #category : #'as yet unclassified' }
 Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword [
 	| p |
-	p := Producer mail: aMail andPassword: aPassword.
+	p := User mail: aMail andPassword: aPassword.
 	users add: p.
 	^ p
 ]
@@ -62,7 +60,7 @@ Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword [
 { #category : #'as yet unclassified' }
 Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword andFullName: aName [
 	| p |
-	p := Producer mail: aMail andPassword: aPassword andFullName: aName.
+	p := User mail: aMail andPassword: aPassword andFullName: aName.
 	users add: p.
 	^ p
 ]

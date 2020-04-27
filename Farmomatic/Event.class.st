@@ -1,9 +1,10 @@
 Class {
-	#name : #Users,
+	#name : #Event,
 	#superclass : #Object,
 	#instVars : [
-		'password',
-		'fullName'
+		'date',
+		'author',
+		'comments'
 	],
 	#category : #Farmomatic
 }

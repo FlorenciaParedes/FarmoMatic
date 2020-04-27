@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Farm class >> Name: aName andDescription: aDescription [
+Farm class >> Name: aName andDescription: aDescription [.
 	^ self new name: aName andDescription: aDescription
 ]
 

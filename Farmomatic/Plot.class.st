@@ -10,7 +10,7 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Plot class >> id: anId andDescription: aDescription andSurface: aSurface andIsHothouse: isHothouse [
 	^ self new
 		id: anId
@@ -19,7 +19,7 @@ Plot class >> id: anId andDescription: aDescription andSurface: aSurface andIsHo
 		andIsHothouse: isHothouse
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #setter }
 Plot >> id: anId andDescription: aDescription andSurface: aSurface andIsHothouse: isHothouse [
 	id := anId.
 	description := aDescription.

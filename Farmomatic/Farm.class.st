@@ -5,19 +5,23 @@ Class {
 		'name',
 		'address',
 		'plots',
-		'description'
+		'description',
+		'isRemoved'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #'as yet unclassified' }
-Farm class >> Name: aName andDescription: aDescription [.
+Farm class >> name: aName andDescription: aDescription [
 	^ self new name: aName andDescription: aDescription
 ]
 
 { #category : #'as yet unclassified' }
-Farm class >> Name: aName andDescription: aDescription andAddress: aAddress [
-	^ self new name: aName andDescription: aDescription andAddress: aAddress
+Farm class >> name: aName andDescription: aDescription andAddress: aAddress [
+	^ self new
+		name: aName
+		andDescription: aDescription
+		andAddress: aAddress
 ]
 
 { #category : #adding }

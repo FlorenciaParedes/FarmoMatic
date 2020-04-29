@@ -22,19 +22,24 @@ producerOwner inviteProducer: aProducer toFarm: aFarm.
 { #category : #'as yet unclassified' }
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
 	"Recibe los datos para crear una granja y el productor a la q le pertenece"
+
 	| farm |
-	farm := Farm Name: aName  andDescription: aDescription andAddress: aAddress.
+	farm := Farm
+		name: aName
+		andDescription: aDescription
+		andAddress: aAddress.
 	aUser registerFarm: farm.
-	^farm
+	^ farm
 ]
 
 { #category : #'as yet unclassified' }
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription ofProducer: aUser [
 	"Recibe los datos para crear una granja y el productor a la q le pertenece NO SE SI DEBO RETORNARLA.........!!!!!!!!!!!!!!!!!!"
+
 	| farm |
-	farm := Farm Name: aName andDescription: aDescription . 
-	aUser registerFarm: farm. 
-	^farm
+	farm := Farm name: aName andDescription: aDescription.
+	aUser registerFarm: farm.
+	^ farm
 ]
 
 { #category : #'as yet unclassified' }
@@ -66,7 +71,6 @@ Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword andFullName
 ]
 
 { #category : #removing }
-Farmomatic >> removeFarm: aFarm [ 
-
-
+Farmomatic >> removeFarm: aFarm ofUser: aUser [
+	aUser removeFarm: aFarm
 ]

@@ -5,7 +5,9 @@ Class {
 		'password',
 		'fullName',
 		'mail',
-		'farms'
+		'farms',
+		'removedFarms',
+		'isExpert'
 	],
 	#category : #Farmomatic
 }
@@ -27,7 +29,9 @@ User >> farmInvitation: aFarm [
 
 { #category : #'as yet unclassified' }
 User >> initialize [
-farms:= OrderedCollection new.
+	farms := OrderedCollection new.
+	removedFarms := OrderedCollection new.
+	isExpert:=false.
 ]
 
 { #category : #'as yet unclassified' }
@@ -49,6 +53,22 @@ User >> mail: aMail yPassword: aPassword andFullName: aName [
 ]
 
 { #category : #'as yet unclassified' }
+User >> makeExpert [
+	isExpert := true.
+]
+
+{ #category : #'as yet unclassified' }
+User >> makeExpertProducer: aProducer [
+	aProducer makeExpert.
+]
+
+{ #category : #'as yet unclassified' }
 User >> registerFarm: farm [
 farms add: farm 
+]
+
+{ #category : #removing }
+User >> removeFarm: aFarm [
+	removedFarms add: aFarm.
+	farms remove: aFarm
 ]

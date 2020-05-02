@@ -17,33 +17,26 @@ Public API and Key Messages
 Internal Representation and Key Implementation Points.
 
     Instance Variables
-	comercialName:		<Object>
-	composition:		<Object>
-	description:		<Object>
+	spicies:		<Object>
 
 
     Implementation Points
 "
 Class {
-	#name : #Products,
+	#name : #Species,
 	#superclass : #Object,
 	#instVars : [
-		'composition',
-		'description',
-		'comercialName'
+		'species'
 	],
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-Products class >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
-^ self new
-withComercialName: aName aComposition: aComposition aDescription: aDescription
+{ #category : #'instance creation' }
+Species class >> withName: aName [
+	^ self new name: aName
 ]
 
-{ #category : #'as yet unclassified' }
-Products >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
-	comercialName := aName.
-	composition := aComposition.
-	description := aDescription
+{ #category : #'instance creation' }
+Species >> name: aName [
+	species := aName
 ]

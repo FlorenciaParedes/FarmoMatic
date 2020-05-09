@@ -29,9 +29,14 @@ Class {
 	#name : #Event,
 	#superclass : #Object,
 	#instVars : [
-		'date',
+		'creationDate',
 		'author',
 		'comments'
 	],
 	#category : #Farmomatic
 }
+
+{ #category : #initialization }
+Event >> initialize [ 
+ creationDate := Date today 
+]

@@ -33,21 +33,18 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Problem class >> withDate: aDate Author: aUser Comments: aComment Problem: aProblem [
- ^self new withDate: aDate Author: aUser Comments: aComment Problem: aProblem.
+Problem class >> withAuthor: aUser andComments: aComment andProblem: aProblem [
+	^ self new withAuthor: aUser Comments: aComment Problem: aProblem
 ]
 
 { #category : #'as yet unclassified' }
-Problem class >> withDate: aDate Author: aUser Problem: aProblem [
-	^ self new
-		withDate: aDate
-		Author: aUser
-		Problem: aProblem
+Problem class >> withAuthor: aUser andProblem: aProblem [
+	^ self new withAuthor: aUser Problem: aProblem
 ]
 
 { #category : #'as yet unclassified' }
-Problem >> withDate: aDate Author: aUser Comments: aComment Problem: aProblem [.
-	date := aDate.
+Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [.
+
 	author := aUser.
 	comments := aComment.
 	problems := aProblem 
@@ -56,8 +53,8 @@ Problem >> withDate: aDate Author: aUser Comments: aComment Problem: aProblem [.
 ]
 
 { #category : #'as yet unclassified' }
-Problem >> withDate: aDate Author: aUser Problem: aProblem [
-	date := aDate.
+Problem >> withAuthor: aUser Problem: aProblem [
+
 	author := aUser.
 	problems := aProblem
 ]

@@ -31,7 +31,7 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'instance creation' }
+{ #category : #constructor }
 Species class >> withName: aName [
 	^ self new name: aName
 ]

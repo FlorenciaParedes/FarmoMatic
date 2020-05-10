@@ -40,12 +40,7 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-Farm class >> name: aName andDescription: aDescription [
-	^ self new name: aName andDescription: aDescription
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Farm class >> name: aName andDescription: aDescription andAddress: aAddress [
 	^ self new
 		name: aName
@@ -61,17 +56,15 @@ plots add: aPlot .
 { #category : #adding }
 Farm >> initialize [ 
 plots := OrderedCollection new.
+isRemoved:= false
 
 ]
 
-{ #category : #'as yet unclassified' }
-Farm >> name: aName andDescription: aDescription [
-	name := aName.
-	description := aDescription
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Farm >> name: aName andDescription: aDescription andAddress: aAddress [
-	self name: aName andDescription: aDescription. 
-	address := aAddress
+	name:= aName.
+	description:= aDescription. 
+	address := aAddress.
+	
+	
 ]

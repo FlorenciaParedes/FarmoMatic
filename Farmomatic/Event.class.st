@@ -35,3 +35,12 @@ Class {
 	],
 	#category : #Farmomatic
 }
+
+{ #category : #constructor }
+Event >> withDate: aDate Author: aUser Comments: aComment [
+
+date:= aDate.
+author:= aUser.
+comments:= aComment 
+
+]

@@ -34,34 +34,14 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-Plantation class >> withDate: adate Author: aUser Amount: amount Specie: aSpecie [
-	^ self new
-		withDate: adate
-		Author: aUser
-	
-		Amount: amount
-		Specie: aSpecie
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Plantation class >> withDate: adate Author: aUser Comments: aComment Amount: amount Specie: aSpecie [
 	^ self new withDate: adate Author: aUser Comments: aComment Amount: amount Specie: aSpecie
 ]
 
-{ #category : #'as yet unclassified' }
-Plantation >> withDate: adate Author: aUser Amount: aAmount Specie: aSpecie [
-	date := adate.
-	author := aUser.
-	amount := aAmount.
-	species := aSpecie
-]
-
-{ #category : #'as yet unclassified' }
-Plantation >> withDate: adate Author: aUser Comments: aComment Amount: aAmount Specie: aSpecie [
-	date := adate.
-	author := aUser.
-	comments := aComment.
+{ #category : #constructor }
+Plantation >> withDate: aDate Author: aUser Comments: aComment Amount: aAmount Specie: aSpecie [
+	self withDate: aDate Author: aUser Comments: aComment.
 	amount := aAmount.
 	species := aSpecie 
 	

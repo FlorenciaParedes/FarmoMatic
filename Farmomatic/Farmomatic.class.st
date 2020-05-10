@@ -41,40 +41,6 @@ Class {
 }
 
 { #category : #adding }
-Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName [
-	"agregar problema sin url ni descripcion"
-
-	| p |
-	p := Problems
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName.
-	^ p
-]
-
-{ #category : #adding }
-Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aDescription: aDescription [
-"agregar problema sin url"
-	| p |
-	p := Problems
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-		aDescription: aDescription.
-	^ p
-]
-
-{ #category : #adding }
-Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl [
-	"Agregar problema sin descripcion"
-
-	| p |
-	p := Problems
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-		aUrl: aUrl.
-	^ p
-]
-
-{ #category : #adding }
 Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
 "Agregar problema con todos los datos"
 	| p |
@@ -87,22 +53,21 @@ Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientific
 ]
 
 { #category : #adding }
-Farmomatic >> addProductsWithComercialName: aName aComposition: aComposition aDescription: aDescription [
-	| p |
-	p := Products
+Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
+      ^ Products
 		withComercialName: aName
+		aVulgarName: aVulgar
 		aComposition: aComposition
 		aDescription: aDescription.
-		^p
+
 ]
 
 { #category : #adding }
 Farmomatic >> addSpecieWithName: aName [
 	"Agregar problema sin descripcion"
 
-	|s|
-	s := Species withName: aName .
-	^ s.
+^Species withName: aName .
+
 ]
 
 { #category : #initialization }
@@ -125,23 +90,9 @@ producerOwner inviteProducer: aProducer toFarm: aFarm.
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
 	"Recibe los datos para crear una granja y el productor a la q le pertenece"
 
-	| farm |
-	farm := Farm
-		name: aName
-		andDescription: aDescription
-		andAddress: aAddress.
-	aUser registerFarm: farm.
-	^ farm
-]
 
-{ #category : #'as yet unclassified' }
-Farmomatic >> registerFarmWithName: aName andDescription: aDescription ofProducer: aUser [
-	"Recibe los datos para crear una granja y el productor a la q le pertenece NO SE SI DEBO RETORNARLA.........!!!!!!!!!!!!!!!!!!"
+		aUser registerFarm: (Farm name: aName andDescription: aDescription	andAddress: aAddress).
 
-	| farm |
-	farm := Farm name: aName andDescription: aDescription.
-	aUser registerFarm: farm.
-	^ farm
 ]
 
 { #category : #'as yet unclassified' }

@@ -36,3 +36,20 @@ Class {
 	],
 	#category : #Farmomatic
 }
+
+{ #category : #constructor }
+Variety class >> withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription [ 
+
+^ self new withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription 
+]
+
+{ #category : #constructor }
+Variety >> withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription [ 
+	"comment stating purpose of instance-side message"
+	"scope: class-variables  &  instance-variables"	
+			
+	vulgarName:= aName.
+	scientificName:= aScientificName.
+	url:= aUrl.
+	description:= aDescription
+]

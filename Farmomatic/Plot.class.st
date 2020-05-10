@@ -52,43 +52,19 @@ Plot class >> id: anId andDescription: aDescription andSurface: aSurface andIsHo
 { #category : #adding }
 Plot >> addHarvestWithDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety [
  
-	|h|
-	h:= Harvest withDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety.
-	events add: h
-]
 
-{ #category : #adding }
-Plot >> addHarvestWithDate: adate Author: aUser kg: aKg variety: aVariety [
-	| h |
-	h := Harvest
-		withDate: adate
-		Author: aUser
-		kg: aKg
-		variety: aVariety.
-	events add: h
-]
-
-{ #category : #setter }
-Plot >> addPlantationWithDate: adate Author: aUser Amount: amount Specie: aSpecie [
-	| p |
-	p := Plantation
-		withDate: adate
-		Author: aUser
-		Amount: amount
-		Specie: aSpecie.
-	events add: p
+	events add: (Harvest withDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety)
 ]
 
 { #category : #setter }
 Plot >> addPlantationWithDate: adate Author: aUser Comments: aComment Amount: amount Specie: aSpecie [
-	| p |
-	p := Plantation
+
+	events add: (Plantation
 		withDate: adate
 		Author: aUser
 		Comments: aComment
 		Amount: amount
-		Specie: aSpecie.
-	events add: p
+		Specie: aSpecie)
 ]
 
 { #category : #setter }
@@ -99,28 +75,17 @@ Plot >> addProblemWithDate: aDate Author: aUser Comments: aComment Problem: aPro
 ]
 
 { #category : #setter }
-Plot >> addProblemWithDate: aDate Author: aUser Problem: aProblem [
-	| p |
-	p := Problem
-		withDate: aDate
-		Author: aUser
-		Problem: aProblem.
-	events add: p
-]
-
-{ #category : #setter }
 Plot >> addaplicationwithDate: aDate Author: aUser 	Comments: aComment Amount: amount	Product: aProduct [ 
-	| p |
-	p := Aplication
+
+	events add: (Aplication
 		withDate: aDate
 		Author: aUser
 		Comments: aComment
 		Amount: amount
-		Product: aProduct .
-	events add: p
+		Product: aProduct)
 ]
 
-{ #category : #setter }
+{ #category : #constructor }
 Plot >> id: anId andDescription: aDescription andSurface: aSurface andIsHothouse: isHothouse [
 	id := anId.
 	description := aDescription.

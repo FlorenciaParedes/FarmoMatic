@@ -41,12 +41,7 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-User class >> mail: aMail andPassword: aPassword [
-	^ self new mail: aMail yPassword: aPassword
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 User class >> mail: aMail andPassword: aPassword andFullName: aName [
 	^ self new mail: aMail yPassword: aPassword andFullName: aName
 ]
@@ -69,15 +64,10 @@ aProducer farmInvitation: aFarm
 
 ]
 
-{ #category : #setter }
-User >> mail: aMail yPassword: aPassword [
-	mail := aMail.
-	password := aPassword
-]
-
-{ #category : #setter }
+{ #category : #constructor }
 User >> mail: aMail yPassword: aPassword andFullName: aName [
-	self mail: aMail yPassword: aPassword.
+	mail:= aMail.
+	password:= aPassword.
 	fullName := aName.
 ]
 

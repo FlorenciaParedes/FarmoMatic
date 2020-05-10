@@ -38,57 +38,12 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-Problems class >> withVulgarName: aVulgarName aScientificName: aScientificName [
-	^ self new
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-
-]
-
-{ #category : #'as yet unclassified' }
-Problems class >> withVulgarName: aVulgarName aScientificName: aScientificName aDescription: aDescription [
-	^ self new
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-		aDescription: aDescription
-]
-
-{ #category : #'as yet unclassified' }
-Problems class >> withVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl [ 
-	^ self new
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-		aUrl: aUrl
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Problems class >> withVulgarName:aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription:aDescription [.
 ^ self new withVulgarName:aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription:aDescription.
 ]
 
-{ #category : #'as yet unclassified' }
-Problems >> withVulgarName: aVulgarName aScientificName: aScientificName [ 
-	vulgarName := aVulgarName.
-	scientificName := aScientificName.
-]
-
-{ #category : #'as yet unclassified' }
-Problems >> withVulgarName: aVulgarName aScientificName: aScientificName aDescription: aDescription [
-	vulgarName := aVulgarName.
-	scientificName := aScientificName.
-	description := aDescription
-]
-
-{ #category : #'as yet unclassified' }
-Problems >> withVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl [ 
-	vulgarName := aVulgarName.
-	scientificName := aScientificName.
-	url := aUrl.
-
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Problems >> withVulgarName:aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription:aDescription [.
 vulgarName := aVulgarName .
 scientificName := aScientificName .

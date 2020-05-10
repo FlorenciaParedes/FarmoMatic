@@ -35,13 +35,13 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Products class >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
 ^ self new
 withComercialName: aName aComposition: aComposition aDescription: aDescription
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 Products >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
 	comercialName := aName.
 	composition := aComposition.

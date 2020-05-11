@@ -1,6 +1,5 @@
 "
-Pleasecomment me using the following template inspired by Class Responsibility Collaborator (CRC) design:
-
+Please comment me using the following template inspired by Class Responsibility Collaborator (CRC) design:
 For the Class part:  State a one line summary. For example, ""I represent a paragraph of text"".
 
 For the Responsibility part: Three sentences about my main responsibilities - what I do, what I know.
@@ -17,35 +16,11 @@ Public API and Key Messages
  
 Internal Representation and Key Implementation Points.
 
-    Instance Variables
-	author:		<Object>
-	comments:		<Object>
-	date:		<Object>
-
 
     Implementation Points
 "
 Class {
-	#name : #Event,
+	#name : #News,
 	#superclass : #Object,
-	#instVars : [
-		'creationDate',
-		'author',
-		'comments'
-	],
 	#category : #Farmomatic
 }
-
-{ #category : #initialization }
-Event >> initialize [ 
- creationDate := Date today 
-]
-
-{ #category : #constructor }
-Event >> withDate: aDate Author: aUser Comments: aComment [
-
-date:= aDate.
-author:= aUser.
-comments:= aComment 
-
-]

@@ -33,22 +33,26 @@ Class {
 	#instVars : [
 		'users',
 		'problems',
-		'plantations',
 		'harvests',
-		'products'
+		'products',
+		'species',
+		'userCreatedEvents',
+		'news'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #adding }
 Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
-"Agregar problema con todos los datos"
+	"Agregar problema con todos los datos"
+
 	| p |
 	p := Problems
 		withVulgarName: aVulgarName
 		aScientificName: aScientificName
 		aUrl: aUrl
 		aDescription: aDescription.
+	userCreatedEvents add: p.
 	^ p
 ]
 
@@ -72,11 +76,13 @@ Farmomatic >> addSpecieWithName: aName [
 
 { #category : #initialization }
 Farmomatic >> initialize [
+	species:= OrderedCollection new.
 	users := OrderedCollection new.
 	problems := OrderedCollection new.
-	plantations := OrderedCollection new.
 	harvests := OrderedCollection new.
-	products := OrderedCollection new
+	products := OrderedCollection new.
+	userCreatedEvents := OrderedCollection new.
+	news := OrderedCollection new.
 ]
 
 { #category : #'as yet unclassified' }

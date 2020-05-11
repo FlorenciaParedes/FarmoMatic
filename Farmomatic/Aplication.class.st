@@ -34,68 +34,17 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #'as yet unclassified' }
-Aplication class >> withAuthor: aUser Amount: amount Product: aProduct [
-	^ self new
-		withAuthor: aUser
-		Amount: amount
-		Product: aProduct
-]
-
-{ #category : #'as yet unclassified' }
-Aplication class >> withAuthor: aUser Comments: aComment Amount: amount Product: aProduct [
-	^ self new
-		withAuthor: aUser
-		Comments: aComment
-		Amount: amount
-		Product: aProduct
-]
-
-{ #category : #'as yet unclassified' }
-Aplication class >> withDate: aDate Author: aUser Amount: amount Product: aProduct [
-	^ self new
-		withDate: aDate
-		Author: aUser
-		Amount: amount
-		Product: aProduct
-]
-
 { #category : #constructor }
-Aplication class >> withDate: aDate Author: aUser Comments: aComment Amount: amount Product: aProduct [
-	^self new withDate: aDate
-		Author: aUser
+Aplication class >> withAuthor: aUser Comments: aComment Amount: amount Product: aProduct [
+	^self new withAuthor: aUser
 		Comments: aComment
 		Amount: amount
 		Product: aProduct.
 ]
 
-{ #category : #'as yet unclassified' }
-Aplication >> withAuthor: aUser Amount: aAmount Product: aProduct [
-	author := aUser.
-	amount := aAmount.
-	product := aProduct
-]
-
-{ #category : #'as yet unclassified' }
-Aplication >> withAuthor: aUser Comments: aComment Amount: aAmount Product: aProduct [
-	
-	author := aUser.
-	comments := aComment.
-	amount := aAmount.
-	product := aProduct    
-]
-
-{ #category : #'as yet unclassified' }
-Aplication >> withDate: aDate Author: aUser Amount: aAmount Product: aProduct [
-	date := aDate.
-	author := aUser.
-	amount := aAmount.
-	product := aProduct
-]
-
 { #category : #constructor }
-Aplication >> withDate: aDate Author: aUser Comments: aComment Amount: aAmount Product: aProduct [
-	self withDate: aDate Author: aUser Comments: aComment.
+Aplication >> withAuthor: aUser Comments: aComment Amount: aAmount Product: aProduct [
+	self withAuthor: aUser Comments: aComment.
 	amount := aAmount.
 	product := aProduct    
 ]

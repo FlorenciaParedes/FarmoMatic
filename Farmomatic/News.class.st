@@ -22,5 +22,23 @@ Internal Representation and Key Implementation Points.
 Class {
 	#name : #News,
 	#superclass : #Object,
+	#instVars : [
+		'tittle',
+		'body',
+		'title'
+	],
 	#category : #Farmomatic
 }
+
+{ #category : #constructor }
+News class >> withTitle: aTitle body: aBody [
+
+^ self new withTitle: aTitle body: aBody
+]
+
+{ #category : #constructor }
+News >> withTitle: aTitle body: aBody [
+
+	title:= aTitle.
+	body:= aBody
+]

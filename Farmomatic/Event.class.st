@@ -42,9 +42,8 @@ Event >> initialize [
 ]
 
 { #category : #constructor }
-Event >> withDate: aDate Author: aUser Comments: aComment [
+Event >> withAuthor: aUser Comments: aComment [
 
-date:= aDate.
 author:= aUser.
 comments:= aComment 
 

@@ -51,74 +51,15 @@ Plot class >> id: anId andDescription: aDescription andSurface: aSurface andIsHo
 
 { #category : #adding }
 Plot >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
-	|h|
-	h:= Harvest withAuthor: aUser Comments: aComment kg: aKg variety: aVariety.
-	events add: h
-]
 
-{ #category : #adding }
-Plot >> addHarvestWithAuthor: aUser kg: aKg variety: aVariety [
-	| h |
-	h := Harvest
-		withAuthor: aUser
-		kg: aKg
-		variety: aVariety.
-	events add: h
-]
-
-{ #category : #adding }
-Plot >> addHarvestWithDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety [
- 
-
-	events add: (Harvest withDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety)
-]
-
-{ #category : #adding }
-Plot >> addHarvestWithDate: adate Author: aUser kg: aKg variety: aVariety [
-	| h |
-	h := Harvest
-		withDate: adate
-		Author: aUser
-		kg: aKg
-		variety: aVariety.
-	events add: h
-]
-
-{ #category : #adding }
-Plot >> addPlantationWithAuthor: aUser Amount: amount Specie: aSpecie [
-	| p |
-	p := Plantation withAuthor: aUser Amount: amount Specie: aSpecie . 
-	events add: p
+	events add: (Harvest withAuthor: aUser Comments: aComment kg: aKg variety: aVariety)
 ]
 
 { #category : #adding }
 Plot >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie [
-	| p |
-	p := Plantation
-		withAuthor: aUser
-		Comments: aComment
-		Amount: amount
-		Specie: aSpecie.
-	events add: p
-]
-
-{ #category : #setter }
-Plot >> addPlantationWithDate: adate Author: aUser Amount: amount Specie: aSpecie [
-	| p |
-	p := Plantation
-		withDate: adate
-		Author: aUser
-		Amount: amount
-		Specie: aSpecie.
-	events add: p
-]
-
-{ #category : #setter }
-Plot >> addPlantationWithDate: adate Author: aUser Comments: aComment Amount: amount Specie: aSpecie [
 
 	events add: (Plantation
-		withDate: adate
-		Author: aUser
+		withAuthor: aUser
 		Comments: aComment
 		Amount: amount
 		Specie: aSpecie)
@@ -126,62 +67,15 @@ Plot >> addPlantationWithDate: adate Author: aUser Comments: aComment Amount: am
 
 { #category : #adding }
 Plot >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem [
-	| p |
-	p := Problem withAuthor: aUser andComments: aComment andProblem: aProblem.
-	events add: p
-]
 
-{ #category : #adding }
-Plot >> addProblemWithAuthor: aUser Problem: aProblem [
-	| p |
-	p := Problem withAuthor: aUser andProblem: aProblem.
-	events add: p
-]
-
-{ #category : #setter }
-Plot >> addProblemWithDate: aDate Author: aUser Comments: aComment Problem: aProblem [
-	| p |
-	p := Problem withDate: aDate Author: aUser Comments: aComment Problem: aProblem.
-	events add: p
-]
-
-{ #category : #setter }
-Plot >> addProblemWithDate: aDate Author: aUser Problem: aProblem [
-	| p |
-	p := Problem
-		withDate: aDate
-		Author: aUser
-		Problem: aProblem.
-	events add: p
-]
-
-{ #category : #adding }
-Plot >> addaplicationWithAuthor: aUser Amount: amount Product: aProduct [
-	| p |
-	p := Aplication
-		withAuthor: aUser
-		Amount: amount
-		Product: aProduct.
-	events add: p
+	events add: (Problem withAuthor: aUser comments: aComment problem: aProblem)
 ]
 
 { #category : #adding }
 Plot >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct [
-	| p |
-	p := Aplication
-		withAuthor: aUser
-		Comments: aComment
-		Amount: amount
-		Product: aProduct.
-	events add: p
-]
-
-{ #category : #setter }
-Plot >> addaplicationwithDate: aDate Author: aUser 	Comments: aComment Amount: amount	Product: aProduct [ 
 
 	events add: (Aplication
-		withDate: aDate
-		Author: aUser
+		withAuthor: aUser
 		Comments: aComment
 		Amount: amount
 		Product: aProduct)

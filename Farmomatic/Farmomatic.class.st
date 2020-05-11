@@ -114,19 +114,10 @@ Farmomatic >> registerPlotWithId: anId andDescription: aDesc andSurface: aSurf a
 ]
 
 { #category : #'as yet unclassified' }
-Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword [
-	| p |
-	p := User mail: aMail andPassword: aPassword.
-	users add: p.
-	^ p
-]
-
-{ #category : #'as yet unclassified' }
 Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword andFullName: aName [
-	| p |
-	p := User mail: aMail andPassword: aPassword andFullName: aName.
-	users add: p.
-	^ p
+
+	users add: (User mail: aMail andPassword: aPassword andFullName: aName)
+
 ]
 
 { #category : #removing }

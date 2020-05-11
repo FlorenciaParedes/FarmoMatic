@@ -30,20 +30,24 @@ Class {
 	#instVars : [
 		'composition',
 		'description',
-		'comercialName'
+		'comercialName',
+		'vulgarName'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #constructor }
-Products class >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
-^ self new
-withComercialName: aName aComposition: aComposition aDescription: aDescription
+Products class >> withComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
+^ self new withComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription
 ]
 
 { #category : #constructor }
-Products >> withComercialName: aName aComposition: aComposition aDescription: aDescription [
+Products >> withComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
 	comercialName := aName.
+	vulgarName:= aVulgar.
 	composition := aComposition.
-	description := aDescription
+	description := aDescription.
+	
+	
+	
 ]

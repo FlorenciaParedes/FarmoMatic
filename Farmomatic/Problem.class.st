@@ -33,56 +33,14 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Problem class >> withAuthor: aUser andComments: aComment andProblem: aProblem [
+Problem class >> withAuthor: aUser comments: aComment problem: aProblem [
 	^ self new withAuthor: aUser Comments: aComment Problem: aProblem
 ]
 
-{ #category : #'as yet unclassified' }
-Problem class >> withAuthor: aUser andProblem: aProblem [
-	^ self new withAuthor: aUser Problem: aProblem
-]
-
 { #category : #constructor }
-Problem class >> withDate: aDate Author: aUser Comments: aComment Problem: aProblem [
- ^self new withDate: aDate Author: aUser Comments: aComment Problem: aProblem.
-]
-
-{ #category : #'as yet unclassified' }
-Problem class >> withDate: aDate Author: aUser Problem: aProblem [
-	^ self new
-		withDate: aDate
-		Author: aUser
-		Problem: aProblem
-]
-
-{ #category : #'as yet unclassified' }
-Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [.
-
-	author := aUser.
-	comments := aComment.
+Problem >> withauthor: aUser Comments: aComment Problem: aProblem [.
+	self withAuthor: aUser Comments: aComment.
 	problems := aProblem 
 
 	
-]
-
-{ #category : #'as yet unclassified' }
-Problem >> withAuthor: aUser Problem: aProblem [
-
-	author := aUser.
-	problems := aProblem
-]
-
-{ #category : #constructor }
-Problem >> withDate: aDate Author: aUser Comments: aComment Problem: aProblem [.
-	self withDate: aDate Author: aUser Comments: aComment.
-	problems := aProblem 
-
-	
-]
-
-{ #category : #'as yet unclassified' }
-Problem >> withDate: aDate Author: aUser Problem: aProblem [
-	date := aDate.
-	author := aUser.
-	problems := aProblem
 ]

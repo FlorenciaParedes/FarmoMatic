@@ -36,65 +36,15 @@ Class {
 
 { #category : #'as yet unclassified' }
 Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
-	^self new withAuthor: aUser
+	^ self new withAuthor: aUser
 		Comments: aComment
 		kg: aKg
 		variety: aVariety.
-]
-
-{ #category : #'as yet unclassified' }
-Harvest class >> withAuthor: aUser kg: aKg variety: aVariety [
-	^ self new
-		withAuthor: aUser
-		kg: aKg
-		variety: aVariety
 ]
 
 { #category : #constructor }
-Harvest class >> withDate: adate Author: aUser Comments: aComment kg: aKg variety: aVariety [
-	^self new withDate: adate
-		Author: aUser
-		Comments: aComment
-		kg: aKg
-		variety: aVariety.
-]
-
-{ #category : #'as yet unclassified' }
-Harvest class >> withDate: adate Author: aUser kg: aKg variety: aVariety [
-	^ self new
-		withDate: adate
-		Author: aUser
-		kg: aKg
-		variety: aVariety
-]
-
-{ #category : #'as yet unclassified' }
 Harvest >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
-	author := aUser.
-	comments := aComment.
+	self withAuthor: aUser Comments: aComment.
 	kg := aKg.
 	variety:= aVariety . 
-]
-
-{ #category : #'as yet unclassified' }
-Harvest >> withAuthor: aUser kg: aKg variety: aVariety [
-	
-	author := aUser.
-	kg := aKg.
-	variety := aVariety
-]
-
-{ #category : #constructor }
-Harvest >> withDate: aDate Author: aUser Comments: aComment kg: aKg variety: aVariety [
-	self withDate: aDate Author: aUser Comments: aComment.
-	kg := aKg.
-	variety:= aVariety . 
-]
-
-{ #category : #'as yet unclassified' }
-Harvest >> withDate: aDate Author: aUser kg: aKg variety: aVariety [
-	date := aDate.
-	author := aUser.
-	kg := aKg.
-	variety := aVariety
 ]

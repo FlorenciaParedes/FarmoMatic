@@ -46,19 +46,19 @@ User class >> mail: aMail andPassword: aPassword andFullName: aName [
 	^ self new mail: aMail yPassword: aPassword andFullName: aName
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #invites }
 User >> farmInvitation: aFarm [
  farms add: aFarm 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #constructor }
 User >> initialize [
 	farms := OrderedCollection new.
 	removedFarms := OrderedCollection new.
 	isExpert:=false.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #invites }
 User >> inviteProducer: aProducer toFarm: aFarm [
 aProducer farmInvitation: aFarm 
 
@@ -71,17 +71,17 @@ User >> mail: aMail yPassword: aPassword andFullName: aName [
 	fullName := aName.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #setting }
 User >> makeExpert [
 	isExpert := true.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #setting }
 User >> makeExpertProducer: aProducer [
 	aProducer makeExpert.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #adding }
 User >> registerFarm: farm [
 farms add: farm 
 ]

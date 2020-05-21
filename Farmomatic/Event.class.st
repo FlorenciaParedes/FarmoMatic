@@ -36,9 +36,19 @@ Class {
 	#category : #Farmomatic
 }
 
+{ #category : #accessing }
+Event >> creationDate [
+^ creationDate 
+]
+
 { #category : #initialization }
 Event >> initialize [ 
  creationDate := Date today 
+]
+
+{ #category : #accessing }
+Event >> type [
+	^ self className
 ]
 
 { #category : #constructor }

@@ -91,3 +91,8 @@ User >> removeFarm: aFarm [
 	removedFarms add: aFarm.
 	farms remove: aFarm
 ]
+
+{ #category : #accessing }
+User >> tipe [
+	^ self className
+]

@@ -51,34 +51,41 @@ Plot class >> id: anId andDescription: aDescription andSurface: aSurface andIsHo
 
 { #category : #adding }
 Plot >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
-
-	events add: (Harvest withAuthor: aUser Comments: aComment kg: aKg variety: aVariety)
+	^events
+		add:
+			(Harvest
+				withAuthor: aUser
+				Comments: aComment
+				kg: aKg
+				variety: aVariety)
 ]
 
 { #category : #adding }
 Plot >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie [
-
-	events add: (Plantation
-		withAuthor: aUser
-		Comments: aComment
-		Amount: amount
-		Specie: aSpecie)
+	^ events
+		add:
+			(Plantation
+				withAuthor: aUser
+				Comments: aComment
+				Amount: amount
+				Specie: aSpecie)
 ]
 
 { #category : #adding }
 Plot >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem [
-
-	events add: (Problem withAuthor: aUser comments: aComment problem: aProblem)
+	^events
+		add: (Problem withAuthor: aUser comments: aComment problem: aProblem)
 ]
 
 { #category : #adding }
 Plot >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct [
-
-	events add: (Aplication
-		withAuthor: aUser
-		Comments: aComment
-		Amount: amount
-		Product: aProduct)
+	^ events
+		add:
+			(Aplication
+				withAuthor: aUser
+				Comments: aComment
+				Amount: amount
+				Product: aProduct)
 ]
 
 { #category : #constructor }

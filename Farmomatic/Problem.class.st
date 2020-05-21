@@ -38,9 +38,8 @@ Problem class >> withAuthor: aUser comments: aComment problem: aProblem [
 ]
 
 { #category : #constructor }
-Problem >> withauthor: aUser Comments: aComment Problem: aProblem [.
+Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [
 	self withAuthor: aUser Comments: aComment.
-	problems := aProblem 
+	problems := aProblem.
 
-	
 ]

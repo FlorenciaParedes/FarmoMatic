@@ -39,8 +39,35 @@ Class {
 		'userCreatedEvents',
 		'news'
 	],
+	#classInstVars : [
+		'creationDate'
+	],
 	#category : #Farmomatic
 }
+
+{ #category : #adding }
+Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety fromPlot: aPlot [
+	userCreatedEvents
+		add:
+			(aPlot
+				addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety)
+]
+
+{ #category : #adding }
+Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie fromPlot: aPlot [
+	userCreatedEvents
+		add:
+			(aPlot
+				addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie)
+]
+
+{ #category : #adding }
+Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem fromPlot: aPlot [
+	userCreatedEvents
+		add:
+			(aPlot
+				addProblemWithAuthor: aUser Comments: aComment Problem: aProblem)
+]
 
 { #category : #adding }
 Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
@@ -74,6 +101,30 @@ Farmomatic >> addSpecieWithName: aName [
 
 ]
 
+{ #category : #adding }
+Farmomatic >> addVarietyVulgarName: aName scientificName: aScientificName url: aUrl description: aDescription [
+	^ Variety
+		withVulgarName: aName scientificName: aScientificName url: aUrl description: aDescription
+]
+
+{ #category : #adding }
+Farmomatic >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct fromPlot: aPlot [
+	userCreatedEvents
+		add:
+			(aPlot
+				addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct)
+]
+
+{ #category : #sorting }
+Farmomatic >> filterEventByDate: aDate [
+	^ userCreatedEvents select: [ :a | a creationDate = aDate ]
+]
+
+{ #category : #sorting }
+Farmomatic >> filterEventByType: aType [
+	^ userCreatedEvents select: [ :a | a type = aType ]
+]
+
 { #category : #initialization }
 Farmomatic >> initialize [
 	species:= OrderedCollection new.
@@ -94,33 +145,63 @@ producerOwner inviteProducer: aProducer toFarm: aFarm.
 
 { #category : #'as yet unclassified' }
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
-	"Recibe los datos para crear una granja y el productor a la q le pertenece"
-
-
-		aUser registerFarm: (Farm name: aName andDescription: aDescription	andAddress: aAddress).
-
+	|f|
+	f:= Farm name: aName andDescription:aDescription andAddress: aAddress .
+	aUser registerFarm: f.
+	^f.
 ]
 
 { #category : #'as yet unclassified' }
 Farmomatic >> registerPlotWithId: anId andDescription: aDesc andSurface: aSurf andIsHothouse: isHothouse fromFarm: aFarm [
-	| p |
-	p := Plot
-		id: anId
-		andDescription: aDesc
-		andSurface: aSurf
-		andIsHothouse: isHothouse.
+	|p|
+	p:= Plot id:anId  andDescription:aDesc andSurface: aSurf andIsHothouse: isHothouse.
 	aFarm addPlot: p.
-	^ p
+	^p 
 ]
 
 { #category : #'as yet unclassified' }
 Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword andFullName: aName [
-
-	users add: (User mail: aMail andPassword: aPassword andFullName: aName)
-
+	^ (users
+		add: (User mail: aMail andPassword: aPassword andFullName: aName))
 ]
 
 { #category : #removing }
 Farmomatic >> removeFarm: aFarm ofUser: aUser [
 	aUser removeFarm: aFarm
+]
+
+{ #category : #sorting }
+Farmomatic >> sortEventsByDateAsc [
+	^ userCreatedEvents
+		asSortedCollection: [ :a :b | a creationDate < b creationDate ]
+]
+
+{ #category : #sorting }
+Farmomatic >> sortEventsByDateDec [
+	^ userCreatedEvents
+		asSortedCollection: [ :a :b | a creationDate > b creationDate ]
+]
+
+{ #category : #sorting }
+Farmomatic >> sortEventsByTypeAsc [
+	^ userCreatedEvents asSortedCollection: [ :a :b | a type < b type ]
+]
+
+{ #category : #sorting }
+Farmomatic >> sortEventsByTypeDec [
+	^ userCreatedEvents asSortedCollection: [ :a :b | a type > b type ]
+]
+
+{ #category : #'as yet unclassified' }
+Farmomatic >> usersWhoReportedAProblem [
+	"*reportaron un determinado problema"
+
+	^ userCreatedEvents select: [ :a | a type = 'Problem' ]
+]
+
+{ #category : #'as yet unclassified' }
+Farmomatic >> usersWhoReportedAVariety [
+"plantaron una determinada variedad"
+
+	^ userCreatedEvents select: [ :a | a type = 'Variety' ]
 ]

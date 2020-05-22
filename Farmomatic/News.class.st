@@ -23,17 +23,21 @@ Class {
 	#name : #News,
 	#superclass : #Object,
 	#instVars : [
-		'tittle',
 		'body',
-		'title'
+		'title',
+		'addressedUsers'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #constructor }
-News class >> withTitle: aTitle body: aBody [
+News class >> withTitle: aTitle body: aBody toUsers: someUsers [
+	^ self new withTitle: aTitle body: aBody toUsers: someUsers
+]
 
-^ self new withTitle: aTitle body: aBody
+{ #category : #initialization }
+News >> initialize [
+	addressedUsers:= OrderedCollection new.
 ]
 
 { #category : #constructor }
@@ -41,4 +45,11 @@ News >> withTitle: aTitle body: aBody [
 
 	title:= aTitle.
 	body:= aBody
+]
+
+{ #category : #constructor }
+News >> withTitle: aTitle body: aBody toUsers: someUsers [
+	title := aTitle.
+	body := aBody .
+	addressedUsers := someUsers
 ]

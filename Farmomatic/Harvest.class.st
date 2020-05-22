@@ -42,6 +42,16 @@ Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety 
 		variety: aVariety.
 ]
 
+{ #category : #'as yet unclassified' }
+Harvest >> getVariety [
+ ^ variety 
+]
+
+{ #category : #accessing }
+Harvest >> type [
+	^ variety className
+]
+
 { #category : #constructor }
 Harvest >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
 	self withAuthor: aUser Comments: aComment.

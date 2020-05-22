@@ -27,7 +27,7 @@ Class {
 	#name : #Problem,
 	#superclass : #Event,
 	#instVars : [
-		'problems'
+		'problem'
 	],
 	#category : #Farmomatic
 }
@@ -37,9 +37,18 @@ Problem class >> withAuthor: aUser comments: aComment problem: aProblem [
 	^ self new withAuthor: aUser Comments: aComment Problem: aProblem
 ]
 
+{ #category : #'as yet unclassified' }
+Problem >> getProblem [
+	^ problem
+]
+
+{ #category : #accessing }
+Problem >> type [
+	^ problem className
+]
+
 { #category : #constructor }
 Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [
 	self withAuthor: aUser Comments: aComment.
-	problems := aProblem.
-
+	problem := aProblem
 ]

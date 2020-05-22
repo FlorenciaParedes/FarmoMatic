@@ -40,17 +40,21 @@ Class {
 		'news'
 	],
 	#classInstVars : [
-		'creationDate'
+		'creationDate',
+		'a'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #adding }
 Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety fromPlot: aPlot [
-	userCreatedEvents
+	^ userCreatedEvents
 		add:
 			(aPlot
-				addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety)
+				addHarvestWithAuthor: aUser
+				Comments: aComment
+				kg: aKg
+				variety: aVariety)
 ]
 
 { #category : #adding }
@@ -70,20 +74,6 @@ Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem f
 ]
 
 { #category : #adding }
-Farmomatic >> addProblemWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
-	"Agregar problema con todos los datos"
-
-	| p |
-	p := Problems
-		withVulgarName: aVulgarName
-		aScientificName: aScientificName
-		aUrl: aUrl
-		aDescription: aDescription.
-	userCreatedEvents add: p.
-	^ p
-]
-
-{ #category : #adding }
 Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
       ^ Products
 		withComercialName: aName
@@ -99,6 +89,20 @@ Farmomatic >> addSpecieWithName: aName [
 
 ^Species withName: aName .
 
+]
+
+{ #category : #adding }
+Farmomatic >> addTroubleWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
+	"Agregar problema con todos los datos"
+
+	| p |
+	p := Problems
+		withVulgarName: aVulgarName
+		aScientificName: aScientificName
+		aUrl: aUrl
+		aDescription: aDescription.
+	problems add: p.
+	^ p
 ]
 
 { #category : #adding }
@@ -193,15 +197,27 @@ Farmomatic >> sortEventsByTypeDec [
 ]
 
 { #category : #'as yet unclassified' }
-Farmomatic >> usersWhoReportedAProblem [
-	"*reportaron un determinado problema"
-
-	^ userCreatedEvents select: [ :a | a type = 'Problem' ]
+Farmomatic >> usersWhoReportedAVariety: aVariety [ 
+	| aux |
+	aux := userCreatedEvents select: [ :a | a type = 'Variety' ].
+	^ (aux select: [ :a | a getVariety  = aVariety  ])
+		collect: [ :a | a author ]
 ]
 
 { #category : #'as yet unclassified' }
-Farmomatic >> usersWhoReportedAVariety [
-"plantaron una determinada variedad"
+Farmomatic >> usersWhoReportedProblem: aProblem [
+	"*reportaron un determinado problema"
 
-	^ userCreatedEvents select: [ :a | a type = 'Variety' ]
+	| aux |
+	aux := userCreatedEvents select: [ :a | a type = 'Problems' ].
+	^ (aux select: [ :a | a getProblem = aProblem ]) collect: [ :a | a author]
+]
+
+{ #category : #'as yet unclassified' }
+Farmomatic >> usersWhoUsedAproduct: aProduct [
+	"utilizaron un determinado producto"
+	| event |
+	event := userCreatedEvents select: [ :a | a type = 'Products' ].
+	^ (event select: [ :a | a getProduct = aProduct ])
+		collect: [ :a | a author ]
 ]

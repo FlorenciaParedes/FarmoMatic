@@ -42,6 +42,16 @@ Aplication class >> withAuthor: aUser Comments: aComment Amount: amount Product:
 		Product: aProduct.
 ]
 
+{ #category : #'as yet unclassified' }
+Aplication >> getProduct [
+	^ product 
+]
+
+{ #category : #accessing }
+Aplication >> type [
+	^ product className
+]
+
 { #category : #constructor }
 Aplication >> withAuthor: aUser Comments: aComment Amount: aAmount Product: aProduct [
 	self withAuthor: aUser Comments: aComment.

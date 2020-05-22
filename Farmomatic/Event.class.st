@@ -37,6 +37,11 @@ Class {
 }
 
 { #category : #accessing }
+Event >> author [ 
+^author
+]
+
+{ #category : #accessing }
 Event >> creationDate [
 ^ creationDate 
 ]
@@ -47,8 +52,8 @@ Event >> initialize [
 ]
 
 { #category : #accessing }
-Event >> type [
-	^ self className
+Event >> type [ 
+^ SubclassResponsibility 
 ]
 
 { #category : #constructor }

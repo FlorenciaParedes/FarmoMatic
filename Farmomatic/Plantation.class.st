@@ -43,6 +43,11 @@ Plantation class >> withAuthor: aUser Comments: aComment Amount: amount Specie: 
 		Specie: aSpecie
 ]
 
+{ #category : #accessing }
+Plantation >> type [
+	^ species className
+]
+
 { #category : #constructor }
 Plantation >> withAuthor: aUser Comments: aComment Amount: aAmount Specie: aSpecie [
 	self withAuthor: aUser Comments: aComment.

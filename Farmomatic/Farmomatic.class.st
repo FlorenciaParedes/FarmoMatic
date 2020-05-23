@@ -196,28 +196,7 @@ Farmomatic >> sortEventsByTypeDec [
 	^ userCreatedEvents asSortedCollection: [ :a :b | a type > b type ]
 ]
 
-{ #category : #'as yet unclassified' }
-Farmomatic >> usersWhoReportedAVariety: aVariety [ 
-	| aux |
-	aux := userCreatedEvents select: [ :a | a type = 'Variety' ].
-	^ (aux select: [ :a | a getVariety  = aVariety  ])
-		collect: [ :a | a author ]
-]
-
-{ #category : #'as yet unclassified' }
-Farmomatic >> usersWhoReportedProblem: aProblem [
-	"*reportaron un determinado problema"
-
-	| aux |
-	aux := userCreatedEvents select: [ :a | a type = 'Problems' ].
-	^ (aux select: [ :a | a getProblem = aProblem ]) collect: [ :a | a author]
-]
-
-{ #category : #'as yet unclassified' }
-Farmomatic >> usersWhoUsedAproduct: aProduct [
-	"utilizaron un determinado producto"
-	| event |
-	event := userCreatedEvents select: [ :a | a type = 'Products' ].
-	^ (event select: [ :a | a getProduct = aProduct ])
-		collect: [ :a | a author ]
+{ #category : #forTesting }
+Farmomatic >> users [
+	^ users 
 ]

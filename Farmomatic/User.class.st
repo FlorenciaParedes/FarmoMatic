@@ -51,6 +51,11 @@ User >> farmInvitation: aFarm [
  farms add: aFarm 
 ]
 
+{ #category : #forTesting }
+User >> fullName [ 
+^ fullName 
+]
+
 { #category : #constructor }
 User >> initialize [
 	farms := OrderedCollection new.
@@ -62,6 +67,11 @@ User >> initialize [
 User >> inviteProducer: aProducer toFarm: aFarm [
 aProducer farmInvitation: aFarm 
 
+]
+
+{ #category : #forTesting }
+User >> mail [
+^ mail 
 ]
 
 { #category : #constructor }
@@ -79,6 +89,11 @@ User >> makeExpert [
 { #category : #setting }
 User >> makeExpertProducer: aProducer [
 	aProducer makeExpert.
+]
+
+{ #category : #forTesting }
+User >> password [  
+^password 
 ]
 
 { #category : #adding }

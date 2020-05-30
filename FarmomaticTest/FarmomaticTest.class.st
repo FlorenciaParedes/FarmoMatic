@@ -6,7 +6,8 @@ Class {
 		'user1',
 		'user2',
 		'user3',
-		'farm1'
+		'farm1',
+		'plot1'
 	],
 	#category : #FarmomaticTest
 }
@@ -26,11 +27,54 @@ FarmomaticTest >> setUp [
 		registerProducerWithMail: 'regi@gmail.com'
 		andPassword: '554433'
 		andFullName: 'Regina Phalange'.
-	farm1 := system registerFarmWithName: 'Wood Farm' andDescription: 'beautiful willow tree farm' andAddress: 'aAddress' ofProducer: user1
+	farm1 := system
+		registerFarmWithName: 'Wood Farm'
+		andDescription: 'beautiful willow tree farm'
+		andAddress: '4691 Raggedy Point Rd'
+		ofProducer: user1.
+	system
+		inviteProducerWithMail: 'tom@gmail.com'
+		toFarm: farm1
+		of: user1.
+	"plot1 := system
+		registerPlotWithId: '5D3F'
+		andDescription: 'plot located to the left'
+		andSurface: 20
+		andIsHothouse: true
+		fromFarm: farm1"
+]
+
+{ #category : #'as yet unclassified' }
+FarmomaticTest >> testinviteProducerWithMailtoFarmof [
+	self assert: user2 farms first name equals: 'Wood Farm'.
+	self
+		assert: user2 farms first description
+		equals: 'beautiful willow tree farm'.
+	self
+		assert: user2 farms first address
+		equals: '4691 Raggedy Point Rd'.
+
 ]
 
 { #category : #'as yet unclassified' }
 FarmomaticTest >> testregisterFarmWithNameandDescriptionandAddressofProducer [
+	self assert: user1 farms first equals: farm1.
+	self assert: farm1 plots size equals: 0.
+	self assert: farm1 name equals: 'Wood Farm'.
+	self assert: farm1 description equals: 'beautiful willow tree farm'.
+	self assert: farm1 address equals: '4691 Raggedy Point Rd'
+]
+
+{ #category : #'as yet unclassified' }
+FarmomaticTest >> testregisterPlotWithIdandDescriptionandSurfaceandIsHothousefromFarm [
+	self assert: farm1 plots size equals: 1.
+	self assert: farm1 plots first equals: plot1.
+	self assert: plot1 id equals: '5D3F'.
+	self assert: plot1 description equals: 'plot located to the left'.
+	self assert: plot1 surface equals: 20.
+	self deny: plot1 hothouse equals: false.
+	self assert: plot1 hothouse equals: true
+
 ]
 
 { #category : #'as yet unclassified' }

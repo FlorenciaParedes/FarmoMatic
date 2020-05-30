@@ -53,11 +53,26 @@ Farm >> addPlot: aPlot [
 plots add: aPlot .
 ]
 
+{ #category : #forTesting }
+Farm >> address [ 
+^address 
+]
+
+{ #category : #forTesting }
+Farm >> description [ 
+^description 
+]
+
 { #category : #adding }
 Farm >> initialize [ 
 plots := OrderedCollection new.
 isRemoved:= false
 
+]
+
+{ #category : #forTesting }
+Farm >> name [ 
+^name 
 ]
 
 { #category : #constructor }
@@ -67,4 +82,9 @@ Farm >> name: aName andDescription: aDescription andAddress: aAddress [
 	address := aAddress.
 	
 	
+]
+
+{ #category : #forTesting }
+Farm >> plots [
+^plots
 ]

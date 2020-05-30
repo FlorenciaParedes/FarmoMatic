@@ -54,10 +54,13 @@ plots add: aPlot .
 ]
 
 { #category : #adding }
-Farm >> initialize [ 
-plots := OrderedCollection new.
-isRemoved:= false
+Farm >> hasEventLike: themeOfTheNews [
+	^ plots hasEventLike: themeOfTheNews
+]
 
+{ #category : #initialization }
+Farm >> initialize [ 
+	plots := OrderedCollection new.
 ]
 
 { #category : #constructor }
@@ -67,4 +70,9 @@ Farm >> name: aName andDescription: aDescription andAddress: aAddress [
 	address := aAddress.
 	
 	
+]
+
+{ #category : #accessing }
+Farm >> plots [
+	^ plots
 ]

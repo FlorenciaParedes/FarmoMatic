@@ -47,6 +47,11 @@ Harvest >> getVariety [
  ^ variety 
 ]
 
+{ #category : #'as yet unclassified' }
+Harvest >> theme: themeOfTheNews [
+	^ variety applied: themeOfTheNews 
+]
+
 { #category : #accessing }
 Harvest >> type [
 	^ variety className

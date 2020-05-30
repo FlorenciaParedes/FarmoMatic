@@ -24,7 +24,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'body',
-		'title'
+		'title',
+		'themeOfTheNews'
 	],
 	#category : #Farmomatic
 }
@@ -32,6 +33,14 @@ Class {
 { #category : #constructor }
 News class >> withTitle: aTitle body: aBody [
 	^ self new withTitle: aTitle body: aBody
+]
+
+{ #category : #initialization }
+News >> canView: user [
+	"Entiendo que al hablar la caonsigan de un problema, una especie o una variedad, se refiere a que solo puede haber un tema de la noticia"
+	^ user hasInterestIn: themeOfTheNews
+
+	
 ]
 
 { #category : #constructor }

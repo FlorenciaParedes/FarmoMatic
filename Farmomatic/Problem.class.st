@@ -42,6 +42,11 @@ Problem >> getProblem [
 	^ problem
 ]
 
+{ #category : #'as yet unclassified' }
+Problem >> theme: themeOfTheNews [
+	^ problem  applied: themeOfTheNews 
+]
+
 { #category : #accessing }
 Problem >> type [
 	^ problem className

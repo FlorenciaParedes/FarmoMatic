@@ -56,6 +56,14 @@ User >> fullName [
 ^ fullName 
 ]
 
+{ #category : #invites }
+User >> hasInterestIn: themeOfTheNews [
+	"Devuelve verdadero o falso si el tema de la noticia le interesa al usuario"
+	
+		^ farms hasEventLike: themeOfTheNews
+	
+]
+
 { #category : #constructor }
 User >> initialize [
 	farms := OrderedCollection new.
@@ -105,9 +113,4 @@ farms add: farm
 User >> removeFarm: aFarm [
 	removedFarms add: aFarm.
 	farms remove: aFarm
-]
-
-{ #category : #accessing }
-User >> tipe [
-	^ self className
 ]

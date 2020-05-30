@@ -47,6 +47,11 @@ Aplication >> getProduct [
 	^ product 
 ]
 
+{ #category : #'as yet unclassified' }
+Aplication >> theme: themeOfTheNews [
+	^ product applied: themeOfTheNews 
+]
+
 { #category : #accessing }
 Aplication >> type [
 	^ product className

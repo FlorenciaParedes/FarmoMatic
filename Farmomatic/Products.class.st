@@ -26,12 +26,11 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #Products,
-	#superclass : #Object,
+	#superclass : #PredefinedList,
 	#instVars : [
 		'composition',
 		'description',
-		'comercialName',
-		'vulgarName'
+		'comercialName'
 	],
 	#category : #Farmomatic
 }
@@ -42,9 +41,16 @@ Products class >> withComercialName: aName aVulgarName: aVulgar aComposition: aC
 ]
 
 { #category : #constructor }
+Products >> applied: themeOfTheNews [
+
+	^ (name match: themeOfTheNews)
+	
+]
+
+{ #category : #constructor }
 Products >> withComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
 	comercialName := aName.
-	vulgarName:= aVulgar.
+	name := aVulgar.
 	composition := aComposition.
 	description := aDescription.
 	

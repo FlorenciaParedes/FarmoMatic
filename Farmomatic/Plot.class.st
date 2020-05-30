@@ -89,6 +89,13 @@ Plot >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product
 ]
 
 { #category : #constructor }
+Plot >> hasEventLike: themeOfTheNews [
+
+	^ events detect: [ :elem | elem theme: themeOfTheNews ] ifFound: [ ^true ] ifNone: [ ^false ] .
+
+]
+
+{ #category : #constructor }
 Plot >> id: anId andDescription: aDescription andSurface: aSurface andIsHothouse: isHothouse [
 	id := anId.
 	description := aDescription.

@@ -24,10 +24,7 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #Species,
-	#superclass : #Object,
-	#instVars : [
-		'species'
-	],
+	#superclass : #PredefinedList,
 	#category : #Farmomatic
 }
 
@@ -38,5 +35,5 @@ Species class >> withName: aName [
 
 { #category : #'instance creation' }
 Species >> name: aName [
-	species := aName
+	name := aName
 ]

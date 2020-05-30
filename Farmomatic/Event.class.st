@@ -51,6 +51,10 @@ Event >> initialize [
  creationDate := Date today 
 ]
 
+{ #category : #'instance creation' }
+Event >> theme: themeOfTheNews [
+]
+
 { #category : #accessing }
 Event >> type [ 
 ^ SubclassResponsibility 

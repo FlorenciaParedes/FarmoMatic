@@ -27,9 +27,8 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #Variety,
-	#superclass : #Object,
+	#superclass : #PredefinedList,
 	#instVars : [
-		'vulgarName',
 		'scientificName',
 		'url',
 		'description'
@@ -43,12 +42,17 @@ Variety class >> withVulgarName: aName scientificName: aScientificName  url: aUr
 ^ self new withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription 
 ]
 
+{ #category : #'instance creation' }
+Variety >> applied: themeOfTheNews [
+^ (name match: themeOfTheNews ) or: (scientificName match: themeOfTheNews )
+]
+
 { #category : #constructor }
 Variety >> withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription [ 
 	"comment stating purpose of instance-side message"
 	"scope: class-variables  &  instance-variables"	
 			
-	vulgarName:= aName.
+	name:= aName.
 	scientificName:= aScientificName.
 	url:= aUrl.
 	description:= aDescription

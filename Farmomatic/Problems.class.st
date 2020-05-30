@@ -28,9 +28,8 @@ Internal Representation and Key Implementation Points.
 "
 Class {
 	#name : #Problems,
-	#superclass : #Object,
+	#superclass : #PredefinedList,
 	#instVars : [
-		'vulgarName',
 		'scientificName',
 		'url',
 		'description'
@@ -44,8 +43,13 @@ Problems class >> withVulgarName:aVulgarName aScientificName: aScientificName aU
 ]
 
 { #category : #constructor }
+Problems >> applied: themeOfTheNews [
+	^ (name match: themeOfTheNews) or: (scientificName match: themeOfTheNews )
+]
+
+{ #category : #constructor }
 Problems >> withVulgarName:aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription:aDescription [.
-vulgarName := aVulgarName .
+name := aVulgarName .
 scientificName := aScientificName .
 url := aUrl .
 description := aDescription .

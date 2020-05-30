@@ -46,9 +46,19 @@ User class >> mail: aMail andPassword: aPassword andFullName: aName [
 	^ self new mail: aMail yPassword: aPassword andFullName: aName
 ]
 
+{ #category : #'as yet unclassified' }
+User >> expert [
+^ isExpert 
+]
+
 { #category : #invites }
 User >> farmInvitation: aFarm [
  farms add: aFarm 
+]
+
+{ #category : #forTesting }
+User >> farms [
+^farms 
 ]
 
 { #category : #forTesting }
@@ -96,7 +106,8 @@ User >> makeExpert [
 
 { #category : #setting }
 User >> makeExpertProducer: aProducer [
-	aProducer makeExpert.
+	self expert
+		ifTrue: [ aProducer makeExpert ].
 ]
 
 { #category : #forTesting }
@@ -113,4 +124,9 @@ farms add: farm
 User >> removeFarm: aFarm [
 	removedFarms add: aFarm.
 	farms remove: aFarm
+]
+
+{ #category : #forTesting }
+User >> removedFarms [
+	^ removedFarms 
 ]

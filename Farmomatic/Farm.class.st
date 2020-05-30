@@ -53,6 +53,16 @@ Farm >> addPlot: aPlot [
 plots add: aPlot .
 ]
 
+{ #category : #forTesting }
+Farm >> address [ 
+^address 
+]
+
+{ #category : #forTesting }
+Farm >> description [ 
+^description 
+]
+
 { #category : #adding }
 Farm >> hasEventLike: themeOfTheNews [
 	^ plots hasEventLike: themeOfTheNews
@@ -61,6 +71,11 @@ Farm >> hasEventLike: themeOfTheNews [
 { #category : #initialization }
 Farm >> initialize [ 
 	plots := OrderedCollection new.
+]
+
+{ #category : #forTesting }
+Farm >> name [ 
+^name 
 ]
 
 { #category : #constructor }
@@ -72,7 +87,7 @@ Farm >> name: aName andDescription: aDescription andAddress: aAddress [
 	
 ]
 
-{ #category : #accessing }
+{ #category : #forTesting }
 Farm >> plots [
-	^ plots
+^plots
 ]

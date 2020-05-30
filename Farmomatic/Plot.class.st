@@ -88,11 +88,26 @@ Plot >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product
 				Product: aProduct)
 ]
 
+{ #category : #forTesting }
+Plot >> description [ 
+^ description 
+]
+
 { #category : #constructor }
 Plot >> hasEventLike: themeOfTheNews [
 
 	^ events detect: [ :elem | elem theme: themeOfTheNews ] ifFound: [ ^true ] ifNone: [ ^false ] .
 
+]
+
+{ #category : #forTesting }
+Plot >> hothouse [
+^hothouse 
+]
+
+{ #category : #forTesting }
+Plot >> id [ 
+^id
 ]
 
 { #category : #constructor }
@@ -106,4 +121,9 @@ Plot >> id: anId andDescription: aDescription andSurface: aSurface andIsHothouse
 { #category : #initialization }
 Plot >> initialize [ 
 events:= OrderedCollection new.
+]
+
+{ #category : #forTesting }
+Plot >> surface [ 
+^ surface 
 ]

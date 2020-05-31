@@ -38,6 +38,7 @@ News class >> withTitle: aTitle body: aBody [
 { #category : #initialization }
 News >> canView: user [
 	"Entiendo que al hablar la caonsigan de un problema, una especie o una variedad, se refiere a que solo puede haber un tema de la noticia"
+	"Le paso la referencia al objeto problema, variedad o producto"
 	^ user hasInterestIn: themeOfTheNews
 
 	

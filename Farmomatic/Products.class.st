@@ -42,8 +42,8 @@ Products class >> withComercialName: aName aVulgarName: aVulgar aComposition: aC
 
 { #category : #constructor }
 Products >> applied: themeOfTheNews [
-
-	^ (name match: themeOfTheNews)
+" pregunto si son el mismo objeto"
+	^ (name == themeOfTheNews)
 	
 ]
 

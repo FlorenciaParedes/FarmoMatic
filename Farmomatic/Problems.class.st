@@ -44,7 +44,7 @@ Problems class >> withVulgarName:aVulgarName aScientificName: aScientificName aU
 
 { #category : #constructor }
 Problems >> applied: themeOfTheNews [
-	^ (name match: themeOfTheNews) or: (scientificName match: themeOfTheNews )
+	^ (self == themeOfTheNews)
 ]
 
 { #category : #constructor }

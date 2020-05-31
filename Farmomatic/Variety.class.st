@@ -44,7 +44,7 @@ Variety class >> withVulgarName: aName scientificName: aScientificName  url: aUr
 
 { #category : #'instance creation' }
 Variety >> applied: themeOfTheNews [
-^ (name match: themeOfTheNews ) or: (scientificName match: themeOfTheNews )
+^ (self == themeOfTheNews )
 ]
 
 { #category : #constructor }

@@ -49,6 +49,7 @@ Aplication >> getProduct [
 
 { #category : #'as yet unclassified' }
 Aplication >> theme: themeOfTheNews [
+"Y si pregunto si son el mismo objeto?"
 	^ product applied: themeOfTheNews 
 ]
 

@@ -70,7 +70,7 @@ User >> fullName [
 User >> hasInterestIn: themeOfTheNews [
 	"Devuelve verdadero o falso si el tema de la noticia le interesa al usuario"
 	
-		^ farms hasEventLike: themeOfTheNews
+		^ (farms detect: [ :elem | elem hasEventLike: themeOfTheNews]) ifNotEmpty: [ true ]
 	
 ]
 

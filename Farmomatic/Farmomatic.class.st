@@ -58,6 +58,12 @@ Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aV
 ]
 
 { #category : #adding }
+Farmomatic >> addNewsWithTitle: aTitle body: aText theme: aTheme [
+
+	^ (news add: (News new withTitle: aTitle body: aText theme: aTheme))
+]
+
+{ #category : #adding }
 Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie fromPlot: aPlot [
 	userCreatedEvents
 		add:
@@ -113,7 +119,8 @@ Farmomatic >> addVarietyVulgarName: aName scientificName: aScientificName url: a
 
 { #category : #adding }
 Farmomatic >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct fromPlot: aPlot [
-	userCreatedEvents
+	
+	^ userCreatedEvents
 		add:
 			(aPlot
 				addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct)

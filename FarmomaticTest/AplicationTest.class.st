@@ -1,5 +1,5 @@
 Class {
-	#name : #NewsTest,
+	#name : #AplicationTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'system',
@@ -16,7 +16,7 @@ Class {
 }
 
 { #category : #running }
-NewsTest >> setUp [
+AplicationTest >> setUp [
 
 	super setUp.
 	system := Farmomatic new.
@@ -62,7 +62,16 @@ NewsTest >> setUp [
 	
 ]
 
-{ #category : #tests }
-NewsTest >> testcanView [
-	self assert: (news1 canView: user1) equals: true.
+{ #category : #accessing }
+AplicationTest >> testTheme [
+| new2 |
+self assert: (event1  theme: news1 themeOfTheNews ) equals: true.
+
+new2 := News new withTitle: 'Mucho que hacer' body: 'realmente mucho que hacer' theme: (system addProductsWithComercialName: 'aName'aVulgarName: 'aVulgar' aComposition: 'aComposition' aDescription: 'aDescription').
+
+self assert: (event1  theme: new2 themeOfTheNews ) equals: false
+]
+
+{ #category : #accessing }
+AplicationTest >> theme [
 ]

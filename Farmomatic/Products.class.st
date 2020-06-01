@@ -43,8 +43,8 @@ Products class >> withComercialName: aName aVulgarName: aVulgar aComposition: aC
 { #category : #constructor }
 Products >> applied: themeOfTheNews [
 " pregunto si son el mismo objeto"
-	^ (name == themeOfTheNews)
-	
+	^ self == themeOfTheNews
+
 ]
 
 { #category : #constructor }

@@ -65,7 +65,8 @@ Farm >> description [
 
 { #category : #adding }
 Farm >> hasEventLike: themeOfTheNews [
-	^ plots hasEventLike: themeOfTheNews
+	^ (plots detect: [ :elem | elem hasEventLike: themeOfTheNews] ifFound:[true] ifNone: [false]) 
+	
 ]
 
 { #category : #initialization }

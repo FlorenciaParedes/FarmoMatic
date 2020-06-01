@@ -97,7 +97,7 @@ Plot >> description [
 Plot >> hasEventLike: themeOfTheNews [
 "Dudoso"
 
-	^  (events detect: [ :elem | elem hasEventLike: themeOfTheNews]) ifNotEmpty: [ true ]
+	^  (events detect: [ :elem | elem theme: themeOfTheNews] ifFound:[true] ifNone: [false]) 
 
 ]
 

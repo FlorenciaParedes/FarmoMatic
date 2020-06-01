@@ -1,5 +1,5 @@
 Class {
-	#name : #NewsTest,
+	#name : #PlotTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'system',
@@ -15,8 +15,8 @@ Class {
 	#category : #FarmomaticTest
 }
 
-{ #category : #running }
-NewsTest >> setUp [
+{ #category : #tests }
+PlotTest >> setUp [
 
 	super setUp.
 	system := Farmomatic new.
@@ -63,6 +63,11 @@ NewsTest >> setUp [
 ]
 
 { #category : #tests }
-NewsTest >> testcanView [
-	self assert: (news1 canView: user1) equals: true.
+PlotTest >> testHasEventLike [
+| new2 |
+self assert: (plot1   hasEventLike: news1 themeOfTheNews ) equals: true.
+
+new2 := News new withTitle: 'Mucho que hacer' body: 'realmente mucho que hacer' theme: (system addProductsWithComercialName: 'aName'aVulgarName: 'aVulgar' aComposition: 'aComposition' aDescription: 'aDescription').
+
+self assert: (plot1   hasEventLike: new2 themeOfTheNews ) equals: false
 ]

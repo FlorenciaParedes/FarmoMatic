@@ -31,8 +31,10 @@ Class {
 }
 
 { #category : #constructor }
-News class >> withTitle: aTitle body: aBody [
-	^ self new withTitle: aTitle body: aBody
+News class >> withTitle: aTitle body: aBody theme: aTheme [
+
+	^ self new withTitle: aTitle body: aBody theme: aTheme
+
 ]
 
 { #category : #initialization }
@@ -44,9 +46,22 @@ News >> canView: user [
 	
 ]
 
+{ #category : #accessing }
+News >> themeOfTheNews [
+	^ themeOfTheNews
+]
+
 { #category : #constructor }
 News >> withTitle: aTitle body: aBody [
 
 	title:= aTitle.
 	body:= aBody
+]
+
+{ #category : #constructor }
+News >> withTitle: aTitle body: aBody theme: aTheme [
+
+	title:= aTitle.
+	body:= aBody.
+	themeOfTheNews := aTheme 
 ]

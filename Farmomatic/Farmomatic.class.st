@@ -120,7 +120,7 @@ Farmomatic >> addVarietyVulgarName: aName scientificName: aScientificName url: a
 
 { #category : #addingEvents }
 Farmomatic >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct fromPlot: aPlot [
-	 userCreatedEvents
+	^userCreatedEvents
 		add:
 			(aPlot
 				addaplicationWithAuthor: aUser

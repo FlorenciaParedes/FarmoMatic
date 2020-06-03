@@ -47,11 +47,6 @@ Problem >> theme: themeOfTheNews [
 	^ problem  applied: themeOfTheNews 
 ]
 
-{ #category : #accessing }
-Problem >> type [
-	^ problem className
-]
-
 { #category : #constructor }
 Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [
 	self withAuthor: aUser Comments: aComment.

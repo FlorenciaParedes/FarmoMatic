@@ -32,10 +32,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'users',
-		'problems',
-		'harvests',
-		'products',
-		'species',
+		'predefinedList',
 		'userCreatedEvents',
 		'news'
 	],
@@ -46,9 +43,9 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #adding }
+{ #category : #addingEvents }
 Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety fromPlot: aPlot [
-	^ userCreatedEvents
+	userCreatedEvents
 		add:
 			(aPlot
 				addHarvestWithAuthor: aUser
@@ -57,21 +54,24 @@ Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aV
 				variety: aVariety)
 ]
 
-{ #category : #adding }
+{ #category : #addingNews }
 Farmomatic >> addNewsWithTitle: aTitle body: aText theme: aTheme [
 
 	^ (news add: (News new withTitle: aTitle body: aText theme: aTheme))
 ]
 
-{ #category : #adding }
+{ #category : #addingEvents }
 Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie fromPlot: aPlot [
-	userCreatedEvents
+	 userCreatedEvents
 		add:
 			(aPlot
-				addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie)
+				addPlantationWithAuthor: aUser
+				Comments: aComment
+				Amount: amount
+				Specie: aSpecie)
 ]
 
-{ #category : #adding }
+{ #category : #addingEvents }
 Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem fromPlot: aPlot [
 	userCreatedEvents
 		add:
@@ -79,27 +79,25 @@ Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem f
 				addProblemWithAuthor: aUser Comments: aComment Problem: aProblem)
 ]
 
-{ #category : #adding }
+{ #category : #addingList }
 Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
-      ^ Products
+	^ predefinedList add: (Products
 		withComercialName: aName
 		aVulgarName: aVulgar
 		aComposition: aComposition
-		aDescription: aDescription.
-
+		aDescription: aDescription)
 ]
 
-{ #category : #adding }
+{ #category : #addingList }
 Farmomatic >> addSpecieWithName: aName [
 	"Agregar problema sin descripcion"
 
-^Species withName: aName .
-
+	^ predefinedList add: (Species withName: aName)
 ]
 
-{ #category : #adding }
+{ #category : #addingList }
 Farmomatic >> addTroubleWithVulgarName: aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription: aDescription [
-	"Agregar problema con todos los datos"
+
 
 	| p |
 	p := Problems
@@ -107,23 +105,33 @@ Farmomatic >> addTroubleWithVulgarName: aVulgarName aScientificName: aScientific
 		aScientificName: aScientificName
 		aUrl: aUrl
 		aDescription: aDescription.
-	problems add: p.
+	predefinedList add: p.
 	^ p
 ]
 
-{ #category : #adding }
+{ #category : #addingList }
 Farmomatic >> addVarietyVulgarName: aName scientificName: aScientificName url: aUrl description: aDescription [
-	^ Variety
-		withVulgarName: aName scientificName: aScientificName url: aUrl description: aDescription
+	^ predefinedList add: (Variety
+		withVulgarName: aName
+		scientificName: aScientificName
+		url: aUrl
+		description: aDescription)
 ]
 
-{ #category : #adding }
+{ #category : #addingEvents }
 Farmomatic >> addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct fromPlot: aPlot [
-	
-	^ userCreatedEvents
+	 userCreatedEvents
 		add:
 			(aPlot
-				addaplicationWithAuthor: aUser Comments: aComment Amount: amount Product: aProduct)
+				addaplicationWithAuthor: aUser
+				Comments: aComment
+				Amount: amount
+				Product: aProduct)
+]
+
+{ #category : #forTesting }
+Farmomatic >> events [ 
+^ userCreatedEvents 
 ]
 
 { #category : #sorting }
@@ -138,13 +146,10 @@ Farmomatic >> filterEventByType: aType [
 
 { #category : #initialization }
 Farmomatic >> initialize [
-	species:= OrderedCollection new.
 	users := OrderedCollection new.
-	problems := OrderedCollection new.
-	harvests := OrderedCollection new.
-	products := OrderedCollection new.
 	userCreatedEvents := OrderedCollection new.
 	news := OrderedCollection new.
+	predefinedList := OrderedCollection new
 ]
 
 { #category : #'as yet unclassified' }
@@ -155,6 +160,11 @@ Farmomatic >> inviteProducerWithMail: aMail toFarm: aFarm of: producerOwner [
 	user := self producerWithMail: aMail.
 	(user) ifNotNil: [ producerOwner inviteProducer: user toFarm: aFarm ]	
 
+]
+
+{ #category : #forTesting }
+Farmomatic >> predefinedList [
+	^predefinedList 
 ]
 
 { #category : #'as yet unclassified' }

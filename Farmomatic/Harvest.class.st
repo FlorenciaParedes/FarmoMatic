@@ -42,22 +42,22 @@ Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety 
 		variety: aVariety.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #forTesting }
 Harvest >> getVariety [
  ^ variety 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #forTesting }
+Harvest >> kg [
+^kg
+]
+
+{ #category : #forTesting }
 Harvest >> theme: themeOfTheNews [
 	^ variety applied: themeOfTheNews 
 ]
 
-{ #category : #accessing }
-Harvest >> type [
-	^ variety className
-]
-
-{ #category : #constructor }
+{ #category : #forTesting }
 Harvest >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
 	self withAuthor: aUser Comments: aComment.
 	kg := aKg.

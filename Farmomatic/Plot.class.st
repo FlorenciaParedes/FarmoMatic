@@ -93,6 +93,11 @@ Plot >> description [
 ^ description 
 ]
 
+{ #category : #forTesting }
+Plot >> events [ 
+^events 
+]
+
 { #category : #constructor }
 Plot >> hasEventLike: themeOfTheNews [
 "Dudoso"

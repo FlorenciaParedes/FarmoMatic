@@ -43,9 +43,14 @@ Plantation class >> withAuthor: aUser Comments: aComment Amount: amount Specie: 
 		Specie: aSpecie
 ]
 
-{ #category : #accessing }
-Plantation >> type [
-	^ species className
+{ #category : #forTesting }
+Plantation >> amount [ 
+^amount 
+]
+
+{ #category : #forTesting }
+Plantation >> getSpecies [
+	^ species
 ]
 
 { #category : #constructor }

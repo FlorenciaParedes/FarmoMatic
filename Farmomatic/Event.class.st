@@ -36,12 +36,17 @@ Class {
 	#category : #Farmomatic
 }
 
-{ #category : #accessing }
+{ #category : #forTesting }
 Event >> author [ 
 ^author
 ]
 
-{ #category : #accessing }
+{ #category : #forTesting }
+Event >> comments [ 
+^comments 
+]
+
+{ #category : #forTesting }
 Event >> creationDate [
 ^ creationDate 
 ]
@@ -56,8 +61,8 @@ Event >> theme: themeOfTheNews [
 ]
 
 { #category : #accessing }
-Event >> type [ 
-^ SubclassResponsibility 
+Event >> type [
+	^ self className 
 ]
 
 { #category : #constructor }

@@ -51,6 +51,11 @@ Event >> creationDate [
 ^ creationDate 
 ]
 
+{ #category : #forTesting }
+Event >> creationDate: aDate [
+	creationDate:= aDate. 
+]
+
 { #category : #initialization }
 Event >> initialize [ 
  creationDate := Date today 

@@ -45,7 +45,7 @@ Class {
 
 { #category : #addingEvents }
 Farmomatic >> addHarvestWithAuthor: aUser Comments: aComment kg: aKg variety: aVariety fromPlot: aPlot [
-	userCreatedEvents
+	^ userCreatedEvents
 		add:
 			(aPlot
 				addHarvestWithAuthor: aUser
@@ -62,7 +62,7 @@ Farmomatic >> addNewsWithTitle: aTitle body: aText theme: aTheme [
 
 { #category : #addingEvents }
 Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie fromPlot: aPlot [
-	 userCreatedEvents
+	^ userCreatedEvents
 		add:
 			(aPlot
 				addPlantationWithAuthor: aUser
@@ -73,10 +73,12 @@ Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount S
 
 { #category : #addingEvents }
 Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem fromPlot: aPlot [
-	userCreatedEvents
+	^userCreatedEvents
 		add:
 			(aPlot
-				addProblemWithAuthor: aUser Comments: aComment Problem: aProblem)
+				addProblemWithAuthor: aUser
+				Comments: aComment
+				Problem: aProblem)
 ]
 
 { #category : #addingList }
@@ -172,7 +174,7 @@ Farmomatic >> producerWithMail: aMail [
 	^ users detect: [ :a | a mail = aMail] ifNone: [ nil ] 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #register }
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
 	|f|
 	f:= Farm name: aName andDescription:aDescription andAddress: aAddress .
@@ -180,7 +182,7 @@ Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddres
 	^f.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #register }
 Farmomatic >> registerPlotWithId: anId andDescription: aDesc andSurface: aSurf andIsHothouse: isHothouse fromFarm: aFarm [
 	|p|
 	p:= Plot id:anId  andDescription:aDesc andSurface: aSurf andIsHothouse: isHothouse.
@@ -188,7 +190,7 @@ Farmomatic >> registerPlotWithId: anId andDescription: aDesc andSurface: aSurf a
 	^p 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #register }
 Farmomatic >> registerProducerWithMail: aMail andPassword: aPassword andFullName: aName [
 	^ (users
 		add: (User mail: aMail andPassword: aPassword andFullName: aName))

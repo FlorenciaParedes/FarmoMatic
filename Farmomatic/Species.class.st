@@ -34,6 +34,13 @@ Species class >> withName: aName [
 ]
 
 { #category : #'instance creation' }
+Species >> applied: themeOfTheNews [
+" pregunto si son el mismo objeto"
+	^ self == themeOfTheNews
+
+]
+
+{ #category : #'instance creation' }
 Species >> name: aName [
 	name := aName
 ]

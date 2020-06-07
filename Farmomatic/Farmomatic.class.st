@@ -65,7 +65,7 @@ Farmomatic >> addNewsWithTitle: aTitle body: aText theme: aTheme [
 
 { #category : #adding }
 Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie fromPlot: aPlot [
-	userCreatedEvents
+	^userCreatedEvents
 		add:
 			(aPlot
 				addPlantationWithAuthor: aUser Comments: aComment Amount: amount Specie: aSpecie)
@@ -73,7 +73,7 @@ Farmomatic >> addPlantationWithAuthor: aUser Comments: aComment Amount: amount S
 
 { #category : #adding }
 Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem fromPlot: aPlot [
-	userCreatedEvents
+	^userCreatedEvents
 		add:
 			(aPlot
 				addProblemWithAuthor: aUser Comments: aComment Problem: aProblem)

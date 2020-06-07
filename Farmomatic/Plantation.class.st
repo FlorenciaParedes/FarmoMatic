@@ -44,6 +44,11 @@ Plantation class >> withAuthor: aUser Comments: aComment Amount: amount Specie: 
 ]
 
 { #category : #accessing }
+Plantation >> theme: themeOfTheNews [
+	^ species  applied: themeOfTheNews 
+]
+
+{ #category : #accessing }
 Plantation >> type [
 	^ species className
 ]

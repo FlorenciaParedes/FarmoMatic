@@ -29,10 +29,8 @@ UserTest >> setUp [
 		registerProducerWithMail: 'tom@gmail.com'
 		andPassword: '112233'
 		andFullName: 'Tomas González'.
-	user3 := system
-		registerProducerWithMail: 'regi@gmail.com'
-		andPassword: '554433'
-		andFullName: 'Regina Phalange'.
+	user3 := system registerExpertWitEmail: 'regi@gmail.com' yPassword: '554433' andFullName: 'Regina Phalange' isExpert: true.
+
 	farm1 := system
 		registerFarmWithName: 'Wood Farm'
 		andDescription: 'beautiful willow tree farm'
@@ -93,6 +91,14 @@ UserTest >> testInviteProducerToFarm [
 	self assert: ((user1 farms size) = 1  ) equals: true.
 	user2 inviteProducer: user1 toFarm: farm2.
 	self assert: ((user1 farms size) = 2  ) equals: true.
+
+]
+
+{ #category : #tests }
+UserTest >> testMakeExpertProducer [
+	self assert: (user1 expert) equals: false.
+	user3 makeExpertProducer: user1.
+	self assert: (user1 expert) equals: true.
 
 ]
 

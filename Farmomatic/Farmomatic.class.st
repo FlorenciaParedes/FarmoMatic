@@ -175,6 +175,12 @@ Farmomatic >> producerWithMail: aMail [
 ]
 
 { #category : #register }
+Farmomatic >> registerExpertWitEmail: aMail yPassword: aPassword andFullName: aName isExpert: bool [
+	^ (users
+		add: (User witEmail: aMail yPassword: aPassword andFullName: aName isExpert: bool))
+]
+
+{ #category : #register }
 Farmomatic >> registerFarmWithName: aName andDescription: aDescription andAddress: aAddress ofProducer: aUser [
 	|f|
 	f:= Farm name: aName andDescription:aDescription andAddress: aAddress .

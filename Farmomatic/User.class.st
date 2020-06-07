@@ -46,6 +46,11 @@ User class >> mail: aMail andPassword: aPassword andFullName: aName [
 	^ self new mail: aMail yPassword: aPassword andFullName: aName
 ]
 
+{ #category : #constructor }
+User class >> witEmail: aMail yPassword: aPassword andFullName: aName isExpert: bool [
+	^ self new mail: aMail yPassword: aPassword andFullName: aName isExpert: bool
+]
+
 { #category : #'as yet unclassified' }
 User >> expert [
 ^ isExpert 
@@ -97,6 +102,14 @@ User >> mail: aMail yPassword: aPassword andFullName: aName [
 	mail:= aMail.
 	password:= aPassword.
 	fullName := aName.
+]
+
+{ #category : #constructor }
+User >> mail: aMail yPassword: aPassword andFullName: aName isExpert: bool [
+	mail:= aMail.
+	password:= aPassword.
+	fullName := aName.
+	isExpert:= bool.
 ]
 
 { #category : #setting }

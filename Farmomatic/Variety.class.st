@@ -47,6 +47,21 @@ Variety >> applied: themeOfTheNews [
 ^ (self == themeOfTheNews )
 ]
 
+{ #category : #forTesting }
+Variety >> description [
+	^ description
+]
+
+{ #category : #forTesting }
+Variety >> scientificName [
+	^ scientificName
+]
+
+{ #category : #forTesting }
+Variety >> url [
+	^ url
+]
+
 { #category : #constructor }
 Variety >> withVulgarName: aName scientificName: aScientificName  url: aUrl description: aDescription [ 
 	"comment stating purpose of instance-side message"

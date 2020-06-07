@@ -47,6 +47,21 @@ Products >> applied: themeOfTheNews [
 
 ]
 
+{ #category : #forTesting }
+Products >> comercialName [
+ ^comercialName 
+]
+
+{ #category : #forTesting }
+Products >> composition [ 
+	^composition 
+]
+
+{ #category : #forTesting }
+Products >> description [ 
+^description 
+]
+
 { #category : #constructor }
 Products >> withComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
 	comercialName := aName.

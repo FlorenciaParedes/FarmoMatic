@@ -42,6 +42,11 @@ Aplication class >> withAuthor: aUser Comments: aComment Amount: amount Product:
 		Product: aProduct.
 ]
 
+{ #category : #forTesting }
+Aplication >> amount [
+	^amount 
+]
+
 { #category : #'as yet unclassified' }
 Aplication >> getProduct [
 	^ product 
@@ -51,11 +56,6 @@ Aplication >> getProduct [
 Aplication >> theme: themeOfTheNews [
 "Y si pregunto si son el mismo objeto?"
 	^ product applied: themeOfTheNews 
-]
-
-{ #category : #accessing }
-Aplication >> type [
-	^ product className
 ]
 
 { #category : #constructor }

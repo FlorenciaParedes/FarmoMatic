@@ -43,14 +43,19 @@ Plantation class >> withAuthor: aUser Comments: aComment Amount: amount Specie: 
 		Specie: aSpecie
 ]
 
-{ #category : #accessing }
-Plantation >> theme: themeOfTheNews [
-	^ species  applied: themeOfTheNews 
+{ #category : #forTesting }
+Plantation >> amount [ 
+^amount 
+]
+
+{ #category : #forTesting }
+Plantation >> getSpecies [
+	^ species
 ]
 
 { #category : #accessing }
-Plantation >> type [
-	^ species className
+Plantation >> theme: themeOfTheNews [
+	^ species  applied: themeOfTheNews 
 ]
 
 { #category : #constructor }

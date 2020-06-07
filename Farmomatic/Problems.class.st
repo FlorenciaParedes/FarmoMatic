@@ -47,6 +47,21 @@ Problems >> applied: themeOfTheNews [
 	^ (self == themeOfTheNews)
 ]
 
+{ #category : #forTesting }
+Problems >> description [
+^description 
+]
+
+{ #category : #forTesting }
+Problems >> scientificName [
+^ scientificName 
+]
+
+{ #category : #forTesting }
+Problems >> url [ 
+^url 
+]
+
 { #category : #constructor }
 Problems >> withVulgarName:aVulgarName aScientificName: aScientificName aUrl: aUrl aDescription:aDescription [.
 name := aVulgarName .

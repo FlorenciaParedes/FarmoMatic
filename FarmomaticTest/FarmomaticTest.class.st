@@ -15,7 +15,8 @@ Class {
 		'plantationTomato',
 		'tomatoHarvest',
 		'fungusProblem',
-		'fungicideApplication'
+		'fungicideApplication',
+		'news1'
 	],
 	#category : #FarmomaticTest
 }
@@ -36,7 +37,6 @@ FarmomaticTest >> setUp [
 		andDescription: 'beautiful willow tree farm'
 		andAddress: '4691 Raggedy Point Rd'
 		ofProducer: user1.
-
 	plot1 := system
 		registerPlotWithId: '5D3F'
 		andDescription: 'plot located to the left'
@@ -87,7 +87,11 @@ FarmomaticTest >> setUp [
 	tomatoHarvest creationDate: (Date newDay: 01 month: 06 year: 2018).
 	fungusProblem creationDate: (Date newDay: 01 month: 07 year: 2018).
 	fungicideApplication
-		creationDate: (Date newDay: 01 month: 08 year: 2018)
+		creationDate: (Date newDay: 01 month: 08 year: 2018).
+	news1 := system
+		addNewsWithTitle: 'Miracle of Glyphosato'
+		body: 'God save Monsanto.'
+		theme: product1	
 ]
 
 { #category : #eventTesting }
@@ -97,6 +101,14 @@ FarmomaticTest >> testaddHarvestWithAuthorCommentskgvarietyfromPlot [
 	self assert: tomatoHarvest kg equals: 50.
 	self assert: tomatoHarvest getVariety equals: variety1.
 	self assert: tomatoHarvest comments equals: 'tomato harvest'
+]
+
+{ #category : #addingNews }
+FarmomaticTest >> testaddNewsWithTitlebodytheme [
+	self assert: news1 title equals: 'Miracle of Glyphosato'.
+	self assert: news1 body equals: 'God save Monsanto.'.
+	self assert: (news1 canView: user1) equals: true.
+	self assert: news1 themeOfTheNews equals: product1 .
 ]
 
 { #category : #eventTesting }
@@ -180,7 +192,7 @@ FarmomaticTest >> testaddaplicationWithAuthorCommentsAmountProductfromPlot [
 	self assert: fungicideApplication getProduct equals: product1.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testfilterEventByDate [
 	| event aDate |
 	aDate := Date newDay: 01 month: 05 year: 2018.
@@ -191,7 +203,7 @@ FarmomaticTest >> testfilterEventByDate [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testfilterEventByType [
 	| event |
 	event := system filterEventByType: 'Harvest'.
@@ -208,7 +220,7 @@ FarmomaticTest >> testfilterEventByType [
 	self assert: event first equals: fungicideApplication 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #registering }
 FarmomaticTest >> testinviteProducerWithMailtoFarmof [
 		system
 		inviteProducerWithMail: 'tom@gmail.com'
@@ -223,7 +235,7 @@ FarmomaticTest >> testinviteProducerWithMailtoFarmof [
 		equals: '4691 Raggedy Point Rd'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #registering }
 FarmomaticTest >> testregisterFarmWithNameandDescriptionandAddressofProducer [
 	self assert: user1 farms first equals: farm1.
 	self assert: farm1 name equals: 'Wood Farm'.
@@ -231,7 +243,7 @@ FarmomaticTest >> testregisterFarmWithNameandDescriptionandAddressofProducer [
 	self assert: farm1 address equals: '4691 Raggedy Point Rd'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #registering }
 FarmomaticTest >> testregisterPlotWithIdandDescriptionandSurfaceandIsHothousefromFarm [
 	self assert: farm1 plots size equals: 1.
 	self assert: farm1 plots first equals: plot1.
@@ -243,7 +255,7 @@ FarmomaticTest >> testregisterPlotWithIdandDescriptionandSurfaceandIsHothousefro
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #registering }
 FarmomaticTest >> testregisterProducerWithMailandPasswordandFullName [
 	self assert: system users size equals: 2.
 	self assert: system users first equals: user1.
@@ -256,7 +268,7 @@ FarmomaticTest >> testregisterProducerWithMailandPasswordandFullName [
 	self assert: (system users at: 2) mail equals: 'tom@gmail.com'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testsortEventsByDateAsc [
 	| events |
 	events := system sortEventsByDateAsc.
@@ -279,7 +291,7 @@ FarmomaticTest >> testsortEventsByDateAsc [
 		equals: (Date newDay: 01 month: 08 year: 2018).	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testsortEventsByDateDec [
 	| events |
 	events := system sortEventsByDateDec.
@@ -302,7 +314,7 @@ FarmomaticTest >> testsortEventsByDateDec [
 		equals: (Date newDay: 01 month: 05 year: 2018)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testsortEventsByTypeAsc [
 	| events |
 	events := system sortEventsByTypeAsc.
@@ -313,7 +325,7 @@ FarmomaticTest >> testsortEventsByTypeAsc [
 	self assert: (events at: 4) equals: fungusProblem .
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #sorting }
 FarmomaticTest >> testsortEventsByTypeDec [
 	| events |
 	events := system sortEventsByTypeDec.

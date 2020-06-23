@@ -34,6 +34,7 @@ Class {
 
 { #category : #accessing }
 PredefinedList >> applied: themeOfTheNews [
+	self subclassResponsibility 
 ]
 
 { #category : #accessing }

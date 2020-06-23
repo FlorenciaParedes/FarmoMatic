@@ -37,6 +37,11 @@ News class >> withTitle: aTitle body: aBody theme: aTheme [
 
 ]
 
+{ #category : #forTesting }
+News >> body [
+^body 
+]
+
 { #category : #initialization }
 News >> canView: user [
 	"Entiendo que al hablar la caonsigan de un problema, una especie o una variedad, se refiere a que solo puede haber un tema de la noticia"
@@ -46,16 +51,14 @@ News >> canView: user [
 	
 ]
 
-{ #category : #accessing }
+{ #category : #forTesting }
 News >> themeOfTheNews [
 	^ themeOfTheNews
 ]
 
-{ #category : #constructor }
-News >> withTitle: aTitle body: aBody [
-
-	title:= aTitle.
-	body:= aBody
+{ #category : #forTesting }
+News >> title [ 
+^title 
 ]
 
 { #category : #constructor }

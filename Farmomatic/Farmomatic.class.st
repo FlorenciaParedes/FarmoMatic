@@ -154,7 +154,7 @@ Farmomatic >> initialize [
 	predefinedList := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #register }
 Farmomatic >> inviteProducerWithMail: aMail toFarm: aFarm of: producerOwner [
 	"Un productor puede invitar (dar acceso) a otros usuarios a cualquiera de sus granjas (solo indicando su email). Esos usuarios verán las granjas a las que fueron invitados como si fueran suyas"
 
@@ -169,15 +169,9 @@ Farmomatic >> predefinedList [
 	^predefinedList 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #register }
 Farmomatic >> producerWithMail: aMail [
 	^ users detect: [ :a | a mail = aMail] ifNone: [ nil ] 
-]
-
-{ #category : #register }
-Farmomatic >> registerExpertWitEmail: aMail yPassword: aPassword andFullName: aName isExpert: bool [
-	^ (users
-		add: (User witEmail: aMail yPassword: aPassword andFullName: aName isExpert: bool))
 ]
 
 { #category : #register }

@@ -18,7 +18,6 @@ Class {
 
 { #category : #running }
 UserTest >> setUp [
-
 	super setUp.
 	system := Farmomatic new.
 	user1 := system
@@ -29,8 +28,6 @@ UserTest >> setUp [
 		registerProducerWithMail: 'tom@gmail.com'
 		andPassword: '112233'
 		andFullName: 'Tomas González'.
-	user3 := system registerExpertWitEmail: 'regi@gmail.com' yPassword: '554433' andFullName: 'Regina Phalange' isExpert: true.
-
 	farm1 := system
 		registerFarmWithName: 'Wood Farm'
 		andDescription: 'beautiful willow tree farm'
@@ -51,19 +48,21 @@ UserTest >> setUp [
 		andSurface: 20
 		andIsHothouse: true
 		fromFarm: farm1.
-		
-	product1 := system addProductsWithComercialName: 'Dr Cancer' 
-				aVulgarName: 'Glyfosato' 
-				aComposition: 'Napalm' 
-				aDescription: 'Kill plagues and humanes.'.
-		
-	event1 := system addaplicationWithAuthor: user1 Comments: 'This is goin to get out of control!' Amount: '2000Lt' Product: product1 fromPlot: plot1.
-	
-	news1 := system addNewsWithTitle: 'Miracle of Glyphosato' body: 'God save Monsanto.' theme: product1
-
-	
-	
-	
+	product1 := system
+		addProductsWithComercialName: 'Dr Cancer'
+		aVulgarName: 'Glyfosato'
+		aComposition: 'Napalm'
+		aDescription: 'Kill plagues and humanes.'.
+	event1 := system
+		addaplicationWithAuthor: user1
+		Comments: 'This is goin to get out of control!'
+		Amount: '2000Lt'
+		Product: product1
+		fromPlot: plot1.
+	news1 := system
+		addNewsWithTitle: 'Miracle of Glyphosato'
+		body: 'God save Monsanto.'
+		theme: product1
 ]
 
 { #category : #tests }
@@ -96,10 +95,10 @@ UserTest >> testInviteProducerToFarm [
 
 { #category : #tests }
 UserTest >> testMakeExpertProducer [
-	self assert: (user1 expert) equals: false.
-	user3 makeExpertProducer: user1.
-	self assert: (user1 expert) equals: true.
-
+	self assert: user1 expert equals: false.
+	user2 setterExpert.
+	user2 makeExpertProducer: user1.
+	self assert: user1 expert equals: true
 ]
 
 { #category : #tests }

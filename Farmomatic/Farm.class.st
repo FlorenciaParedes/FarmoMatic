@@ -34,8 +34,7 @@ Class {
 		'name',
 		'address',
 		'plots',
-		'description',
-		'isRemoved'
+		'description'
 	],
 	#category : #Farmomatic
 }

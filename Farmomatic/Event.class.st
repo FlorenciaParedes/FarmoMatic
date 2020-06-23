@@ -63,6 +63,7 @@ Event >> initialize [
 
 { #category : #'instance creation' }
 Event >> theme: themeOfTheNews [
+	self subclassResponsibility 
 ]
 
 { #category : #accessing }

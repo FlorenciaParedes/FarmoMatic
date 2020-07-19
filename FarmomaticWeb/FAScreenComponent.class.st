@@ -1,0 +1,186 @@
+Class {
+	#name : #FAScreenComponent,
+	#superclass : #WAComponent,
+	#instVars : [
+		'mainMenu',
+		'cardGroup',
+		'header',
+		'table',
+		'login',
+		'register',
+		'addForm'
+	],
+	#category : #FarmomaticWeb
+}
+
+{ #category : #initialization }
+FAScreenComponent >> children [
+   ^ OrderedCollection with: mainMenu.
+]
+
+{ #category : #initialization }
+FAScreenComponent >> initialize [ 
+
+super initialize.
+mainMenu := FAMainMenuComponent new.
+cardGroup := FACardsGroup new.
+header := FAHeader new.
+table := FADataTable new.
+login := FALogin new.
+register := FARegister new.
+addForm := FAAddForm new.
+]
+
+{ #category : #initialization }
+FAScreenComponent >> renderContentOn: html [
+
+
+html tbsRow with: 
+[ html tbsColumn: [html render: mainMenu] mediumSize:  3 .
+	html tbsContainerSmooth: [ 
+		html div id: 'mainPage'; with: [ 
+		html tbsColumn: [
+			html div id: 'mainHeader'; with: [ html render: header].
+			html break. 
+			html horizontalRule.
+			html break. 
+			html div id: 'mainCards'; with: [ html render: cardGroup].
+			html break.
+			html break.
+			html div id: 'mainTable'; with: [ html render: table].
+			html break.
+			html div id: 'mainLogin'; with: [ html render: login].
+			html break.
+			html div id: 'mainRegister'; with: [ html render: register].
+			html break.
+			html div id: 'mainAdd'; with: [ html render: addForm].
+			] mediumSize:  8.
+					
+
+	 ]]].
+
+
+
+]
+
+{ #category : #initialization }
+FAScreenComponent >> style [ 
+
+^ ' 
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Teko:wght@500&display=swap");
+
+body { 
+	background: #2B3648;
+	font-family: "Roboto", sans-serif;
+}
+h1 { 
+	font-family: "Teko", sans-serif;
+	font-size: 5em;
+	color: #5F926D;
+	
+ }
+
+
+button {
+  transition-duration: 0.4s;
+	color: #C8C8C8;
+	background: #6B7D9C;
+	margin: .5em 2em 0em 0em;
+
+
+}
+
+button:hover {
+  background-color: #e7e7e7; /* Grey */
+  color: #C8C8C8;
+	box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+button:click  {
+  decoration: none;
+	border: none;
+}
+
+
+#mainContainer { 
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+
+ }
+
+
+#mainMenuNav { item: 1; }
+
+#secondContainer { 
+		flex-wrap: wrap
+ }
+
+
+#mainHeader{
+	item:3; 
+
+
+}
+
+#mainPage{
+	item:4;
+}
+
+#mainTable { 
+
+	margin: 5em 0em 0em 0em !important; 
+ }
+
+
+
+
+
+
+
+div#card.thumbnail { 
+box-shadow: 6px 6px 13px rgba(0, 0, 0, 0.5) !important;
+background: #212936 !important;
+border-radius: 27px !important; 
+border-style: none;
+color: #6B7D9C;
+text-align: center;
+ }
+
+div#card.thumbnail a { 
+text-decoration: none;
+color: #6B7D9C;
+
+ }
+
+div#card.thumbnail a:hover { 
+
+color: #B0C4DE;
+
+ }
+
+
+#mainCards { 
+	margin: 0em 0em 3em 0em;
+ }
+#table { 
+	color: #6B7D9C;
+ }
+
+
+#mainLogin {
+	color: #6B7D9C;
+}
+
+#mainRegister {
+	color: #6B7D9C;
+}
+
+
+#mainAdd {
+	color: #6B7D9C;
+}
+
+'
+]

@@ -73,11 +73,37 @@ html tbsColumn with: [ html render: main ].
 ]
 
 { #category : #rendering }
+FARootComponentSegunda >> script [ 
+
+^'
+$(document).ready(function() { 
+    var backButtom = document.querySelector("#headerB > button:nth-child(1)")
+    
+    backButtom.onclick = () => { window.history.back(); }
+ });
+'
+]
+
+{ #category : #rendering }
+FARootComponentSegunda >> scriptssss [ 
+
+^'
+$(document).ready(function() { 
+    var backButtom = document.querySelector("#headerB > button:nth-child(1)")
+    
+    backButtom.onclick = () => { window.history.back(); }
+ });
+'
+]
+
+{ #category : #rendering }
 FARootComponentSegunda >> updateRoot: anHtmlRoot [
-    super updateRoot: anHtmlRoot.
+   super updateRoot: anHtmlRoot.
    anHtmlRoot beHtml5.
    anHtmlRoot title: 'Farmomatic'.
-    anHtmlRoot meta
+anHtmlRoot javascript url: '/files/TBSFileLibrary/main.js'.
+   anHtmlRoot meta
         name: 'viewport';
         content: 'width=device-width, initial-scale=1.0'.
+	
 ]

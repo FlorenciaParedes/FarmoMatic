@@ -24,6 +24,11 @@ FAScreenComponentSegunda class >> withUser: user  root: rootComponent [.
 ]
 
 { #category : #initialization }
+FAScreenComponentSegunda class >> withUser: user root: rootComponent farmomatic: aFarmomatic [
+	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic
+]
+
+{ #category : #initialization }
 FAScreenComponentSegunda >> children [
    ^ OrderedCollection with: mainMenu with: header .
 ]
@@ -250,4 +255,11 @@ user := userFarmo.
 
 rootComp := rootComponent
 
+]
+
+{ #category : #initialization }
+FAScreenComponentSegunda >> withUser: userFarmo root: rootComponent farmomatic: aFarmomatic [  
+	user := userFarmo.
+	rootComp := rootComponent.
+	farmomatic := aFarmomatic 
 ]

@@ -3,7 +3,8 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'titleHeader',
-		'rootComponent'
+		'rootComponent',
+		'farmomatic'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -15,7 +16,17 @@ FAHeaderSegunda class >> withRoot: root [
 ]
 
 { #category : #rendering }
+FAHeaderSegunda class >> withRoot: root andSystem: aFarmomatic [ 
+	^ self new withRoot: root andSystem: aFarmomatic
+]
+
+{ #category : #rendering }
 FAHeaderSegunda >> addFarm [
+
+	self
+		show:
+			(rootComponent
+				main: (FAFarmFormSegunda withSystem: farmomatic ))
 ]
 
 { #category : #rendering }
@@ -88,4 +99,10 @@ box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.5);
 FAHeaderSegunda >> withRoot: root [ 
 
 	rootComponent := root
+]
+
+{ #category : #rendering }
+FAHeaderSegunda >> withRoot: root andSystem: aFarmomatic [
+	rootComponent := root.
+	farmomatic:= aFarmomatic 
 ]

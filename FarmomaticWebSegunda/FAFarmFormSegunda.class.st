@@ -17,10 +17,12 @@ FAFarmFormSegunda class >> withSystem: farmomatic [
 
 { #category : #initialization }
 FAFarmFormSegunda >> renderContentOn: html [
-	html
-		tbsColumn: [ html div
-				id: 'mainHeader';
-				with: [ html render: (header withRoot: rootComp) ] ].
+
+
+html tbsRow: [ 
+			html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+
+	html tbsColumn: [ html div id: 'mainHeader';  with: [ html render: (header withRoot: rootComp) ].
 	html heading
 		level: 2;
 		with: 'Add new farm'.
@@ -48,8 +50,8 @@ FAFarmFormSegunda >> renderContentOn: html [
 				bePrimary;
 				class: 'headerButtom';
 				callback: [ self save ];
-				with: 'SAVE' ].
-
+				with: 'SAVE' ] 
+] mediumSize: 3 ]
 ]
 
 { #category : #actions }
@@ -62,11 +64,21 @@ FAFarmFormSegunda >> save [
 		andDescription: description
 		andAddress: address
 		ofProducer: aUser.
-		^ farm
+		
+	rootComp main:(FACardsGroupSegunda withUser:(farmomatic users
+				detect: [ :userB | userB fullName match: 'Jorge Schelotto' ])  root: rootComp  farmomatic:farmomatic ) .	
+	^ farm
 ]
 
 { #category : #'as yet unclassified' }
 FAFarmFormSegunda >> withSystem: aFarmomatic [ 
 	farmomatic := aFarmomatic.
+
+]
+
+{ #category : #'as yet unclassified' }
+FAFarmFormSegunda >> withSystem: aFarmomatic  root: aRoot [
+	farmomatic := aFarmomatic.
+	rootComp := aRoot 
 
 ]

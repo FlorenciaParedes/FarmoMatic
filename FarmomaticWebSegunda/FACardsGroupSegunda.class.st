@@ -6,7 +6,7 @@ Class {
 
 { #category : #rendering }
 FACardsGroupSegunda >> lookFarm: farm [
-	rootComp history: rootComp.
+
 	self show: (rootComp  main: (FAFarmComponent new withFarm: farm farmomatic: farmomatic  root: rootComp  ))
 ]
 

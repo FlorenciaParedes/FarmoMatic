@@ -26,7 +26,7 @@ FAHeaderSegunda >> addFarm [
 	self
 		show:
 			(rootComponent
-				main: (FAFarmFormSegunda withSystem: farmomatic ))
+				main: (FAFarmFormSegunda withSystem: farmomatic root: rootComponent ))
 ]
 
 { #category : #rendering }

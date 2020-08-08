@@ -1,17 +1,17 @@
 Class {
-	#name : #FACardsGroupSegunda,
+	#name : #FACardsGroupFarmsSegunda,
 	#superclass : #FAScreenComponentSegunda,
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #rendering }
-FACardsGroupSegunda >> lookFarm: farm [
+FACardsGroupFarmsSegunda >> lookFarm: farm [
 
 	self show: (rootComp  main: (FAFarmComponent new withFarm: farm farmomatic: farmomatic  root: rootComp  ))
 ]
 
 { #category : #rendering }
-FACardsGroupSegunda >> renderContentOn: html [
+FACardsGroupFarmsSegunda >> renderContentOn: html [
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html
@@ -21,7 +21,7 @@ FACardsGroupSegunda >> renderContentOn: html [
 					html break.
 					html horizontalRule.
 					html break.
-					user farms
+					user farms 
 						do: [ :elem | 
 							html
 								tbsColumn: [ html tbsThumbnail

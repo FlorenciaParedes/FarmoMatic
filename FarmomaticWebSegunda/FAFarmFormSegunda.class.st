@@ -65,7 +65,7 @@ FAFarmFormSegunda >> save [
 		andAddress: address
 		ofProducer: aUser.
 		
-	rootComp main:(FACardsGroupSegunda withUser:(farmomatic users
+	rootComp main:(FACardsGroupFarmsSegunda withUser:(farmomatic users
 				detect: [ :userB | userB fullName match: 'Jorge Schelotto' ])  root: rootComp  farmomatic:farmomatic ) .	
 	^ farm
 ]

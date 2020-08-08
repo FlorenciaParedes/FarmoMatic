@@ -50,10 +50,10 @@ FARootComponentSegunda >> history: comp [
 FARootComponentSegunda >> initialize [
 	super initialize.
 	farmomatic := Farmomatic example.
-	main := FACardsGroupSegunda withUser:(farmomatic users
-				detect: [ :user | user fullName match: 'Jorge Schelotto' ])  root:self farmomatic:farmomatic .
+	main := FACardsGroupFarmsSegunda withUser:(farmomatic users
+				detect: [ :user | user fullName match: 'Jorge Schelotto' ])  root: self farmomatic: farmomatic .
 	header := FAHeaderSegunda.
-	history := OrderedCollection new
+
 ]
 
 { #category : #rendering }

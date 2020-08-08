@@ -2,11 +2,11 @@ Class {
 	#name : #FAScreenComponentSegunda,
 	#superclass : #WAComponent,
 	#instVars : [
-		'mainMenu',
 		'header',
 		'farmomatic',
 		'rootComp',
-		'user'
+		'user',
+		'mainMenu'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -47,7 +47,7 @@ FAScreenComponentSegunda >> renderContentOn: html [
 
 
 html tbsRow with: 
-[ html tbsColumn: [html render: mainMenu] mediumSize:  3 .
+[ html tbsColumn: [html render: (FAMainMenuComponentSegunda withRoot: rootComp system: farmomatic)] mediumSize:  3 .
 	"html tbsContainerSmooth: [ 
 		html div id: 'mainPage'; with: [ 
 		html tbsColumn: [

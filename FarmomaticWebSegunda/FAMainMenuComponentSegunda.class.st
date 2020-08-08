@@ -2,15 +2,37 @@ Class {
 	#name : #FAMainMenuComponentSegunda,
 	#superclass : #WAComponent,
 	#instVars : [
-		'profile140x140'
+		'profile140x140',
+		'user',
+		'farmomatic',
+		'rootComp'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #rendering }
+FAMainMenuComponentSegunda class >> withRoot: aRootComp [
+
+^self new withRoot: aRootComp
+]
+
+{ #category : #rendering }
+FAMainMenuComponentSegunda class >> withRoot: aRootComp system: aFarmomatic [
+
+^self new withRoot: aRootComp system: aFarmomatic
+]
+
+{ #category : #rendering }
 FAMainMenuComponentSegunda >> initialize [ 
 
 profile140x140 := 'MyFileLibrary / profile.jpg'
+]
+
+{ #category : #initialization }
+FAMainMenuComponentSegunda >> lookPlots [
+
+rootComp main:( FACardsGroupPlotsSegunda withUser:(farmomatic users
+				detect: [ :userFarms| userFarms fullName match: 'Jorge Schelotto' ])  root: self farmomatic: farmomatic) .
 ]
 
 { #category : #accessing }
@@ -23,7 +45,7 @@ FAMainMenuComponentSegunda >> profile140x140 [
 FAMainMenuComponentSegunda >> renderContentOn: html [
 " Vertical menu Jasny "
 
- html tbsContainerSmooth: [ 
+html tbsContainerSmooth: [ 
 	html tbsNavmenu id: 'mainMenu'; 
 	beDefault ; 
 	with: [ 
@@ -39,7 +61,7 @@ FAMainMenuComponentSegunda >> renderContentOn: html [
 		html tbsNav beNavmenuNavigation; with: [ 
 			html tbsNavItem beActive; with: [ html anchor: 'News' ].
 			html tbsNavItem: [ html anchor: 'Farm' ].
-			html tbsNavItem: [ html anchor: 'Plots' ].
+			html tbsNavItem: [ html anchor callback: [ self lookPlots]; with: 'Plots' ].
 			html tbsNavItem: [ html anchor: 'Reports' ].
 			html tbsNavItem: [ html anchor: 'Contacs' ].
 			html horizontalRule.
@@ -105,4 +127,17 @@ line-height: 0.1em;}
   background: #555;
 }
  '
+]
+
+{ #category : #rendering }
+FAMainMenuComponentSegunda >> withRoot: aRootComp [
+
+	rootComp:= aRootComp 
+]
+
+{ #category : #rendering }
+FAMainMenuComponentSegunda >> withRoot: aRootComp system: aFarmomatic [
+
+	rootComp:= aRootComp.
+	farmomatic := aFarmomatic 
 ]

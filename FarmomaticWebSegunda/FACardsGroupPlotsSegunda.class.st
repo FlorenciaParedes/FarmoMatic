@@ -16,7 +16,7 @@ super initialize
 { #category : #initialization }
 FACardsGroupPlotsSegunda >> lookPlot: plot [
 
-	self show: (rootComp  main: (FAFarmComponent new withFarm: plot farmomatic: farmomatic  root: rootComp  ))
+	self show: (rootComp  main: (FAPlotComponent new withFarm: plot farmomatic: farmomatic  root: rootComp  ))
 ]
 
 { #category : #initialization }

@@ -48,7 +48,7 @@ Aplication >> amount [
 ]
 
 { #category : #'as yet unclassified' }
-Aplication >> getProduct [
+Aplication >> getProduct [ 
 	^ product 
 ]
 

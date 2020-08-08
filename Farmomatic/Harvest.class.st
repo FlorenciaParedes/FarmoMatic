@@ -43,7 +43,7 @@ Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety 
 ]
 
 { #category : #forTesting }
-Harvest >> getVariety [
+Harvest >> getVariety [ 
  ^ variety 
 ]
 

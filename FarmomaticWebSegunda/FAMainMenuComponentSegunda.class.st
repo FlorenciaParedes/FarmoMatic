@@ -29,10 +29,17 @@ profile140x140 := 'MyFileLibrary / profile.jpg'
 ]
 
 { #category : #initialization }
+FAMainMenuComponentSegunda >> lookFarms [
+
+rootComp main:( FACardsGroupFarmsSegunda withUser:(farmomatic users
+				detect: [ :userFarms| userFarms fullName match: 'Jorge Schelotto' ])  root: rootComp  farmomatic: farmomatic) .
+]
+
+{ #category : #initialization }
 FAMainMenuComponentSegunda >> lookPlots [
 
 rootComp main:( FACardsGroupPlotsSegunda withUser:(farmomatic users
-				detect: [ :userFarms| userFarms fullName match: 'Jorge Schelotto' ])  root: self farmomatic: farmomatic) .
+				detect: [ :userFarms| userFarms fullName match: 'Jorge Schelotto' ])  root: rootComp  farmomatic: farmomatic) .
 ]
 
 { #category : #accessing }
@@ -60,8 +67,8 @@ html tbsContainerSmooth: [
 		"html tbsNavmenuBrand: 'Brand'."
 		html tbsNav beNavmenuNavigation; with: [ 
 			html tbsNavItem beActive; with: [ html anchor: 'News' ].
-			html tbsNavItem: [ html anchor: 'Farm' ].
-			html tbsNavItem: [ html anchor callback: [ self lookPlots]; with: 'Plots' ].
+			html tbsNavItem: [ html anchor callback: [ self lookFarms]; with: 'Farm' ].
+			html tbsNavItem: [ html anchor callback: [ self lookPlots]; with: 'Plots'].
 			html tbsNavItem: [ html anchor: 'Reports' ].
 			html tbsNavItem: [ html anchor: 'Contacs' ].
 			html horizontalRule.

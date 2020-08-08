@@ -49,8 +49,8 @@ Plantation >> amount [
 ]
 
 { #category : #forTesting }
-Plantation >> getSpecies [
-	^ species
+Plantation >> getSpecies [ 
+^species 
 ]
 
 { #category : #accessing }

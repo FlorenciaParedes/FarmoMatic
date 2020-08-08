@@ -99,7 +99,7 @@ FarmomaticTest >> testaddHarvestWithAuthorCommentskgvarietyfromPlot [
 	self assert: (system events at: 2) equals: tomatoHarvest.
 	self assert: tomatoHarvest author equals: user1.
 	self assert: tomatoHarvest kg equals: 50.
-	self assert: tomatoHarvest getVariety equals: variety1.
+	self assert: tomatoHarvest getVariety  equals: variety1.
 	self assert: tomatoHarvest comments equals: 'tomato harvest'
 ]
 

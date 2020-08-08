@@ -43,6 +43,11 @@ Problem >> getProblem [
 ]
 
 { #category : #'as yet unclassified' }
+Problem >> name [
+	^ problem
+]
+
+{ #category : #'as yet unclassified' }
 Problem >> theme: themeOfTheNews [
 	^ problem  applied: themeOfTheNews 
 ]

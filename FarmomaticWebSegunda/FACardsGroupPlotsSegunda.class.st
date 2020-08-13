@@ -31,20 +31,25 @@ FACardsGroupPlotsSegunda >> renderContentOn: html [
 					html horizontalRule.
 					html break.
 					user farms
-						do: [ :elem | elem plots do: [ :plot | 
-							html
-								tbsColumn: [ html tbsThumbnail
-										id: 'card';
-										with: [ html image placeHolder: '100%x100%'.
-											html break.
-											html paragraph: plot id.
-											html paragraph: plot description.
-											html paragraph: plot surface .
-											html paragraph: plot hothouse.
-											html paragraph: plot description.
-											html anchor
-												callback: [ self lookPlot: plot ];
-												with: 'Ver Mas' ] ]
-								mediumSize: 4 ]] ]
+						do: [ :elem | 
+							elem plots
+								do: [ :plot | 
+									html
+										tbsColumn: [ html tbsThumbnail
+												id: 'card';
+												with: [ html image placeHolder: '100%x100%'.
+													html break.
+													html strong with: 'ID: '.
+													html paragraph: plot id.
+													html strong with: 'Description: '.
+													html paragraph: plot description.
+													html strong with: 'Surface: '.
+													html paragraph: plot surface.
+													html strong with: 'Is hothouse: '.
+													html paragraph: plot hothouse.
+													html anchor
+														callback: [ self lookPlot: plot ];
+														with: 'Ver Mas' ] ]
+										mediumSize: 4 ] ] ]
 				mediumSize: 9 ]
 ]

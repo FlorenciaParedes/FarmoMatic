@@ -21,15 +21,6 @@ FAHeaderSegunda class >> withRoot: root andSystem: aFarmomatic [
 ]
 
 { #category : #rendering }
-FAHeaderSegunda >> addFarm [
-
-	self
-		show:
-			(rootComponent
-				main: (FAFarmFormSegunda withSystem: farmomatic root: rootComponent ))
-]
-
-{ #category : #rendering }
 FAHeaderSegunda >> historyBack [
 
 rootComponent history 
@@ -43,15 +34,20 @@ titleHeader := 'Farmomatic'
 ]
 
 { #category : #rendering }
-FAHeaderSegunda >> renderContentOn: html [ 
-
-html div id:'headerContainer'; with:[
-	html div id:'headerA'; with:[
-		html heading level: 1; with: titleHeader. ].
-	html div id:'headerB'; with:[
-		html tbsButton class:'headerButtom'; with: [ html anchor with:  'BACK'].
-		html tbsButton class:'headerButtom'; with: [ html anchor callback: [ self addFarm ]; with:  'ADD'].
-	] ]
+FAHeaderSegunda >> renderContentOn: html [
+	html div
+		id: 'headerContainer';
+		with: [ html div
+				id: 'headerA';
+				with: [ html heading
+						level: 1;
+						with: titleHeader ].
+			html div
+				id: 'headerB';
+				with: [ html tbsButton
+						class: 'headerButtom';
+						with: [ html anchor with: 'BACK' ].
+] ]
 ]
 
 { #category : #rendering }

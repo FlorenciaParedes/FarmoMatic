@@ -4,6 +4,14 @@ Class {
 	#category : #FarmomaticWebSegunda
 }
 
+{ #category : #adding }
+FACardsGroupFarmsSegunda >> addFarm [
+	self
+		show:
+			(rootComp
+				main: (FAFarmFormSegunda withSystem: farmomatic root: rootComp))
+]
+
 { #category : #rendering }
 FACardsGroupFarmsSegunda >> lookFarm: farm [
 
@@ -19,9 +27,14 @@ FACardsGroupFarmsSegunda >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self addFarm ];
+								with: 'ADD FARM' ].
 					html horizontalRule.
 					html break.
-					user farms 
+					user farms
 						do: [ :elem | 
 							html
 								tbsColumn: [ html tbsThumbnail

@@ -20,6 +20,14 @@ FAFarmComponent class >> withFarm: selectedFarm farmomatic: system root: rootCom
 ^self new withFarm: selectedFarm farmomatic: system root: rootComponent 
 ]
 
+{ #category : #adding }
+FAFarmComponent >> addPlot [
+	self
+		show:
+			(rootComp 
+				main: (FAPlotForm withSystem: farmomatic root: rootComp farm: farm ))
+]
+
 { #category : #initialization }
 FAFarmComponent >> date [
    ^ farm date
@@ -34,27 +42,35 @@ FAFarmComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
+					html tbsButton
+						class: 'addPlotButtom';
+						with: [ html anchor
+								callback: [ self addPlot ];
+								with: 'ADD PLOT' ].
 					html horizontalRule.
 					html break.
-					html paragraph: farm name.
+					html heading
+						level: 2;
+						with: farm name.
+					html strong with: 'Description: '.
 					html paragraph: farm description.
 					html break.
 					html horizontalRule.
 					html break.
+					html heading
+						level: 2;
+						with: 'Plots '.
 					farm plots
 						do: [ :elem | 
 							html
-								render: [ html paragraph: elem id.
+								render: [ html strong with: 'ID:'.
+									html paragraph: elem id.
+									html strong with: 'Description: '.
 									html paragraph: elem description.
-									html paragraph: elem surface ] ] ]
+									html strong with: 'Surface: '.
+									html paragraph: elem surface.
+									html break ] ] ]
 				mediumSize: 9 ]
-]
-
-{ #category : #initialization }
-FAFarmComponent >> withFarm: selectedFarm farmomatic: system [
-
-	farm := selectedFarm.
-	farmomatic := system
 ]
 
 { #category : #initialization }

@@ -1,8 +1,7 @@
 Class {
-	#name : #FAFarmFormSegunda,
-	#superclass : #FAScreenComponentSegunda,
+	#name : #FAFarmForm,
+	#superclass : #FAFormsComponent,
 	#instVars : [
-		'farm',
 		'name',
 		'description',
 		'address'
@@ -10,13 +9,8 @@ Class {
 	#category : #FarmomaticWebSegunda
 }
 
-{ #category : #'as yet unclassified' }
-FAFarmFormSegunda class >> withSystem: farmomatic [ 
-	^ self new withSystem: farmomatic 
-]
-
 { #category : #initialization }
-FAFarmFormSegunda >> renderContentOn: html [
+FAFarmForm >> renderContentOn: html [
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html
@@ -56,7 +50,7 @@ FAFarmFormSegunda >> renderContentOn: html [
 ]
 
 { #category : #actions }
-FAFarmFormSegunda >> save [
+FAFarmForm >> save [
 	| aUser |
 	aUser := farmomatic users
 		detect: [ :elem | elem fullName match: 'Jorge Schelotto' ].
@@ -65,21 +59,12 @@ FAFarmFormSegunda >> save [
 		andDescription: description
 		andAddress: address
 		ofProducer: aUser.
-		
-	rootComp main:(FACardsGroupFarmsSegunda withUser:(farmomatic users
-				detect: [ :userB | userB fullName match: 'Jorge Schelotto' ])  root: rootComp  farmomatic:farmomatic ) .	
+	rootComp
+		main:
+			(FACardsGroupFarmsSegunda
+				withUser:
+					(farmomatic users detect: [ :userB | userB fullName match: 'Jorge Schelotto' ])
+				root: rootComp
+				farmomatic: farmomatic).
 	^ farm
-]
-
-{ #category : #'as yet unclassified' }
-FAFarmFormSegunda >> withSystem: aFarmomatic [ 
-	farmomatic := aFarmomatic.
-
-]
-
-{ #category : #'as yet unclassified' }
-FAFarmFormSegunda >> withSystem: aFarmomatic  root: aRoot [
-	farmomatic := aFarmomatic.
-	rootComp := aRoot 
-
 ]

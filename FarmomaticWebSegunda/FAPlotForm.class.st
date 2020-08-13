@@ -1,14 +1,11 @@
 Class {
 	#name : #FAPlotForm,
-	#superclass : #FAScreenComponentSegunda,
+	#superclass : #FAFormsComponent,
 	#instVars : [
-		'plot',
 		'id',
 		'description',
 		'surface',
-		'hothouse',
-		'events',
-		'farm'
+		'hothouse'
 	],
 	#category : #FarmomaticWebSegunda
 }

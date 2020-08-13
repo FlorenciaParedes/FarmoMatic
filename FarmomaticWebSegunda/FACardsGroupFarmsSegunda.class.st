@@ -9,7 +9,7 @@ FACardsGroupFarmsSegunda >> addFarm [
 	self
 		show:
 			(rootComp
-				main: (FAFarmFormSegunda withSystem: farmomatic root: rootComp))
+				main: (FAFarmForm withSystem: farmomatic root: rootComp))
 ]
 
 { #category : #rendering }

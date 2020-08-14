@@ -24,7 +24,7 @@ FAMainMenuComponentSegunda class >> withRoot: aRootComp system: aFarmomatic [
 
 { #category : #rendering }
 FAMainMenuComponentSegunda >> initialize [ 
-
+super initialize. 
 profile140x140 := 'MyFileLibrary / profile.jpg'
 ]
 

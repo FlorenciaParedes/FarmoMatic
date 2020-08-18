@@ -9,15 +9,9 @@ Class {
 }
 
 { #category : #initialization }
-FAFarmComponent class >> withFarm: selectedFarm farmomatic: system [
+FAFarmComponent class >> withFarm: selectedFarm user: aUser farmomatic: system root: rootComponent [ 
 
-^self new withFarm: selectedFarm farmomatic: system
-]
-
-{ #category : #initialization }
-FAFarmComponent class >> withFarm: selectedFarm farmomatic: system root: rootComponent [ 
-
-^self new withFarm: selectedFarm farmomatic: system root: rootComponent 
+^self new withFarm: selectedFarm  user: aUser  farmomatic: system root: rootComponent 
 ]
 
 { #category : #adding }
@@ -25,7 +19,7 @@ FAFarmComponent >> addPlot [
 	self
 		show:
 			(rootComp 
-				main: (FAPlotForm withSystem: farmomatic root: rootComp farm: farm ))
+				main: (FAPlotForm withUser: user root: rootComp  farmomatic: farmomatic farm: farm  ))
 ]
 
 { #category : #initialization }
@@ -74,8 +68,8 @@ FAFarmComponent >> renderContentOn: html [
 ]
 
 { #category : #initialization }
-FAFarmComponent >> withFarm: selectedFarm farmomatic: system root: rootComponent [ 
-
+FAFarmComponent >> withFarm: selectedFarm  user: aUser farmomatic: system root: rootComponent [ 
+	user:= aUser .
 	farm := selectedFarm.
 	farmomatic := system.
 	rootComp := rootComponent

@@ -12,6 +12,11 @@ Class {
 	#category : #FarmomaticWebSegunda
 }
 
+{ #category : #'as yet unclassified' }
+FAPlotComponent class >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot [ 
+	^ self new withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot
+]
+
 { #category : #initialization }
 FAPlotComponent >> dateAsceding [
 ]
@@ -75,10 +80,10 @@ FAPlotComponent >> typeAsceding [
 FAPlotComponent >> typeDesceding [
 ]
 
-{ #category : #initialization }
-FAPlotComponent >> withFarm: selectedPlot farmomatic: system root: rootComponent [ 
-
-	plot := selectedPlot.
-	farmomatic := system.
-	rootComp := rootComponent
+{ #category : #'as yet unclassified' }
+FAPlotComponent >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot [
+	plot := aPlot .
+	user :=aUser .
+	farmomatic :=aFarmomatic .
+	rootComp := aRoot 
 ]

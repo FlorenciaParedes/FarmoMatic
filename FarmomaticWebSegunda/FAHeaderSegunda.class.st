@@ -43,16 +43,34 @@ FAHeaderSegunda >> renderContentOn: html [
 						level: 1;
 						with: titleHeader ].
 			html div
+				id: 'changeUser';
+				with: [ html tbsButton
+						class: 'changeUser';
+						with: [ html anchor
+								callback: [ self switchToExpert ];
+								with: 'Expert user' ].
+						html tbsButton
+						class: 'changeUser';
+						with: [
+						html anchor
+						callback: [ self switchToProducer ];
+						with: 'Producer user' ].
+					html tbsButton
+						class: 'changeUser';
+						with: [ html anchor
+								callback: [ self switchToProducerEmpty ];
+								with: 'Empty producer user' ]].
+
+			html div
 				id: 'headerB';
 				with: [ html tbsButton
 						class: 'headerButtom';
-						with: [ html anchor with: 'BACK' ].
-] ]
+						with: [ html anchor with: 'BACK' ] ] ]
 ]
 
 { #category : #rendering }
-FAHeaderSegunda >> style [ 
-^ '
+FAHeaderSegunda >> style [
+	^ '
 #headerContainer { 
 	color: #5F926D;
 	display: flex;
@@ -88,7 +106,45 @@ FAHeaderSegunda >> style [
 box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.5);
  }
 
+#changeUser { 
+	text-align: right; }
+
 '
+]
+
+{ #category : #'as yet unclassified' }
+FAHeaderSegunda >> switchToExpert [
+	| user |
+	user := farmomatic users
+		detect: [ :each | each fullName match: 'Maria González' ].
+	rootComponent
+		main:
+			(FACardsGroupFarmsSegunda
+				withUser: user
+				root: rootComponent
+				farmomatic: farmomatic)
+]
+
+{ #category : #'as yet unclassified' }
+FAHeaderSegunda >> switchToProducer [
+	| user |
+	user := farmomatic users
+		detect: [ :each | each fullName match: 'Jorge Schelotto' ].
+	rootComponent main: (FACardsGroupFarmsSegunda withUser: user root: rootComponent farmomatic: farmomatic ).
+	
+]
+
+{ #category : #'as yet unclassified' }
+FAHeaderSegunda >> switchToProducerEmpty [
+	| user |
+	user := farmomatic users
+		detect: [ :each | each fullName match: 'Alex Morales' ].
+	rootComponent
+		main:
+			(FACardsGroupFarmsSegunda
+				withUser: user
+				root: rootComponent
+				farmomatic: farmomatic)
 ]
 
 { #category : #rendering }

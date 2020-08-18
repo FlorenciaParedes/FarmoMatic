@@ -45,16 +45,21 @@ Class {
 
 { #category : #'as yet unclassified' }
 Farmomatic class >> example [
-	| farmomatic farm2 user1 user2 farm1 farm3 plot1 specie1 plantationTomato variety1 tomatoHarvest problem1 fungusProblem product1 fungicideApplication |
+	| farmomatic farm2 user1 user2 user3 farm1 farm3 plot1 specie1 plantationTomato variety1 tomatoHarvest problem1 fungusProblem product1 fungicideApplication |
 	farmomatic := Farmomatic new.
 	user1 := farmomatic
 		registerProducerWithMail: 'jorgeSchelotto@gmail.com'
 		andPassword: '123456'
 		andFullName: 'Jorge Schelotto'.
 	user2 := farmomatic
-		registerProducerWithMail: 'tom@gmail.com'
+		registerProducerWithMail: 'mar@gmail.com'
 		andPassword: '112233'
-		andFullName: 'Tomas González'.
+		andFullName: 'Maria González'.
+	user2 setterExpert.
+	user3 := farmomatic
+		registerProducerWithMail: 'Alex@gmail.com'
+		andPassword: '456'
+		andFullName: 'Alex Morales'.
 	farm1 := farmomatic
 		registerFarmWithName: 'Wood Farm'
 		andDescription: 'Beautiful willow tree farm. Owner: Jorge Schelotto'
@@ -121,7 +126,7 @@ Farmomatic class >> example [
 	fungusProblem creationDate: (Date newDay: 01 month: 07 year: 2018).
 	fungicideApplication
 		creationDate: (Date newDay: 01 month: 08 year: 2018).
-		^farmomatic 
+	^ farmomatic
 ]
 
 { #category : #addingEvents }

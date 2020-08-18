@@ -29,7 +29,7 @@ rootComponent history
 { #category : #rendering }
 FAHeaderSegunda >> initialize [ 
 
-
+super initialize.
 titleHeader := 'Farmomatic'
 ]
 

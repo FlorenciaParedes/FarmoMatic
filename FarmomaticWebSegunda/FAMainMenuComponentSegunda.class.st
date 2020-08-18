@@ -70,20 +70,21 @@ FAMainMenuComponentSegunda >> renderContentOn: html [
 								beCircle;
 								url: TBSFileLibrary / #profileJpg;
 								width: 140 ].
-					html heading
-						level: 4;
-						with: 'Usuario '.
+	
 					user isNotNil
 						ifTrue: [ html heading
-								level: 4;
+								level: 3;
 								with: user fullName .
 					user expert
 						ifTrue: [ html heading
-								level: 6;
+								level: 4;
 								with: 'Expert' ]
 						ifFalse: [ html heading
-								level: 6;
-								with: 'Productor' ]].
+								level: 4;
+								with: 'Productor' ].
+	
+							html paragraph: user mail.].
+				
 					html horizontalRule.
 					"html tbsNavmenuBrand: 'Brand'."
 					html tbsNav

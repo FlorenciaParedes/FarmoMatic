@@ -3,7 +3,8 @@ Class {
 	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
 		'farm',
-		'pots'
+		'pots',
+		'email'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -27,6 +28,13 @@ FAFarmComponent >> date [
    ^ farm date
 ]
 
+{ #category : #'as yet unclassified' }
+FAFarmComponent >> inviteUser: aEmail [
+(farmomatic inviteProducerWithMail: aEmail address toFarm: farm of: user)
+		ifNotNil: [self inform: 'Guest user successfully'] 
+		ifNil: [ self inform: 'There is no user with this email ', aEmail address  ] 
+]
+
 { #category : #initialization }
 FAFarmComponent >> renderContentOn: html [
 	html
@@ -41,6 +49,20 @@ FAFarmComponent >> renderContentOn: html [
 						with: [ html anchor
 								callback: [ self addPlot ];
 								with: 'ADD PLOT' ].
+					html break.
+					html break.
+					html
+						form: [ html strong: 'INVITE USER WITH EMAIL '.
+							html emailInput
+							"textInput "
+								placeholder: 'enter e-mail';
+								callback: [ :value | email:=value ].
+							html tbsSubmitButton
+								bePrimary;
+								class: 'inviteUserButtom';
+								callback: [ self inviteUser: email ];
+								with: 'invite' ].
+							
 					html horizontalRule.
 					html break.
 					html heading

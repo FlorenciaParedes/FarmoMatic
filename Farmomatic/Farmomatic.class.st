@@ -245,19 +245,14 @@ Farmomatic >> inviteProducerWithMail: aMail toFarm: aFarm of: producerOwner [
 	"Un productor puede invitar (dar acceso) a otros usuarios a cualquiera de sus granjas (solo indicando su email). Esos usuarios verán las granjas a las que fueron invitados como si fueran suyas"
 
 	| user |
-	user := self producerWithMail: aMail.
-	(user) ifNotNil: [ producerOwner inviteProducer: user toFarm: aFarm ]	
+	user := users detect: [ :a | a mail = aMail] ifNone: [ nil ] .
+	(user) ifNotNil: [ producerOwner inviteProducer: user toFarm: aFarm. ]	ifNil: [ ^nil ]
 
 ]
 
 { #category : #forTesting }
 Farmomatic >> predefinedList [
 	^predefinedList 
-]
-
-{ #category : #register }
-Farmomatic >> producerWithMail: aMail [
-	^ users detect: [ :a | a mail = aMail] ifNone: [ nil ] 
 ]
 
 { #category : #register }

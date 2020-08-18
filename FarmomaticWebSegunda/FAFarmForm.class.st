@@ -11,7 +11,6 @@ Class {
 
 { #category : #initialization }
 FAFarmForm >> renderContentOn: html [
-	html text: user fullName.
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html

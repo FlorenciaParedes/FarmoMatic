@@ -78,7 +78,12 @@ FAPlotForm >> save [
 		andSurface: surface
 		andIsHothouse: hothouse
 		fromFarm: farm.
-	^ plot
+	rootComp
+		main:
+			(FACardsGroupPlotsSegunda 
+				withUser: user
+				root: rootComp
+				farmomatic: farmomatic).
 ]
 
 { #category : #initialization }

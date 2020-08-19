@@ -29,6 +29,18 @@ FAFarmComponent >> date [
 ]
 
 { #category : #'as yet unclassified' }
+FAFarmComponent >> deleteFarm [
+
+	user removeFarm: farm.
+		rootComp
+		main:
+			(FACardsGroupFarmsSegunda
+				withUser: user
+				root: rootComp
+				farmomatic: farmomatic).
+]
+
+{ #category : #'as yet unclassified' }
 FAFarmComponent >> inviteUser: aEmail [
 (farmomatic inviteProducerWithMail: aEmail address toFarm: farm of: user)
 		ifNotNil: [self inform: 'Guest user successfully'] 
@@ -44,25 +56,28 @@ FAFarmComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
-					html tbsButton
-						class: 'addPlotButtom';
-						with: [ html anchor
-								callback: [ self addPlot ];
-								with: 'ADD PLOT' ].
-					html break.
-					html break.
-					html
-						form: [ html strong: 'INVITE USER WITH EMAIL '.
-							html emailInput
-							"textInput "
-								placeholder: 'enter e-mail';
-								callback: [ :value | email:=value ].
-							html tbsSubmitButton
-								bePrimary;
-								class: 'inviteUserButtom';
-								callback: [ self inviteUser: email ];
-								with: 'invite' ].
-							
+					html div
+						id: 'farmMenu';
+						with: [ html tbsButton
+								class: 'addPlotButtom';
+								with: [ html anchor
+										callback: [ self addPlot ];
+										with: 'ADD PLOT' ].
+							html
+								form: [ html strong: 'INVITE USER WITH EMAIL '.
+									html emailInput
+										placeholder: 'enter e-mail';
+										callback: [ :value | email := value ].
+									html tbsSubmitButton
+										bePrimary;
+										class: 'inviteUserButtom';
+										callback: [ self inviteUser: email ];
+										with: 'invite' ].
+							html tbsButton
+								class: 'deleteFarmButton';
+								with: [ html anchor
+										callback: [ self deleteFarm];
+										with: 'DELETE FARM' ] ].
 					html horizontalRule.
 					html break.
 					html heading
@@ -87,6 +102,8 @@ FAFarmComponent >> renderContentOn: html [
 									html paragraph: elem surface.
 									html break ] ] ]
 				mediumSize: 9 ]
+
+
 ]
 
 { #category : #initialization }

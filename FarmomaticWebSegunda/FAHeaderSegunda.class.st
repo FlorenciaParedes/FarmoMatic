@@ -42,12 +42,8 @@ FAHeaderSegunda >> renderContentOn: html [
 				with: [ html heading
 						level: 1;
 						with: titleHeader ].
-			html div
-				id: 'headerB';
-				with: [ html tbsButton
-						class: 'headerButtom';
-						with: [ html anchor with: 'BACK' ].
-] ]
+
+]
 ]
 
 { #category : #rendering }

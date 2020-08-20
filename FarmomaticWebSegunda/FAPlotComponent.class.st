@@ -7,10 +7,24 @@ Class {
 		'plot',
 		'orderByType',
 		'orderByDate',
-		'type'
+		'type',
+		'eventsList',
+		'headerTable',
+		'table'
 	],
 	#category : #FarmomaticWebSegunda
 }
+
+{ #category : #initialization }
+FAPlotComponent >> addEvent [
+
+self call: (FAAEventForm new)
+]
+
+{ #category : #initialization }
+FAPlotComponent >> back [
+self answer 
+]
 
 { #category : #initialization }
 FAPlotComponent >> dateAsceding [
@@ -22,6 +36,15 @@ FAPlotComponent >> dateDesceding [
 ]
 
 { #category : #initialization }
+FAPlotComponent >> initialize [ 
+super initialize .
+
+"table := FADataTableSegunda new"
+
+
+]
+
+{ #category : #initialization }
 FAPlotComponent >> order: orderBy [
 
 (orderBy match: '*type*') ifTrue: [ (orderBy match: '*descending*') ifTrue: [ self typeDesceding ] ifFalse: [ self typeAsceding ] ].
@@ -30,8 +53,12 @@ FAPlotComponent >> order: orderBy [
 
 { #category : #initialization }
 FAPlotComponent >> renderContentOn: html [
+	eventsList := plot events.
 	orderByType := OrderedCollection newFrom: #('Order by Type' 'Order by Type descending' 'Order by Type ascending').
-	orderByDate := OrderedCollection newFrom: #('Order by Date' 'Order by Date descending' 'Order by Date ascending').  
+	orderByDate := OrderedCollection newFrom: #('Order by Date' 'Order by Date descending' 'Order by Date ascending'). 
+	headerTable := (OrderedCollection new). 
+	headerTable add: 'Name'; add: 'Date'; add:'Amount'; add: 'Author'; add: 'Select'.
+	table := FADataTableSegunda withTitle: 'Eventos' headers: headerTable data: eventsList. 
 
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
@@ -40,7 +67,24 @@ FAPlotComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self addEvent];
+								with: 'ADD EVENT' ].
+							html space.
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self back];
+								with: 'BACK' ].
 					html horizontalRule.
+										html paragraph: 'DATOS DEL PLOT: '.
+					html paragraph: 'ID Numbre: ', plot id.
+					html paragraph: 'Description: ', plot description.
+					html paragraph: [html text: 'Is Hothouse: '. html text: plot hothouse ].
+					html break.
+					html break.
 					html form: [
 					html select
 					selected: orderByDate first;
@@ -54,15 +98,7 @@ FAPlotComponent >> renderContentOn: html [
 					onChange: 'submit()';
 					callback: [ :value | self order: value ]].
 					html break.
-					html break.
-					html break.
-					html paragraph: 'DATOS DEL PLOT: '.
-					html paragraph: 'ID Numbre: ', plot id.
-					html paragraph: 'Description: ', plot description.
-					html paragraph: [html text: 'Is Hothouse: '. html text: plot hothouse ].
-					html horizontalRule.
-					html paragraph: 'Eventos: ' .
-					plot events do: [ :elem | html paragraph: 'Type: ', elem type. html paragraph: 'Comments: ', elem comments. html paragraph: elem creationDate. html horizontalRule.  ].
+					table renderContentOn: html.
 					html break.
 					html break. ] mediumSize: 9 ]
 ]

@@ -37,6 +37,11 @@ Class {
 }
 
 { #category : #forTesting }
+Event >> amount [
+	^''
+]
+
+{ #category : #forTesting }
 Event >> author [ 
 ^author
 ]

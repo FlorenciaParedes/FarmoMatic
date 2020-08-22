@@ -51,19 +51,16 @@ FAFarmForm >> renderContentOn: html [
 
 { #category : #actions }
 FAFarmForm >> save [
-	| aUser |
-	aUser := farmomatic users
-		detect: [ :elem | elem fullName match: 'Jorge Schelotto' ].
 	farm := farmomatic
 		registerFarmWithName: name
 		andDescription: description
 		andAddress: address
-		ofProducer: aUser.
+		ofProducer: user.
 	rootComp
 		main:
 			(FACardsGroupFarmsSegunda
 				withUser:
-					(farmomatic users detect: [ :userB | userB fullName match: 'Jorge Schelotto' ])
+					user
 				root: rootComp
 				farmomatic: farmomatic).
 	^ farm

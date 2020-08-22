@@ -18,12 +18,6 @@ FAScreenComponentSegunda class >> withSystem: system  root: rootComponent [.
 ]
 
 { #category : #initialization }
-FAScreenComponentSegunda class >> withUser: user  root: rootComponent [.
-
-^ self new withUser: user  root: rootComponent.
-]
-
-{ #category : #initialization }
 FAScreenComponentSegunda class >> withUser: user root: rootComponent farmomatic: aFarmomatic [
 	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic
 ]
@@ -44,11 +38,12 @@ header := FAHeaderSegunda withRoot: rootComp.
 
 { #category : #initialization }
 FAScreenComponentSegunda >> renderContentOn: html [
-
-
-html tbsRow with: 
-[ html tbsColumn: [html render: (FAMainMenuComponentSegunda withRoot: rootComp system: farmomatic)] mediumSize:  3 .
-	"html tbsContainerSmooth: [ 
+	html tbsRow
+		with: [ html
+				tbsColumn: [ html
+						render: (FAMainMenuComponentSegunda withRoot: rootComp system: farmomatic user: user) ]
+				mediumSize: 3
+			"html tbsContainerSmooth: [ 
 		html div id: 'mainPage'; with: [ 
 		html tbsColumn: [
 			html div id: 'mainHeader'; with: [ html render: header].
@@ -69,9 +64,7 @@ html tbsRow with:
 			] mediumSize:  8.
 					
 
-	 ]]"].
-
-
+	 ]]" ]
 ]
 
 { #category : #initialization }

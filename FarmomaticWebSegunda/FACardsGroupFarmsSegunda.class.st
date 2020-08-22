@@ -8,14 +8,14 @@ Class {
 FACardsGroupFarmsSegunda >> addFarm [
 	self
 		show:
-			(rootComp
-				main: (FAFarmForm withSystem: farmomatic root: rootComp))
+			(rootComp main: (FAFarmForm withUser: user root: rootComp  farmomatic: farmomatic ))
+
 ]
 
 { #category : #rendering }
 FACardsGroupFarmsSegunda >> lookFarm: farm [
 
-	self show: (rootComp  main: (FAFarmComponent new withFarm: farm farmomatic: farmomatic  root: rootComp  ))
+	self show: (rootComp  main: (FAFarmComponent new withFarm: farm user:user farmomatic: farmomatic  root: rootComp  ))
 ]
 
 { #category : #rendering }
@@ -27,6 +27,7 @@ FACardsGroupFarmsSegunda >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
+				(user isNotNil) ifTrue: [ 
 					html tbsButton
 						class: 'addFarmButtom';
 						with: [ html anchor
@@ -45,7 +46,7 @@ FACardsGroupFarmsSegunda >> renderContentOn: html [
 											html paragraph: elem description.
 											html anchor
 												callback: [ self lookFarm: elem ];
-												with: 'Ver Mas' ] ]
-								mediumSize: 4 ] ]
+												with: 'Ver Mas' ] ] 
+								mediumSize: 4 ] ]]
 				mediumSize: 9 ]
 ]

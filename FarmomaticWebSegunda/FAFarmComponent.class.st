@@ -3,21 +3,16 @@ Class {
 	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
 		'farm',
-		'pots'
+		'pots',
+		'email'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #initialization }
-FAFarmComponent class >> withFarm: selectedFarm farmomatic: system [
+FAFarmComponent class >> withFarm: selectedFarm user: aUser farmomatic: system root: rootComponent [ 
 
-^self new withFarm: selectedFarm farmomatic: system
-]
-
-{ #category : #initialization }
-FAFarmComponent class >> withFarm: selectedFarm farmomatic: system root: rootComponent [ 
-
-^self new withFarm: selectedFarm farmomatic: system root: rootComponent 
+^self new withFarm: selectedFarm  user: aUser  farmomatic: system root: rootComponent 
 ]
 
 { #category : #adding }
@@ -25,12 +20,31 @@ FAFarmComponent >> addPlot [
 	self
 		show:
 			(rootComp 
-				main: (FAPlotForm withSystem: farmomatic root: rootComp farm: farm ))
+				main: (FAPlotForm withUser: user root: rootComp  farmomatic: farmomatic farm: farm  ))
 ]
 
 { #category : #initialization }
 FAFarmComponent >> date [
    ^ farm date
+]
+
+{ #category : #'as yet unclassified' }
+FAFarmComponent >> deleteFarm [
+
+	user removeFarm: farm.
+		rootComp
+		main:
+			(FACardsGroupFarmsSegunda
+				withUser: user
+				root: rootComp
+				farmomatic: farmomatic).
+]
+
+{ #category : #'as yet unclassified' }
+FAFarmComponent >> inviteUser: aEmail [
+(farmomatic inviteProducerWithMail: aEmail address toFarm: farm of: user)
+		ifNotNil: [self inform: 'Guest user successfully'] 
+		ifNil: [ self inform: 'There is no user with this email ', aEmail address  ] 
 ]
 
 { #category : #initialization }
@@ -42,11 +56,28 @@ FAFarmComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
-					html tbsButton
-						class: 'addPlotButtom';
-						with: [ html anchor
-								callback: [ self addPlot ];
-								with: 'ADD PLOT' ].
+					html div
+						id: 'farmMenu';
+						with: [ html tbsButton
+								class: 'addPlotButtom';
+								with: [ html anchor
+										callback: [ self addPlot ];
+										with: 'ADD PLOT' ].
+							html
+								form: [ html strong: 'INVITE USER WITH EMAIL '.
+									html emailInput
+										placeholder: 'enter e-mail';
+										callback: [ :value | email := value ].
+									html tbsSubmitButton
+										bePrimary;
+										class: 'inviteUserButtom';
+										callback: [ self inviteUser: email ];
+										with: 'invite' ].
+							html tbsButton
+								class: 'deleteFarmButton';
+								with: [ html anchor
+										callback: [ self deleteFarm];
+										with: 'DELETE FARM' ] ].
 					html horizontalRule.
 					html break.
 					html heading
@@ -71,11 +102,13 @@ FAFarmComponent >> renderContentOn: html [
 									html paragraph: elem surface.
 									html break ] ] ]
 				mediumSize: 9 ]
+
+
 ]
 
 { #category : #initialization }
-FAFarmComponent >> withFarm: selectedFarm farmomatic: system root: rootComponent [ 
-
+FAFarmComponent >> withFarm: selectedFarm  user: aUser farmomatic: system root: rootComponent [ 
+	user:= aUser .
 	farm := selectedFarm.
 	farmomatic := system.
 	rootComp := rootComponent

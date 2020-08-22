@@ -11,14 +11,8 @@ Class {
 }
 
 { #category : #initialization }
-FAPlotForm class >> withSystem: aFarmomatic root: rootComponent [
-"boooorrraar"
-	^ self new withSystem: aFarmomatic root: rootComponent
-]
-
-{ #category : #initialization }
-FAPlotForm class >> withSystem: aFarmomatic root: rootComponent farm: farm [
-	^ self new withSystem: aFarmomatic root: rootComponent farm: farm
+FAPlotForm class >> withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
+	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm 
 ]
 
 { #category : #actions }
@@ -77,22 +71,24 @@ FAPlotForm >> renderContentOn: html [
 
 { #category : #actions }
 FAPlotForm >> save [
-	| aUser |
-	aUser := farmomatic users
-		detect: [ :elem | elem fullName match: 'Jorge Schelotto' ].
 	self hothouseValue.
-	plot:= farmomatic
+	plot := farmomatic
 		registerPlotWithId: id
 		andDescription: description
 		andSurface: surface
 		andIsHothouse: hothouse
 		fromFarm: farm.
-		^plot
-		
+	rootComp
+		main:
+			(FACardsGroupPlotsSegunda 
+				withUser: user
+				root: rootComp
+				farmomatic: farmomatic).
 ]
 
 { #category : #initialization }
-FAPlotForm >> withSystem: aFarmomatic root: rootComponent farm: aFarm [
+FAPlotForm >> withUser: aUser root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
+	user := aUser.
 	farmomatic := aFarmomatic.
 	rootComp := rootComponent.
 	farm := aFarm.

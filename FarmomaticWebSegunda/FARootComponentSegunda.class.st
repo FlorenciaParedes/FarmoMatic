@@ -5,7 +5,8 @@ Class {
 		'main',
 		'header',
 		'farmomatic',
-		'history'
+		'history',
+		'user'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -19,6 +20,12 @@ FARootComponentSegunda class >> initialize [
       addLibrary: JQDeploymentLibrary;
       addLibrary: JQUiDeploymentLibrary;
       addLibrary: TBSDeploymentLibrary
+]
+
+{ #category : #'as yet unclassified' }
+FARootComponentSegunda class >> withUser: aUser [
+"PRUEBA"
+	^ self new withUser: aUser
 ]
 
 { #category : #rendering }
@@ -50,10 +57,13 @@ FARootComponentSegunda >> history: comp [
 FARootComponentSegunda >> initialize [
 	super initialize.
 	farmomatic := Farmomatic example.
-	main := FACardsGroupFarmsSegunda withUser:(farmomatic users
-				detect: [ :user | user fullName match: 'Jorge Schelotto' ])  root: self farmomatic: farmomatic .
-	header := FAHeaderSegunda.
-
+	"user := farmomatic users
+		detect: [ :each | each fullName match: 'Jorge Schelotto' ]."
+	main := FACardsGroupFarmsSegunda "withSystem: farmomatic root: self.
+	"withUser: user
+		root: self
+		farmomatic: farmomatic.
+	header := FAHeaderSegunda
 ]
 
 { #category : #rendering }
@@ -103,4 +113,9 @@ anHtmlRoot javascript url: '/files/TBSFileLibrary/main.js'.
         name: 'viewport';
         content: 'width=device-width, initial-scale=1.0'.
 	
+]
+
+{ #category : #'as yet unclassified' }
+FARootComponentSegunda >> withUser: aUser [
+	user := aUser
 ]

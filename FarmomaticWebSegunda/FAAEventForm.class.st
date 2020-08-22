@@ -30,7 +30,7 @@ FAAEventForm >> renderContentOn: html [
 											
 					html heading
 						level: 2;
-						with: 'Add new farm'.
+						with: 'Add new event'.
 					html
 						form: [ html strong: 'Type: '.
 							html break.

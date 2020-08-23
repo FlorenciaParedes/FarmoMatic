@@ -21,10 +21,28 @@ FAMainMenuComponentSegunda class >> withRoot: aRootComp system: aFarmomatic user
 	^ self new withRoot: aRootComp system: aFarmomatic user: aUser
 ]
 
+{ #category : #'as yet unclassified' }
+FAMainMenuComponentSegunda >> expertMenu: html [
+	
+			html
+				tbsNavItem: [ html anchor
+						callback: [ self lookEvents ];
+						with: 'Events' ] 
+]
+
 { #category : #rendering }
 FAMainMenuComponentSegunda >> initialize [ 
 super initialize. 
 profile140x140 := 'MyFileLibrary / profile.jpg'
+]
+
+{ #category : #initialization }
+FAMainMenuComponentSegunda >> lookEvents [
+	rootComp
+		main:
+			(FACardsGroupEvents 				withUser: user
+				root: rootComp
+				farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
@@ -43,11 +61,9 @@ FAMainMenuComponentSegunda >> lookPlots [
 	rootComp
 		main:
 			(FACardsGroupPlotsSegunda
-				withUser:
-					user "(farmomatic users
-						detect: [ :userFarms | userFarms fullName match: 'Jorge Schelotto' ])"
+				withUser: user
 				root: rootComp
-				farmomatic: farmomatic)
+				farmomatic: farmomatic)	
 ]
 
 { #category : #accessing }
@@ -64,44 +80,27 @@ FAMainMenuComponentSegunda >> renderContentOn: html [
 		tbsContainerSmooth: [ html tbsNavmenu
 				id: 'mainMenu';
 				beDefault;
-				with: [ html div
-						id: 'profilePhoto';
-						with: [ html tbsImage
-								beCircle;
-								url: TBSFileLibrary / #profileJpg;
-								width: 140 ].
-	
-					user isNotNil
-						ifTrue: [ html heading
-								level: 3;
-								with: user fullName .
-					user expert
-						ifTrue: [ html heading
-								level: 4;
-								with: 'Expert' ]
-						ifFalse: [ html heading
-								level: 4;
-								with: 'Productor' ].
-	
-							html paragraph: user mail.].
-				
-					html horizontalRule.
-					"html tbsNavmenuBrand: 'Brand'."
-					html tbsNav
-						beNavmenuNavigation;
-						with: [ html tbsNavItem
-								beActive;
-								with: [ html anchor: 'News' ].
-							html
-								tbsNavItem: [ html anchor
-										callback: [ self lookFarms ];
-										with: 'Farm' ].
-							html
-								tbsNavItem: [ html anchor
-										callback: [ self lookPlots ];
-										with: 'Plots' ].
-							html tbsNavItem: [ html anchor: 'Reports' ].
-							html tbsNavItem: [ html anchor: 'Contacs' ].
+				with: [ user isNotNil
+						ifTrue: [ self userInformation: html.
+							html horizontalRule.
+							html tbsNav
+		beNavmenuNavigation;
+		with: [ html tbsNavItem
+				beActive;
+				with: [ html anchor: 'News' ].
+			html
+				tbsNavItem: [ html anchor
+						callback: [ self lookFarms ];
+						with: 'Farm' ].
+			html
+				tbsNavItem: [ html anchor
+						callback: [ self lookPlots ];
+						with: 'Plots' ].
+			html tbsNavItem: [ html anchor: 'Reports' ].
+			html tbsNavItem: [ html anchor: 'Contacs' ] ].
+							user expert
+								ifTrue: [ self expertMenu: html ].
+								
 							html horizontalRule.
 							html heading
 								level: 8;
@@ -166,6 +165,20 @@ line-height: 0.1em;}
   background: #555;
 }
  '
+]
+
+{ #category : #'as yet unclassified' }
+FAMainMenuComponentSegunda >> userInformation: html [
+	html heading
+		level: 3;
+		with: user fullName.
+	user expert
+		ifTrue: [ html heading
+				level: 4;
+				with: 'Expert' ]
+		ifFalse: [ html heading
+				level: 4;
+				with: 'Productor' ].html paragraph: user mail  
 ]
 
 { #category : #rendering }

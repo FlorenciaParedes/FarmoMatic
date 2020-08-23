@@ -55,13 +55,25 @@ FAPlotComponent >> order: orderBy [
 
 { #category : #initialization }
 FAPlotComponent >> renderContentOn: html [
+	| eventsList headerTable table |
 	eventsList := plot events.
-	orderByType := OrderedCollection newFrom: #('Order by Type' 'Order by Type descending' 'Order by Type ascending').
-	orderByDate := OrderedCollection newFrom: #('Order by Date' 'Order by Date descending' 'Order by Date ascending'). 
-	headerTable := (OrderedCollection new). 
-	headerTable add: 'Name'; add: 'Date'; add:'Amount'; add: 'Author'; add: 'Select'.
-	table := FADataTableSegunda withTitle: 'Eventos' headers: headerTable data: eventsList. 
-
+	orderByType := OrderedCollection
+		newFrom:
+			#('Order by Type' 'Order by Type descending' 'Order by Type ascending').
+	orderByDate := OrderedCollection
+		newFrom:
+			#('Order by Date' 'Order by Date descending' 'Order by Date ascending').
+	headerTable := OrderedCollection new.
+	headerTable
+		add: 'Name';
+		add: 'Date';
+		add: 'Amount';
+		add: 'Author';
+		add: 'Select'.
+	table := FADataTableSegunda
+		withTitle: 'Eventos'
+		headers: headerTable
+		data: eventsList.
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html
@@ -72,37 +84,41 @@ FAPlotComponent >> renderContentOn: html [
 					html tbsButton
 						class: 'addFarmButtom';
 						with: [ html anchor
-								callback: [ self addEvent];
+								callback: [ self addEvent ];
 								with: 'ADD EVENT' ].
-							html space.
+					html space.
 					html tbsButton
 						class: 'addFarmButtom';
 						with: [ html anchor
-								callback: [ self back];
+								callback: [ self back ];
 								with: 'BACK' ].
 					html horizontalRule.
-										html paragraph: 'DATOS DEL PLOT: '.
-					html paragraph: 'ID Numbre: ', plot id.
-					html paragraph: 'Description: ', plot description.
-					html paragraph: [html text: 'Is Hothouse: '. html text: plot hothouse ].
+					html paragraph: 'DATOS DEL PLOT: '.
+					html paragraph: 'ID Numbre: ' , plot id.
+					html paragraph: 'Description: ' , plot description.
+					html
+						paragraph: [ html text: 'Is Hothouse: '.
+							html text: plot hothouse ].
 					html break.
 					html break.
-					html form: [
-					html select
-					selected: orderByDate first;
-					list: orderByDate;
-					onChange: 'submit()';
-					callback: [ :value | self order: value ].
-					html space.
-					html space.
-					html select selected: orderByType first;
-					list: orderByType;
-					onChange: 'submit()';
-					callback: [ :value | self order: value ]].
+					html
+						form: [ html select
+								selected: orderByDate first;
+								list: orderByDate;
+								onChange: 'submit()';
+								callback: [ :value | self order: value ].
+							html space.
+							html space.
+							html select
+								selected: orderByType first;
+								list: orderByType;
+								onChange: 'submit()';
+								callback: [ :value | self order: value ] ].
 					html break.
 					table renderContentOn: html.
 					html break.
-					html break. ] mediumSize: 9 ]
+					html break ]
+				mediumSize: 9 ]
 ]
 
 { #category : #initialization }

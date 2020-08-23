@@ -31,8 +31,7 @@ Class {
 	#superclass : #PredefinedList,
 	#instVars : [
 		'scientificName',
-		'url',
-		'description'
+		'url'
 	],
 	#category : #Farmomatic
 }

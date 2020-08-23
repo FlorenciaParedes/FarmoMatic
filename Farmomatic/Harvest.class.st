@@ -43,6 +43,11 @@ Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety 
 ]
 
 { #category : #forTesting }
+Harvest >> getPredefined [ 
+ ^ variety 
+]
+
+{ #category : #forTesting }
 Harvest >> getVariety [ 
  ^ variety 
 ]
@@ -62,4 +67,5 @@ Harvest >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
 	self withAuthor: aUser Comments: aComment.
 	kg := aKg.
 	variety:= aVariety . 
+
 ]

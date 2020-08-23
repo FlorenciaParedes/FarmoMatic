@@ -41,12 +41,14 @@ FACardsGroupFarmsSegunda >> renderContentOn: html [
 								tbsColumn: [ html tbsThumbnail
 										id: 'card';
 										with: [ html image placeHolder: '100%x100%'.
+
 											html break.
 											html paragraph: elem name.
 											html paragraph: elem description.
 											html anchor
 												callback: [ self lookFarm: elem ];
-												with: 'Ver Mas' ] ] 
+												with: 'Ver Mas' ] ]
+										
 								mediumSize: 4 ] ]]
 				mediumSize: 9 ]
 ]

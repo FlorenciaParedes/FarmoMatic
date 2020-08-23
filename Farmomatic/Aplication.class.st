@@ -48,6 +48,11 @@ Aplication >> amount [
 ]
 
 { #category : #'as yet unclassified' }
+Aplication >> getPredefined [ 
+	^ product 
+]
+
+{ #category : #'as yet unclassified' }
 Aplication >> getProduct [ 
 	^ product 
 ]
@@ -62,5 +67,6 @@ Aplication >> theme: themeOfTheNews [
 Aplication >> withAuthor: aUser Comments: aComment Amount: aAmount Product: aProduct [
 	self withAuthor: aUser Comments: aComment.
 	amount := aAmount.
-	product := aProduct    
+	product := aProduct.
+   
 ]

@@ -31,7 +31,8 @@ Class {
 	#instVars : [
 		'creationDate',
 		'author',
-		'comments'
+		'comments',
+		'predefined'
 	],
 	#category : #Farmomatic
 }
@@ -59,6 +60,11 @@ Event >> creationDate [
 { #category : #forTesting }
 Event >> creationDate: aDate [
 	creationDate:= aDate. 
+]
+
+{ #category : #forTesting }
+Event >> getPredefined [
+
 ]
 
 { #category : #initialization }

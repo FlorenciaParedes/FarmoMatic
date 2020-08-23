@@ -27,7 +27,8 @@ Class {
 	#name : #PredefinedList,
 	#superclass : #Object,
 	#instVars : [
-		'name'
+		'name',
+		'description'
 	],
 	#category : #Farmomatic
 }
@@ -35,6 +36,12 @@ Class {
 { #category : #accessing }
 PredefinedList >> applied: themeOfTheNews [
 	self subclassResponsibility 
+]
+
+{ #category : #accessing }
+PredefinedList >> description [
+
+^ (description := 'N/A')
 ]
 
 { #category : #accessing }

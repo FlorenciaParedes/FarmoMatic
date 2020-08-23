@@ -72,6 +72,11 @@ Event >> initialize [
  creationDate := Date today 
 ]
 
+{ #category : #accessing }
+Event >> isType: aType [
+	^ self type = aType type  
+]
+
 { #category : #'instance creation' }
 Event >> theme: themeOfTheNews [
 	self subclassResponsibility 

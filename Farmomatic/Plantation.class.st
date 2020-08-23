@@ -49,6 +49,11 @@ Plantation >> amount [
 ]
 
 { #category : #forTesting }
+Plantation >> getPredefined [ 
+^species 
+]
+
+{ #category : #forTesting }
 Plantation >> getSpecies [ 
 ^species 
 ]
@@ -62,6 +67,7 @@ Plantation >> theme: themeOfTheNews [
 Plantation >> withAuthor: aUser Comments: aComment Amount: aAmount Specie: aSpecie [
 	self withAuthor: aUser Comments: aComment.
 	amount := aAmount.
-	species := aSpecie 
+	species := aSpecie.
+ 
 	
 ]

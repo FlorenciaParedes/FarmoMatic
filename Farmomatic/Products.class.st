@@ -29,7 +29,6 @@ Class {
 	#superclass : #PredefinedList,
 	#instVars : [
 		'composition',
-		'description',
 		'comercialName'
 	],
 	#category : #Farmomatic

@@ -38,6 +38,11 @@ Problem class >> withAuthor: aUser comments: aComment problem: aProblem [
 ]
 
 { #category : #'as yet unclassified' }
+Problem >> getPredefined [ 
+	^ problem
+]
+
+{ #category : #'as yet unclassified' }
 Problem >> getProblem [
 	^ problem
 ]
@@ -55,5 +60,6 @@ Problem >> theme: themeOfTheNews [
 { #category : #constructor }
 Problem >> withAuthor: aUser Comments: aComment Problem: aProblem [
 	self withAuthor: aUser Comments: aComment.
-	problem := aProblem
+	problem := aProblem.
+
 ]

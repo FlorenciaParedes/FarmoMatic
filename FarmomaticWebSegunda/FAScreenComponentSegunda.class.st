@@ -18,6 +18,11 @@ FAScreenComponentSegunda class >> withSystem: system  root: rootComponent [.
 ]
 
 { #category : #initialization }
+FAScreenComponentSegunda class >> withUser: userFarmo farmomatic: aFarmomatic [  
+^self withUser: userFarmo farmomatic: aFarmomatic.
+]
+
+{ #category : #initialization }
 FAScreenComponentSegunda class >> withUser: user root: rootComponent farmomatic: aFarmomatic [
 	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic
 ]
@@ -238,6 +243,12 @@ farmomatic := system.
 
 rootComp := rootComponent
 
+]
+
+{ #category : #initialization }
+FAScreenComponentSegunda >> withUser: userFarmo farmomatic: aFarmomatic [  
+	user := userFarmo.
+	farmomatic := aFarmomatic 
 ]
 
 { #category : #initialization }

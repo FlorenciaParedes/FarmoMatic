@@ -39,7 +39,7 @@ FAEventComponent >> generalEventRender: html [
 	html paragraph: event creationDate.
 	html space.
 	html strong with: 'Author '.
-	html paragraph: event author.
+	html paragraph: event author fullName .
 	html space
 ]
 
@@ -61,6 +61,7 @@ FAEventComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
+
 					html horizontalRule.
 					html break.
 					html strong with: 'Type: '.

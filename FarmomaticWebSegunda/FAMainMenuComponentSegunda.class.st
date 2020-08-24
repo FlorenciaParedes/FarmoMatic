@@ -40,9 +40,7 @@ profile140x140 := 'MyFileLibrary / profile.jpg'
 FAMainMenuComponentSegunda >> lookEvents [
 	rootComp
 		main:
-			(FACardsGroupEvents 				withUser: user
-				root: rootComp
-				farmomatic: farmomatic)
+			(FACardsGroupEvents withUser: user root: rootComp  farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
@@ -84,23 +82,25 @@ FAMainMenuComponentSegunda >> renderContentOn: html [
 						ifTrue: [ self userInformation: html.
 							html horizontalRule.
 							html tbsNav
-		beNavmenuNavigation;
-		with: [ html tbsNavItem
-				beActive;
-				with: [ html anchor: 'News' ].
-			html
-				tbsNavItem: [ html anchor
-						callback: [ self lookFarms ];
-						with: 'Farm' ].
-			html
-				tbsNavItem: [ html anchor
-						callback: [ self lookPlots ];
-						with: 'Plots' ].
-			html tbsNavItem: [ html anchor: 'Reports' ].
-			html tbsNavItem: [ html anchor: 'Contacs' ] ].
+								beNavmenuNavigation;
+								with: [ html tbsNavItem
+										beActive;
+										with: [ html anchor: 'News' ].
+									html
+										tbsNavItem: [ html anchor
+												callback: [ self lookFarms ];
+												with: 'Farm' ].
+									html
+										tbsNavItem: [ html anchor
+												callback: [ self lookPlots ];
+												with: 'Plots' ].
+									html tbsNavItem: [ html anchor: 'Reports' ].
+									html tbsNavItem: [ html anchor: 'Contacs' ] ].
 							user expert
-								ifTrue: [ self expertMenu: html ].
-								
+								ifTrue: [ 	html
+		tbsNavItem: [ html anchor
+				callback: [ self lookEvents ];
+				with: 'Events' ] ].
 							html horizontalRule.
 							html heading
 								level: 8;

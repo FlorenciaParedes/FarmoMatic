@@ -10,6 +10,15 @@ Class {
 	#category : #FarmomaticWebSegunda
 }
 
+{ #category : #adding }
+FACardsGroupEvents >> addList [
+	self
+		show:
+			(rootComp
+				main: (FAListForm withUser: user root: rootComp farmomatic: farmomatic))
+
+]
+
 { #category : #'as yet unclassified' }
 FACardsGroupEvents >> determineFilter [
 	date ifNotNil: [ events := farmomatic filterEventByDate: date ].
@@ -60,9 +69,10 @@ FACardsGroupEvents >> order: aOrder [
 { #category : #'as yet unclassified' }
 FACardsGroupEvents >> renderChooseOrder: html [
 	| orderByDate orderByType |
-	orderByType := OrderedCollection newFrom: #('Descending' 'Ascending').
+	orderByType := OrderedCollection
+		newFrom: #(' ' 'Descending' 'Ascending').
 	orderByDate := OrderedCollection
-		newFrom: #('' 'Closest to oldest' 'Oldest to closest').
+		newFrom: #(' ' 'Closest to oldest' 'Oldest to closest').
 	html
 		form: [ html text: 'Order by Date '.
 			html space.
@@ -71,7 +81,7 @@ FACardsGroupEvents >> renderChooseOrder: html [
 				list: orderByDate;
 				onChange: 'submit()';
 				callback: [ :value | self order: value ] ].
-html space.
+	html space.
 	html
 		form: [ html text: 'Order by Type '.
 			html space.

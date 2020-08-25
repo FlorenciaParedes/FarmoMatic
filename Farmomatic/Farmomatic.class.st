@@ -81,7 +81,7 @@ Farmomatic class >> example [
 		andSurface: 20
 		andIsHothouse: true
 		fromFarm: farm1.
-	specie1 := farmomatic addSpecieWithName: 'Solanum lycopersicum'.
+	specie1 := farmomatic addSpecieWithName: 'Solanum lycopersicum' andDescription: 'plant Solanum lycopersicum commonly known as a tomato plant.'.
 	plantationTomato := farmomatic
 		addPlantationWithAuthor: user1
 		Comments: 'Tomato plant plantation'
@@ -177,10 +177,11 @@ Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposit
 ]
 
 { #category : #addingList }
-Farmomatic >> addSpecieWithName: aName [
-	"Agregar problema sin descripcion"
+Farmomatic >> addSpecieWithName: aName andDescription: aDescription [
 
-	^ predefinedList add: (Species withName: aName)
+
+	^ predefinedList
+		add: (Species withName: aName andDescription: aDescription)
 ]
 
 { #category : #addingList }

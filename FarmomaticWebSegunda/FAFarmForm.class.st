@@ -58,9 +58,8 @@ FAFarmForm >> save [
 		ofProducer: user.
 	rootComp
 		main:
-			(FACardsGroupFarmsSegunda
-				withUser:
-					user
+			(FACardsGroupEvents
+				withUser: user
 				root: rootComp
 				farmomatic: farmomatic).
 	^ farm

@@ -29,8 +29,8 @@ Class {
 }
 
 { #category : #constructor }
-Species class >> withName: aName [
-	^ self new name: aName
+Species class >> withName: aName andDescription: aDescription [ 
+	^ self new name: aName andDescription: aDescription 
 ]
 
 { #category : #'instance creation' }
@@ -40,7 +40,13 @@ Species >> applied: themeOfTheNews [
 
 ]
 
+{ #category : #accessing }
+Species >> description [ 
+^description 
+]
+
 { #category : #'instance creation' }
-Species >> name: aName [
-	name := aName
+Species >> name: aName andDescription: aDescription [
+	name := aName.
+	description := aDescription
 ]

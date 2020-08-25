@@ -43,7 +43,7 @@ FarmomaticTest >> setUp [
 		andSurface: 20
 		andIsHothouse: true
 		fromFarm: farm1.
-	specie1 := system addSpecieWithName: 'Solanum lycopersicum'.
+	specie1 := system addSpecieWithName: 'Solanum lycopersicum'andDescription: 'plant Solanum lycopersicum commonly known as a tomato plant.'.
 	plantationTomato := system
 		addPlantationWithAuthor: user1
 		Comments: 'Tomato plant plantation'
@@ -91,7 +91,7 @@ FarmomaticTest >> setUp [
 	news1 := system
 		addNewsWithTitle: 'Miracle of Glyphosato'
 		body: 'God save Monsanto.'
-		theme: product1	
+		theme: product1
 ]
 
 { #category : #eventTesting }
@@ -146,11 +146,10 @@ FarmomaticTest >> testaddProductsWithComercialNameaVulgarNameaCompositionaDescri
 ]
 
 { #category : #predefinedListsTesting }
-FarmomaticTest >> testaddSpecieWithName [
-
+FarmomaticTest >> testaddSpecieWithNameandDescription [
 	self assert: (system predefinedList at: 1) equals: specie1.
 	self assert: specie1 name equals: 'Solanum lycopersicum'.
-
+	self assert: specie1 description equals: 'plant Solanum lycopersicum commonly known as a tomato plant.'
 ]
 
 { #category : #predefinedListsTesting }

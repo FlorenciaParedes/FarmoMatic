@@ -28,7 +28,6 @@ Class {
 	#name : #Harvest,
 	#superclass : #Event,
 	#instVars : [
-		'kg',
 		'variety'
 	],
 	#category : #Farmomatic
@@ -43,6 +42,11 @@ Harvest class >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety 
 ]
 
 { #category : #forTesting }
+Harvest >> amount [ 
+^amount
+]
+
+{ #category : #forTesting }
 Harvest >> getPredefined [ 
  ^ variety 
 ]
@@ -53,11 +57,6 @@ Harvest >> getVariety [
 ]
 
 { #category : #forTesting }
-Harvest >> kg [
-^kg
-]
-
-{ #category : #forTesting }
 Harvest >> theme: themeOfTheNews [
 	^ variety applied: themeOfTheNews 
 ]
@@ -65,7 +64,7 @@ Harvest >> theme: themeOfTheNews [
 { #category : #forTesting }
 Harvest >> withAuthor: aUser Comments: aComment kg: aKg variety: aVariety [
 	self withAuthor: aUser Comments: aComment.
-	kg := aKg.
+	amount := aKg.
 	variety:= aVariety . 
 
 ]

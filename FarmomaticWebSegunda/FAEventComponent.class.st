@@ -34,7 +34,7 @@ FAEventComponent >> generalEventRender: html [
 	html paragraph: event creationDate.
 	html space.
 	html strong with: 'Author '.
-	html paragraph: event author.
+	html paragraph: event author fullName.
 	html space
 ]
 
@@ -43,7 +43,7 @@ FAEventComponent >> ifNotExpertRender: html [
 	user expert
 		ifTrue: [ ^self ].
 		html strong with: 'Comment: '.
-			html paragraph: 'Comment'.
+			html paragraph: event comments.
 			html break
 ]
 
@@ -79,8 +79,10 @@ FAEventComponent >> renderContentOn: html [
 { #category : #initialization }
 FAEventComponent >> selectStrategy [
 
-((event type match: 'Harvest') or: (event type match: 'Problem')) ifTrue: [ strategy := FAStrategyRenderHarvestProblem withEvent: event ].
-(event type match: 'Aplication') ifTrue: [ strategy := FAStrategyRenderAplication withEvent: event ].
+(event type match: 'Problem') ifTrue: [ strategy := FAStrategyRenderProblem withEvent: event container: self ].
+(event type match: 'Aplication') ifTrue: [ strategy := FAStrategyRenderAplication withEvent: event container: self ].
+(event type match: 'Harvest')  ifTrue: [ strategy := FAStrategyRenderHarvest withEvent: event container: self ].
+(event type match: 'Plantation')  ifTrue: [ strategy := FAStrategyRenderPlantation withEvent: event container: self ].
 ]
 
 { #category : #initialization }

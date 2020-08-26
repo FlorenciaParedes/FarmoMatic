@@ -28,8 +28,7 @@ Class {
 	#name : #Aplication,
 	#superclass : #Event,
 	#instVars : [
-		'product',
-		'amount'
+		'product'
 	],
 	#category : #Farmomatic
 }

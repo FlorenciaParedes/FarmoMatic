@@ -1,5 +1,5 @@
 Class {
-	#name : #FAFarmForm,
+	#name : #FAFormFarm,
 	#superclass : #FAFormsComponent,
 	#instVars : [
 		'name',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #initialization }
-FAFarmForm >> renderContentOn: html [
+FAFormFarm >> renderContentOn: html [
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html
@@ -50,7 +50,7 @@ FAFarmForm >> renderContentOn: html [
 ]
 
 { #category : #actions }
-FAFarmForm >> save [
+FAFormFarm >> save [
 	farm := farmomatic
 		registerFarmWithName: name
 		andDescription: description

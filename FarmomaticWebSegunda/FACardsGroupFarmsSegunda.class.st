@@ -8,7 +8,7 @@ Class {
 FACardsGroupFarmsSegunda >> addFarm [
 	self
 		show:
-			(rootComp main: (FAFarmForm withUser: user root: rootComp  farmomatic: farmomatic ))
+			(rootComp main: (FAFormFarm withUser: user root: rootComp  farmomatic: farmomatic ))
 
 ]
 

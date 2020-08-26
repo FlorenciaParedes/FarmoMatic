@@ -34,7 +34,7 @@ FAEventComponent >> generalEventRender: html [
 	html paragraph: event creationDate.
 	html space.
 	html strong with: 'Author '.
-	html paragraph: event author fullName .
+	html paragraph: event author fullName.
 	html space
 ]
 
@@ -43,7 +43,7 @@ FAEventComponent >> ifNotExpertRender: html [
 	user expert
 		ifTrue: [ ^self ].
 		html strong with: 'Comment: '.
-			html paragraph: 'Comment'.
+			html paragraph: event comments.
 			html break
 ]
 
@@ -68,10 +68,41 @@ FAEventComponent >> renderComponent:  html [
 ]
 
 { #category : #initialization }
+FAEventComponent >> renderContentOn: html [
+
+	self selectStrategy.
+	html
+		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+			html
+				tbsColumn: [ "event type"
+					html div
+						id: 'mainHeader';
+						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
+					html break.
+					html horizontalRule.
+					html break.
+					html strong with: 'Type: '.
+					html paragraph: event type.
+					html strong with: 'Characteristics: '.
+					html break.
+					self baseRender: html.
+					strategy ifNotNil:  [strategy renderStrategyOn: html].
+					html break.
+					html break.
+					self generalEventRender: html.
+					self ifNotExpertRender: html.
+					html horizontalRule.
+					html break ]
+				mediumSize: 8 ]
+]
+
+{ #category : #initialization }
 FAEventComponent >> selectStrategy [
 
-((event type match: 'Harvest') or: (event type match: 'Problem')) ifTrue: [ strategy := FAStrategyRenderHarvestProblem withEvent: event ].
-(event type match: 'Aplication') ifTrue: [ strategy := FAStrategyRenderAplication withEvent: event ].
+(event type match: 'Problem') ifTrue: [ strategy := FAStrategyRenderProblem withEvent: event container: self ].
+(event type match: 'Aplication') ifTrue: [ strategy := FAStrategyRenderAplication withEvent: event container: self ].
+(event type match: 'Harvest')  ifTrue: [ strategy := FAStrategyRenderHarvest withEvent: event container: self ].
+(event type match: 'Plantation')  ifTrue: [ strategy := FAStrategyRenderPlantation withEvent: event container: self ].
 ]
 
 { #category : #initialization }

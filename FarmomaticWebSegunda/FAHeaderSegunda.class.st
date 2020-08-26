@@ -21,12 +21,6 @@ FAHeaderSegunda class >> withRoot: root andSystem: aFarmomatic [
 ]
 
 { #category : #rendering }
-FAHeaderSegunda >> historyBack [
-
-rootComponent history 
-]
-
-{ #category : #rendering }
 FAHeaderSegunda >> initialize [ 
 
 super initialize.

@@ -28,7 +28,6 @@ Class {
 	#name : #Plantation,
 	#superclass : #Event,
 	#instVars : [
-		'amount',
 		'species'
 	],
 	#category : #Farmomatic

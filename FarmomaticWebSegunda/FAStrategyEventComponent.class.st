@@ -2,7 +2,8 @@ Class {
 	#name : #FAStrategyEventComponent,
 	#superclass : #WAComponent,
 	#instVars : [
-		'event'
+		'event',
+		'container'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -14,6 +15,20 @@ FAStrategyEventComponent class >> withEvent: aEvent [
 ]
 
 { #category : #rendering }
+FAStrategyEventComponent class >> withEvent: aEvent container: aContainer [
+
+^ self new withEvent: aEvent container: aContainer
+]
+
+{ #category : #initialization }
+FAStrategyEventComponent >> rederScientificNameAndUrl: html [
+	html
+		text:
+			' | Scientific Name: ' , event getPredefined scientificName
+				, ' | Url: ' , event getPredefined url
+]
+
+{ #category : #rendering }
 FAStrategyEventComponent >> renderStrategyOn: html [
 ]
 
@@ -21,4 +36,11 @@ FAStrategyEventComponent >> renderStrategyOn: html [
 FAStrategyEventComponent >> withEvent: aEvent [
 
 event := aEvent 
+]
+
+{ #category : #rendering }
+FAStrategyEventComponent >> withEvent: aEvent container: aContainer [
+
+event := aEvent.
+container :=  aContainer.
 ]

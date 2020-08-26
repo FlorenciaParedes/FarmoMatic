@@ -1,5 +1,5 @@
 Class {
-	#name : #FAFarmForm,
+	#name : #FAFormFarm,
 	#superclass : #FAFormsComponent,
 	#instVars : [
 		'name',
@@ -10,8 +10,13 @@ Class {
 }
 
 { #category : #initialization }
-FAFarmForm >> renderComponent: html [
-	
+FAFormFarm >> renderContentOn: html [
+	html
+		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+			html
+				tbsColumn: [ html div
+						id: 'mainHeader';
+						with: [ html render: (header withRoot: rootComp) ].
 					html heading
 						level: 2;
 						with: 'Add new farm'.
@@ -40,11 +45,12 @@ FAFarmForm >> renderComponent: html [
 								bePrimary;
 								class: 'farmFormButtom';
 								callback: [ self save ];
-								with: 'SAVE' ] 
+								with: 'SAVE' ] ]
+				mediumSize: 3 ]
 ]
 
 { #category : #actions }
-FAFarmForm >> save [
+FAFormFarm >> save [
 	farm := farmomatic
 		registerFarmWithName: name
 		andDescription: description
@@ -52,8 +58,9 @@ FAFarmForm >> save [
 		ofProducer: user.
 	rootComp
 		main:
-			(FACardsGroupEvents
-				withUser: user
+			(FACardsGroupFarmsSegunda
+				withUser:
+					user
 				root: rootComp
 				farmomatic: farmomatic).
 	^ farm

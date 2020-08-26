@@ -20,7 +20,7 @@ FAFarmComponent >> addPlot [
 	self
 		show:
 			(rootComp 
-				main: (FAPlotForm withUser: user root: rootComp  farmomatic: farmomatic farm: farm  ))
+				main: (FAFormPlot withUser: user root: rootComp  farmomatic: farmomatic farm: farm  ))
 ]
 
 { #category : #initialization }

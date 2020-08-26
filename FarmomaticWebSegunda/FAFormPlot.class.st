@@ -1,5 +1,5 @@
 Class {
-	#name : #FAPlotForm,
+	#name : #FAFormPlot,
 	#superclass : #FAFormsComponent,
 	#instVars : [
 		'id',
@@ -11,20 +11,25 @@ Class {
 }
 
 { #category : #initialization }
-FAPlotForm class >> withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
+FAFormPlot class >> withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
 	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm 
 ]
 
 { #category : #actions }
-FAPlotForm >> hothouseValue [
+FAFormPlot >> hothouseValue [
 	hothouse = 'yes'
 		ifTrue: [ hothouse := true ]
 		ifFalse: [ hothouse := false ]
 ]
 
 { #category : #initialization }
-FAPlotForm >> renderComponent: html [
-
+FAFormPlot >> renderContentOn: html [
+	html
+		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+			html
+				tbsColumn: [ html div
+						id: 'mainHeader';
+						with: [ html render: (header withRoot: rootComp) ].
 					html heading
 						level: 2;
 						with: 'Add new Plot'.
@@ -60,11 +65,12 @@ FAPlotForm >> renderComponent: html [
 								bePrimary;
 								class: 'plotFarmButtom';
 								callback: [ self save ];
-								with: 'SAVE' ] 
+								with: 'SAVE' ] ]
+				mediumSize: 3 ]
 ]
 
 { #category : #actions }
-FAPlotForm >> save [
+FAFormPlot >> save [
 	self hothouseValue.
 	plot := farmomatic
 		registerPlotWithId: id
@@ -81,7 +87,7 @@ FAPlotForm >> save [
 ]
 
 { #category : #initialization }
-FAPlotForm >> withUser: aUser root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
+FAFormPlot >> withUser: aUser root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
 	user := aUser.
 	farmomatic := aFarmomatic.
 	rootComp := rootComponent.

@@ -19,36 +19,26 @@ FACardsGroupFarmsSegunda >> lookFarm: farm [
 ]
 
 { #category : #rendering }
-FACardsGroupFarmsSegunda >> renderContentOn: html [
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+FACardsGroupFarmsSegunda >> renderComponent: html [
+	
+	html tbsButton
+		class: 'addFarmButtom';
+		with: [ html anchor
+				callback: [ self addFarm ];
+				with: 'ADD FARM' ].
+	html horizontalRule.
+	html break.
+	user farms
+		do: [ :elem | 
 			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
-					html break.
-				(user isNotNil) ifTrue: [ 
-					html tbsButton
-						class: 'addFarmButtom';
-						with: [ html anchor
-								callback: [ self addFarm ];
-								with: 'ADD FARM' ].
-					html horizontalRule.
-					html break.
-					user farms
-						do: [ :elem | 
-							html
-								tbsColumn: [ html tbsThumbnail
-										id: 'card';
-										with: [ html image placeHolder: '100%x100%'.
-
-											html break.
-											html paragraph: elem name.
-											html paragraph: elem description.
-											html anchor
-												callback: [ self lookFarm: elem ];
-												with: 'Ver Mas' ] ]
-										
-								mediumSize: 4 ] ]]
-				mediumSize: 9 ]
+				tbsColumn: [ html tbsThumbnail
+						id: 'card';
+						with: [ html image placeHolder: '100%x100%'.
+							html break.
+							html paragraph: elem name.
+							html paragraph: elem description.
+							html anchor
+								callback: [ self lookFarm: elem ];
+								with: 'Ver Mas' ] ]
+				mediumSize: 4 ]
 ]

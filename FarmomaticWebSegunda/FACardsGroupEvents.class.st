@@ -43,7 +43,7 @@ FACardsGroupEvents >> determineOrder [
 FACardsGroupEvents >> lookEvents: html [
 	self determineOrder.
 	self determineFilter.
-	html paragraph: order.
+
 	events
 		do: [ :elem | 
 			html
@@ -92,29 +92,18 @@ FACardsGroupEvents >> renderChooseOrder: html [
 				callback: [ :value | self order: value ] ]
 ]
 
-{ #category : #initialization }
-FACardsGroupEvents >> renderContentOn: html [
-	"	order := 'Closest to oldest'."
-
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
-					html break.
-					user isNotNil
-						ifTrue: [ html tbsButton
-								class: 'addFarmButtom';
-								with: [ html anchor
-										callback: [ self addList ];
-										with: 'ADD LIST' ].
-							self renderChooseOrder: html.
-							html space.
-							self renderFilter: html.
-							html horizontalRule.
-							self lookEvents: html ] ]
-				mediumSize: 9 ]
+{ #category : #rendering }
+FACardsGroupEvents >> renderComponent: html [
+	 html tbsButton
+				class: 'addFarmButtom';
+				with: [ html anchor
+						callback: [ self addList ];
+						with: 'ADD LIST' ].
+			self renderChooseOrder: html.
+			html space.
+			self renderFilter: html.
+			html horizontalRule.
+			self lookEvents: html 
 ]
 
 { #category : #rendering }

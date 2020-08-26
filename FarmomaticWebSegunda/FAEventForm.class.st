@@ -25,6 +25,12 @@ FAEventForm >> choose: value [
 ]
 
 { #category : #rendering }
+FAEventForm >> renderComponent: html [ 
+self
+subclassResponsibility 
+]
+
+{ #category : #rendering }
 FAEventForm >> renderEvent: html [
 
 					html select

@@ -43,33 +43,25 @@ header := FAHeaderSegunda withRoot: rootComp.
 
 { #category : #initialization }
 FAScreenComponentSegunda >> renderContentOn: html [
-	html tbsRow
-		with: [ html
-				tbsColumn: [ html
-						render: (FAMainMenuComponentSegunda withRoot: rootComp system: farmomatic user: user) ]
-				mediumSize: 3
-			"html tbsContainerSmooth: [ 
-		html div id: 'mainPage'; with: [ 
-		html tbsColumn: [
-			html div id: 'mainHeader'; with: [ html render: header].
-			html break. 
-			html horizontalRule.
-			html break. 
-			
-			html div id: 'mainCards'; with: [ html render: cardGroup].
-			html break.
-			html break.
-			html div id: 'mainTable'; with: [ html render: table].
-			html break.
-			html div id: 'mainLogin'; with: [ html render: login].
-			html break.
-			html div id: 'mainRegister'; with: [ html render: register].
-			html break.
-			html div id: 'mainAdd'; with: [ html render: addForm].
-			] mediumSize:  8.
-					
-
-	 ]]" ]
+	html
+		tbsRow: [ html
+				tbsColumn: [ html tbsRow
+						with: [ html
+								tbsColumn: [ html
+										render:
+											(FAMainMenuComponentSegunda
+												withRoot: rootComp
+												system: farmomatic
+												user: user) ]
+								mediumSize: 3 ] ]
+				mediumSize: 3.
+			html
+				tbsColumn: [ html div
+						id: 'mainHeader';
+						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
+					user ifNotNil: [ 
+					self renderComponent: html ]]
+				mediumSize: 9 ]
 ]
 
 { #category : #initialization }

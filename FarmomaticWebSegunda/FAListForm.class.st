@@ -34,7 +34,7 @@ FAListForm >> determineStrategy [
 ]
 
 { #category : #initialization }
-FAListForm >> renderContentOn: html [
+FAListForm >> renderComponent: html [
 	html heading
 		level: 2;
 		with: 'NEW LIST'.
@@ -49,6 +49,6 @@ FAListForm >> renderContentOn: html [
 				callback: [ :value | list := value ] ].
 	html horizontalRule.
 	list
-		ifNotNil: [self determineStrategy.
-	strategy renderForm: html]
+		ifNotNil: [ self determineStrategy.
+			strategy renderForm: html ]
 ]

@@ -54,42 +54,49 @@ FAPlotComponent >> order: orderBy [
 ]
 
 { #category : #initialization }
-FAPlotComponent >> renderContentOn: html [
+FAPlotComponent >> renderComponent: html [
 	| eventsList headerTable table |
 	eventsList := plot events.
-	headerTable := (OrderedCollection new). 
-	headerTable add: 'Name'; add: 'Date'; add:'Amount'; add: 'Author'; add: 'Select'.
-	table := FADataTableSegunda withTitle: 'Eventos' headers: headerTable data: eventsList system: farmomatic user: user render: self. 
-
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
+	headerTable := OrderedCollection new.
+	headerTable
+		add: 'Name';
+		add: 'Date';
+		add: 'Amount';
+		add: 'Author';
+		add: 'Select'.
+	table := FADataTableSegunda
+		withTitle: 'Eventos'
+		headers: headerTable
+		data: eventsList
+		system: farmomatic
+		user: user
+		render: self.
+	
 					html break.
 					html tbsButton
 						class: 'addFarmButtom';
 						with: [ html anchor
-								callback: [ self addEvent];
+								callback: [ self addEvent ];
 								with: 'ADD EVENT' ].
-							html space.
+					html space.
 					html tbsButton
 						class: 'addFarmButtom';
 						with: [ html anchor
-								callback: [ self back];
+								callback: [ self back ];
 								with: 'BACK' ].
 					html horizontalRule.
-										html paragraph: 'DATOS DEL PLOT: '.
-					html paragraph: 'ID Numbre: ', plot id.
-					html paragraph: 'Description: ', plot description.
-					html paragraph: [html text: 'Is Hothouse: '. html text: plot hothouse ].
+					html paragraph: 'DATOS DEL PLOT: '.
+					html paragraph: 'ID Numbre: ' , plot id.
+					html paragraph: 'Description: ' , plot description.
+					html
+						paragraph: [ html text: 'Is Hothouse: '.
+							html text: plot hothouse ].
 					html break.
 					html break.
 					html break.
 					table renderContentOn: html.
 					html break.
-					html break. ] mediumSize: 8 ]
+					html break  
 ]
 
 { #category : #initialization }
@@ -100,7 +107,7 @@ FAPlotComponent >> typeAsceding [
 FAPlotComponent >> typeDesceding [
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #initialization }
 FAPlotComponent >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot [
 	plot := aPlot .
 	user :=aUser .

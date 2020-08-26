@@ -23,13 +23,8 @@ FAPlotForm >> hothouseValue [
 ]
 
 { #category : #initialization }
-FAPlotForm >> renderContentOn: html [
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp) ].
+FAPlotForm >> renderComponent: html [
+
 					html heading
 						level: 2;
 						with: 'Add new Plot'.
@@ -65,8 +60,7 @@ FAPlotForm >> renderContentOn: html [
 								bePrimary;
 								class: 'plotFarmButtom';
 								callback: [ self save ];
-								with: 'SAVE' ] ]
-				mediumSize: 3 ]
+								with: 'SAVE' ] 
 ]
 
 { #category : #actions }

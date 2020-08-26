@@ -48,62 +48,68 @@ FAFarmComponent >> inviteUser: aEmail [
 ]
 
 { #category : #initialization }
-FAFarmComponent >> renderContentOn: html [
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
+FAFarmComponent >> lookPlot: plot [
+	self
+		show:
+			(FAPlotComponent new
+				withPlot: plot
+				user: user
+				farmomatic: farmomatic
+				root: rootComp)
+]
+
+{ #category : #initialization }
+FAFarmComponent >> renderComponent: html [
+	html break.
+	html div
+		id: 'farmMenu';
+		with: [ html tbsButton
+				class: 'addPlotButtom';
+				with: [ html anchor
+						callback: [ self addPlot ];
+						with: 'ADD PLOT' ].
 			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
-					html break.
-					html div
-						id: 'farmMenu';
-						with: [ html tbsButton
-								class: 'addPlotButtom';
-								with: [ html anchor
-										callback: [ self addPlot ];
-										with: 'ADD PLOT' ].
-							html
-								form: [ html strong: 'INVITE USER WITH EMAIL '.
-									html emailInput
-										placeholder: 'enter e-mail';
-										callback: [ :value | email := value ].
-									html tbsSubmitButton
-										bePrimary;
-										class: 'inviteUserButtom';
-										callback: [ self inviteUser: email ];
-										with: 'invite' ].
-							html tbsButton
-								class: 'deleteFarmButton';
-								with: [ html anchor
-										callback: [ self deleteFarm];
-										with: 'DELETE FARM' ] ].
-					html horizontalRule.
-					html break.
-					html heading
-						level: 2;
-						with: farm name.
+				form: [ html strong: 'INVITE USER WITH EMAIL '.
+					html emailInput
+						placeholder: 'enter e-mail';
+						callback: [ :value | email := value ].
+					html tbsSubmitButton
+						bePrimary;
+						class: 'inviteUserButtom';
+						callback: [ self inviteUser: email ];
+						with: 'invite' ].
+			html tbsButton
+				class: 'deleteFarmButton';
+				with: [ html anchor
+						callback: [ self deleteFarm ];
+						with: 'DELETE FARM' ] ].
+	html horizontalRule.
+	html break.
+	html heading
+		level: 2;
+		with: farm name.
+	html strong with: 'Description: '.
+	html paragraph: farm description.
+	html break.
+	html horizontalRule.
+	html break.
+	html heading
+		level: 2;
+		with: 'Plots '.
+	farm plots
+		do: [ :elem | 
+			html
+				render: [ html strong with: ' ► ID:'.
+					html paragraph: elem id.
 					html strong with: 'Description: '.
-					html paragraph: farm description.
-					html break.
-					html horizontalRule.
-					html break.
-					html heading
-						level: 2;
-						with: 'Plots '.
-					farm plots
-						do: [ :elem | 
-							html
-								render: [ html strong with: 'ID:'.
-									html paragraph: elem id.
-									html strong with: 'Description: '.
-									html paragraph: elem description.
-									html strong with: 'Surface: '.
-									html paragraph: elem surface.
-									html break ] ] ]
-				mediumSize: 9 ]
-
-
+					html paragraph: elem description.
+					html strong with: 'Surface: '.
+					html paragraph: elem surface.
+					html anchor
+						callback: [ self lookPlot: elem ];
+						with: 'See plot' ].
+			html break.
+			html break ]
 ]
 
 { #category : #initialization }

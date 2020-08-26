@@ -48,32 +48,23 @@ FAEventComponent >> ifNotExpertRender: html [
 ]
 
 { #category : #initialization }
-FAEventComponent >> renderContentOn: html [
-
+FAEventComponent >> renderComponent:  html [
 	self selectStrategy.
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ "event type"
-					html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
-					html break.
-					html horizontalRule.
-					html break.
-					html strong with: 'Type: '.
-					html paragraph: event type.
-					html strong with: 'Characteristics: '.
-					html break.
-					self baseRender: html.
-					strategy ifNotNil:  [strategy renderStrategyOn: html].
-					html break.
-					html break.
-					self generalEventRender: html.
-					self ifNotExpertRender: html.
-					html horizontalRule.
-					html break ]
-				mediumSize: 8 ]
+	html break.
+	html horizontalRule.
+	html break.
+	html strong with: 'Type: '.
+	html paragraph: event type.
+	html strong with: 'Characteristics: '.
+	html break.
+	self baseRender: html.
+	strategy ifNotNil: [ strategy renderStrategyOn: html ].
+	html break.
+	html break.
+	self generalEventRender: html.
+	self ifNotExpertRender: html.
+	html horizontalRule.
+	html break
 ]
 
 { #category : #initialization }

@@ -41,6 +41,10 @@ header := FAHeaderSegunda withRoot: rootComp.
 
 ]
 
+{ #category : #rendering }
+FAScreenComponentSegunda >> renderComponent: html [
+]
+
 { #category : #initialization }
 FAScreenComponentSegunda >> renderContentOn: html [
 	html

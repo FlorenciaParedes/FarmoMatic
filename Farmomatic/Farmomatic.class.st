@@ -32,9 +32,12 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'users',
-		'predefinedList',
 		'userCreatedEvents',
-		'news'
+		'news',
+		'varietyList',
+		'problemsList',
+		'speciesList',
+		'productList'
 	],
 	#classInstVars : [
 		'creationDate',
@@ -169,7 +172,7 @@ Farmomatic >> addProblemWithAuthor: aUser Comments: aComment Problem: aProblem f
 
 { #category : #addingList }
 Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposition: aComposition aDescription: aDescription [
-	^ predefinedList add: (Products
+	^ productList add: (Products
 		withComercialName: aName
 		aVulgarName: aVulgar
 		aComposition: aComposition
@@ -194,13 +197,13 @@ Farmomatic >> addTroubleWithVulgarName: aVulgarName aScientificName: aScientific
 		aScientificName: aScientificName
 		aUrl: aUrl
 		aDescription: aDescription.
-	predefinedList add: p.
+	problemsList add: p.
 	^ p
 ]
 
 { #category : #addingList }
 Farmomatic >> addVarietyVulgarName: aName scientificName: aScientificName url: aUrl description: aDescription [
-	^ predefinedList add: (Variety
+	^ varietyList add: (Variety
 		withVulgarName: aName
 		scientificName: aScientificName
 		url: aUrl
@@ -238,7 +241,10 @@ Farmomatic >> initialize [
 	users := OrderedCollection new.
 	userCreatedEvents := OrderedCollection new.
 	news := OrderedCollection new.
-	predefinedList := OrderedCollection new
+	varietyList := OrderedCollection new.
+	problemsList := OrderedCollection new. 
+	speciesList := OrderedCollection new.
+	productList := OrderedCollection new.
 ]
 
 { #category : #register }
@@ -251,9 +257,19 @@ Farmomatic >> inviteProducerWithMail: aMail toFarm: aFarm of: producerOwner [
 
 ]
 
-{ #category : #forTesting }
+{ #category : #accessing }
 Farmomatic >> predefinedList [
-	^predefinedList 
+	^ problemsList
+]
+
+{ #category : #accessing }
+Farmomatic >> problemsList [
+	^ problemsList
+]
+
+{ #category : #accessing }
+Farmomatic >> productList [
+	^ productList
 ]
 
 { #category : #register }
@@ -300,7 +316,17 @@ Farmomatic >> sortEventsByTypeDec [
 	^ userCreatedEvents asSortedCollection: [ :a :b | a type > b type ]
 ]
 
+{ #category : #accessing }
+Farmomatic >> speciesList [
+	^ speciesList
+]
+
 { #category : #forTesting }
 Farmomatic >> users [
 	^ users 
+]
+
+{ #category : #accessing }
+Farmomatic >> varietyList [
+	^ varietyList
 ]

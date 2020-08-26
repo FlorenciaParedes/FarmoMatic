@@ -32,14 +32,15 @@ Class {
 		'creationDate',
 		'author',
 		'comments',
-		'predefined'
+		'predefined',
+		'amount'
 	],
 	#category : #Farmomatic
 }
 
 { #category : #forTesting }
 Event >> amount [
-	^''
+	^amount
 ]
 
 { #category : #forTesting }
@@ -69,7 +70,13 @@ Event >> getPredefined [
 
 { #category : #initialization }
 Event >> initialize [ 
- creationDate := Date today 
+ creationDate := Date today.
+ amount := ''  
+]
+
+{ #category : #accessing }
+Event >> isType: aType [
+	^ self type = aType type  
 ]
 
 { #category : #'instance creation' }

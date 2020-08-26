@@ -2,7 +2,8 @@ Class {
 	#name : #FAEventComponent,
 	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
-		'event'
+		'event',
+		'strategy'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -19,17 +20,11 @@ self answer
 ]
 
 { #category : #initialization }
-FAEventComponent >> conditionalRender: html [
+FAEventComponent >> baseRender: html [
 	html
 		text:
-			(((event type match: 'Problem') or: (event type match: 'Harvest'))
-				ifTrue: [ ' | Scientific Name: ' , event getPredefined scientificName
-						, ' | Url: ' , event getPredefined url ]).
-	html
-		text:
-			((event type match: 'Aplication')
-				ifTrue: [ ' | Comercial Name: ' , event getPredefined comercialName, ' | Composition: ' , event getPredefined composition ]).
-	html break.
+			'Name: ' , event getPredefined name , ' | Description: '
+				, event getPredefined description.
 	html break
 ]
 
@@ -39,20 +34,23 @@ FAEventComponent >> generalEventRender: html [
 	html paragraph: event creationDate.
 	html space.
 	html strong with: 'Author '.
-	html paragraph: event author fullName .
+	html paragraph: event author fullName.
 	html space
 ]
 
 { #category : #initialization }
-FAEventComponent >> ifExpertRender: html [
+FAEventComponent >> ifNotExpertRender: html [
 	user expert
-		ifFalse: [ html strong with: 'Comment: '.
-			html paragraph: 'Comment'.
-			html break ]
+		ifTrue: [ ^self ].
+		html strong with: 'Comment: '.
+			html paragraph: event comments.
+			html break
 ]
 
 { #category : #initialization }
 FAEventComponent >> renderContentOn: html [
+
+	self selectStrategy.
 	html
 		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
 			html
@@ -61,23 +59,30 @@ FAEventComponent >> renderContentOn: html [
 						id: 'mainHeader';
 						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
 					html break.
-
 					html horizontalRule.
 					html break.
 					html strong with: 'Type: '.
 					html paragraph: event type.
 					html strong with: 'Characteristics: '.
-					html
-						text:
-							'Name: ' , event getPredefined name , ' | Description: '
-								, event getPredefined description.
 					html break.
-					self conditionalRender: html.
+					self baseRender: html.
+					strategy ifNotNil:  [strategy renderStrategyOn: html].
+					html break.
+					html break.
 					self generalEventRender: html.
-					self ifExpertRender: html.
+					self ifNotExpertRender: html.
 					html horizontalRule.
 					html break ]
 				mediumSize: 8 ]
+]
+
+{ #category : #initialization }
+FAEventComponent >> selectStrategy [
+
+(event type match: 'Problem') ifTrue: [ strategy := FAStrategyRenderProblem withEvent: event container: self ].
+(event type match: 'Aplication') ifTrue: [ strategy := FAStrategyRenderAplication withEvent: event container: self ].
+(event type match: 'Harvest')  ifTrue: [ strategy := FAStrategyRenderHarvest withEvent: event container: self ].
+(event type match: 'Plantation')  ifTrue: [ strategy := FAStrategyRenderPlantation withEvent: event container: self ].
 ]
 
 { #category : #initialization }

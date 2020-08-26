@@ -20,7 +20,7 @@ FAPlotComponent class >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  ro
 { #category : #initialization }
 FAPlotComponent >> addEvent [
 
-self call: (FAEventAplicationForm withUser: user farmomatic: farmomatic  plot: plot)
+self call: (FAFormEvent withUser: user farmomatic: farmomatic  plot: plot)
 ]
 
 { #category : #initialization }

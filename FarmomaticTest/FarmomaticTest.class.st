@@ -134,7 +134,7 @@ FarmomaticTest >> testaddProblemWithAuthorCommentsProblemfromPlot [
 
 { #category : #predefinedListsTesting }
 FarmomaticTest >> testaddProductsWithComercialNameaVulgarNameaCompositionaDescription [
-	self assert: (system predefinedList at: 4) equals: product1.
+	self assert: (system productList at: 1) equals: product1.
 	self assert: product1 name equals: 'Chlorothalonil'.
 	self assert: product1 comercialName equals: 'BRAVONIL 720 SC'.
 	self
@@ -146,6 +146,14 @@ FarmomaticTest >> testaddProductsWithComercialNameaVulgarNameaCompositionaDescri
 ]
 
 { #category : #predefinedListsTesting }
+FarmomaticTest >> testaddSpecieWithName [
+
+	self assert: (system speciesList at: 1) equals: specie1.
+	self assert: specie1 name equals: 'Solanum lycopersicum'.
+
+]
+
+{ #category : #predefinedListsTesting }
 FarmomaticTest >> testaddSpecieWithNameandDescription [
 	self assert: (system predefinedList at: 1) equals: specie1.
 	self assert: specie1 name equals: 'Solanum lycopersicum'.
@@ -154,7 +162,7 @@ FarmomaticTest >> testaddSpecieWithNameandDescription [
 
 { #category : #predefinedListsTesting }
 FarmomaticTest >> testaddTroubleWithVulgarNameaScientificNameaUrlaDescription [
-	self assert: (system predefinedList at: 3) equals: problem1 .
+	self assert: (system problemsList at: 1) equals: problem1 .
 	self assert: problem1 name equals: 'Fungus: Early Blight'.
 	self assert: problem1 scientificName equals: 'Alternaria solani'.
 	self
@@ -168,7 +176,7 @@ FarmomaticTest >> testaddTroubleWithVulgarNameaScientificNameaUrlaDescription [
 
 { #category : #predefinedListsTesting }
 FarmomaticTest >> testaddVarietyVulgarNamescientificNameurldescription [
-	self assert: (system predefinedList at: 2) equals: variety1.	
+	self assert: (system varietyList at: 1) equals: variety1.	
 	self assert: variety1 name equals: 'Tomato'.
 	self assert: variety1 scientificName equals: 'Solanum lycopersicum'.
 	self

@@ -10,13 +10,8 @@ Class {
 }
 
 { #category : #initialization }
-FAFormFarm >> renderContentOn: html [
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp) ].
+FAFormFarm >> renderComponent: html [
+	
 					html heading
 						level: 2;
 						with: 'Add new farm'.
@@ -45,8 +40,7 @@ FAFormFarm >> renderContentOn: html [
 								bePrimary;
 								class: 'farmFormButtom';
 								callback: [ self save ];
-								with: 'SAVE' ] ]
-				mediumSize: 3 ]
+								with: 'SAVE' ] 
 ]
 
 { #category : #actions }

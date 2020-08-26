@@ -41,20 +41,15 @@ eventsNamesSelected := eventsNamesList.
 ]
 
 { #category : #initialization }
-FAFormEvent >> renderContentOn: html [
-	html
-		tbsRow: [ html tbsColumn: [ super renderContentOn: html ] mediumSize: 3.
-			html
-				tbsColumn: [ html div
-						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp) ].
+FAFormEvent >> renderComponent:  html [
+
 					html heading
 						level: 2;
 						with: 'Add new Event'.
-						 self renderEvent: html.
-							html break.
-							strategy ifNotNil: [ self show: (strategy renderVarietyForm: html) ].] 
-							mediumSize: 3 ]
+					self renderEvent: html.
+					html break.
+					strategy
+						ifNotNil: [ self show: (strategy renderVarietyForm: html) ] 
 ]
 
 { #category : #rendering }

@@ -181,9 +181,7 @@ Farmomatic >> addProductsWithComercialName: aName aVulgarName: aVulgar aComposit
 
 { #category : #addingList }
 Farmomatic >> addSpecieWithName: aName andDescription: aDescription [
-
-
-	^ predefinedList
+	^ speciesList 
 		add: (Species withName: aName andDescription: aDescription)
 ]
 

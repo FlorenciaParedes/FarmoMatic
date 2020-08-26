@@ -98,8 +98,8 @@ FarmomaticTest >> setUp [
 FarmomaticTest >> testaddHarvestWithAuthorCommentskgvarietyfromPlot [
 	self assert: (system events at: 2) equals: tomatoHarvest.
 	self assert: tomatoHarvest author equals: user1.
-	self assert: tomatoHarvest kg equals: 50.
-	self assert: tomatoHarvest getVariety  equals: variety1.
+	self assert: tomatoHarvest amount equals: 50.
+	self assert: tomatoHarvest getVariety equals: variety1.
 	self assert: tomatoHarvest comments equals: 'tomato harvest'
 ]
 
@@ -155,9 +155,11 @@ FarmomaticTest >> testaddSpecieWithName [
 
 { #category : #predefinedListsTesting }
 FarmomaticTest >> testaddSpecieWithNameandDescription [
-	self assert: (system predefinedList at: 1) equals: specie1.
+	self assert: (system speciesList at: 1) equals: specie1.
 	self assert: specie1 name equals: 'Solanum lycopersicum'.
-	self assert: specie1 description equals: 'plant Solanum lycopersicum commonly known as a tomato plant.'
+	self
+		assert: specie1 description
+		equals: 'plant Solanum lycopersicum commonly known as a tomato plant.'
 ]
 
 { #category : #predefinedListsTesting }

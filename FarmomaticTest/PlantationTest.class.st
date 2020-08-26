@@ -19,7 +19,6 @@ Class {
 
 { #category : #running }
 PlantationTest >> setUp [
-
 	super setUp.
 	system := Farmomatic new.
 	user1 := system
@@ -49,16 +48,17 @@ PlantationTest >> setUp [
 		andSurface: 20
 		andIsHothouse: true
 		fromFarm: farm1.
-		
-	species1 := system addSpecieWithName: 'Tomate platense'.
-		
-	event1 := system addPlantationWithAuthor: user1 Comments: 'Dulce de tomate' Amount: 500 Specie: species1 fromPlot: plot1.
-	
-	news1 := system addNewsWithTitle: 'Miracle of Glyphosato' body: 'God save Monsanto.' theme: species1
-
-	
-	
-	
+	species1 := system addSpecieWithName: 'Tomate platense' 	andDescription: 'plant Solanum lycopersicum commonly known as a tomato plant.'..
+	event1 := system
+		addPlantationWithAuthor: user1
+		Comments: 'Dulce de tomate'
+		Amount: 500
+		Specie: species1
+		fromPlot: plot1.
+	news1 := system
+		addNewsWithTitle: 'Miracle of Glyphosato'
+		body: 'God save Monsanto.'
+		theme: species1
 ]
 
 { #category : #running }

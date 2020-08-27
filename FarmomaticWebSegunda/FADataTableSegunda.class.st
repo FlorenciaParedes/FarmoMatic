@@ -19,11 +19,6 @@ FADataTableSegunda class >> withTitle: aTitle headers: aHeaders data: aData syst
 ]
 
 { #category : #rendering }
-FADataTableSegunda >> lookProblem [
-self show: (FAEventComponent new)
-]
-
-{ #category : #rendering }
 FADataTableSegunda >> lookProblem: event [
 
 render show: (FAEventComponent withUser: user farmomatic: farmomatic event: event )

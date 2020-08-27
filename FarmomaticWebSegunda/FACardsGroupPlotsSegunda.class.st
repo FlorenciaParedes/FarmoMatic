@@ -21,15 +21,7 @@ FACardsGroupPlotsSegunda >> lookPlot: plot [
 
 { #category : #initialization }
 FACardsGroupPlotsSegunda >> renderComponent: html [
-	html tbsButton
-	class: 'addFarmButtom';
-	with: [ html anchor
-	callback: [ self back ];
-	with: 'BACK' ].
-	html break.
-	html horizontalRule.
-	
-	
+		self backButton: html.
 	user farms
 		do: [ :elem | 
 			elem plots
@@ -37,8 +29,7 @@ FACardsGroupPlotsSegunda >> renderComponent: html [
 					html
 						tbsColumn: [ html tbsThumbnail
 								id: 'card';
-								with: [ 
-									html break.
+								with: [ html break.
 									html strong with: 'ID: '.
 									html paragraph: plot id.
 									html strong with: 'Description: '.

@@ -54,37 +54,32 @@ FAFarmComponent >> lookPlot: plot [
 
 { #category : #initialization }
 FAFarmComponent >> renderComponent: html [
-html tbsRow: [ 
-	html tbsButton
-	class: 'addFarmButtom';
-	with: [ html anchor
-	callback: [ self back ];
-	with: 'BACK' ].
-	html space.
-	html div
-		id: 'farmMenu';
-		with: [ html tbsButton
-				class: 'addPlotButtom';
-				with: [ html anchor
-						callback: [ self addPlot ];
-						with: 'ADD PLOT' ]. 
-			html space.
-			html
-				form: [ html strong: 'INVITE USER WITH EMAIL '.
-					html emailInput
-						placeholder: 'enter e-mail';
-						callback: [ :value | email := value ].
-					html tbsSubmitButton
-						bePrimary;
-						class: 'inviteUserButtom';
-						callback: [ self inviteUser: email ];
-						with: 'invite' ].
+	html
+		tbsRow: [ 	self backButton: html.
+			html div
+				id: 'farmMenu';
+				with: [ html tbsButton
+						class: 'addPlotButtom';
+						with: [ html anchor
+								callback: [ self addPlot ];
+								with: 'ADD PLOT' ].
 					html space.
-			html tbsButton
-				class: 'deleteFarmButton';
-				with: [ html anchor
-						callback: [ self deleteFarm ];
-						with: 'DELETE FARM' ] ]]. 
+					html
+						form: [ html strong: 'INVITE USER WITH EMAIL '.
+							html emailInput
+								placeholder: 'enter e-mail';
+								callback: [ :value | email := value ].
+							html tbsSubmitButton
+								bePrimary;
+								class: 'inviteUserButtom';
+								callback: [ self inviteUser: email ];
+								with: 'invite' ].
+					html space.
+					html tbsButton
+						class: 'deleteFarmButton';
+						with: [ html anchor
+								callback: [ self deleteFarm ];
+								with: 'DELETE FARM' ] ] ].
 	html horizontalRule.
 	html break.
 	html heading

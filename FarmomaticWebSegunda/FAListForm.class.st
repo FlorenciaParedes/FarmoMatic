@@ -31,6 +31,7 @@ FAListForm >> determineStrategy [
 
 { #category : #initialization }
 FAListForm >> renderComponent: html [
+	self backButton: html.
 	html heading
 		level: 2;
 		with: 'NEW LIST'.

@@ -49,28 +49,22 @@ FAEventComponent >> ifNotExpertRender: html [
 
 { #category : #initialization }
 FAEventComponent >> renderComponent: html [
-
-	html tbsButton
-	class: 'addFarmButtom';
-	with: [ html anchor
-	callback: [ self back ];
-	with: 'BACK' ].
-	html break.
+	self backButton: html.
 	self selectStrategy.
-					html horizontalRule.
-					html break.
-					html strong with: 'Type: '.
-					html paragraph: event type.
-					html strong with: 'Characteristics: '.
-					html break.
-					self baseRender: html.
-					strategy ifNotNil: [ strategy renderStrategyOn: html ].
-					html break.
-					html break.
-					self generalEventRender: html.
-					self ifNotExpertRender: html.
-					html horizontalRule.
-					html break 
+
+	html break.
+	html strong with: 'Type: '.
+	html paragraph: event type.
+	html strong with: 'Characteristics: '.
+	html break.
+	self baseRender: html.
+	strategy ifNotNil: [ strategy renderStrategyOn: html ].
+	html break.
+	html break.
+	self generalEventRender: html.
+	self ifNotExpertRender: html.
+	html horizontalRule.
+	html break
 ]
 
 { #category : #initialization }

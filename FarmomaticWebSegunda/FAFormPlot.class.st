@@ -6,7 +6,8 @@ Class {
 		'description',
 		'surface',
 		'hothouse',
-		'plot'
+		'plot',
+		'farm'
 	],
 	#category : #FarmomaticWebSegunda
 }
@@ -25,43 +26,43 @@ FAFormPlot >> hothouseValue [
 
 { #category : #initialization }
 FAFormPlot >> renderComponent: html [
-
-					html heading
-						level: 2;
-						with: 'Add new Plot'.
-					html
-						form: [ html strong: 'ID *'.
-							html break.
-							html textInput
-								placeholder: 'Enter an ID';
-								callback: [ :value | id := value ];
-								required.
-							html break.
-							html strong: 'Description'.
-							html break.
-							html textInput
-								placeholder: 'Enter a Description';
-								callback: [ :value | description := value ].
-							html break.
-							html strong: 'Surface *'.
-							html break.
-							html numberInput
-								placeholder: 'Enter a Surface';
-								callback: [ :value | surface := value ];
-								required.
-							html break.
-							html strong: 'Is a hothouse *'.
-							html break.
-							html select
-								list: #('yes' 'no');
-								callback: [ :value | hothouse := value ];
-								required.
-							html break.
-							html tbsSubmitButton
-								bePrimary;
-								class: 'plotFarmButtom';
-								callback: [ self save ];
-								with: 'SAVE' ]
+		self backButton: html.
+		html heading
+		level: 2;
+		with: 'Add new Plot'.
+	html
+		form: [ html strong: 'ID *'.
+			html break.
+			html textInput
+				placeholder: 'Enter an ID';
+				callback: [ :value | id := value ];
+				required.
+			html break.
+			html strong: 'Description'.
+			html break.
+			html textInput
+				placeholder: 'Enter a Description';
+				callback: [ :value | description := value ].
+			html break.
+			html strong: 'Surface *'.
+			html break.
+			html numberInput
+				placeholder: 'Enter a Surface';
+				callback: [ :value | surface := value ];
+				required.
+			html break.
+			html strong: 'Is a hothouse *'.
+			html break.
+			html select
+				list: #('yes' 'no');
+				callback: [ :value | hothouse := value ];
+				required.
+			html break.
+			html tbsSubmitButton
+				bePrimary;
+				class: 'plotFarmButtom';
+				callback: [ self save ];
+				with: 'SAVE' ]
 ]
 
 { #category : #actions }

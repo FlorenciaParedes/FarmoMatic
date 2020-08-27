@@ -71,32 +71,25 @@ FAPlotComponent >> renderComponent: html [
 		system: farmomatic
 		user: user
 		render: self.
-	
-					html break.
-					html tbsButton
-						class: 'addFarmButtom';
-						with: [ html anchor
-								callback: [ self addEvent ];
-								with: 'ADD EVENT' ].
-					html space.
-					html tbsButton
-						class: 'addFarmButtom';
-						with: [ html anchor
-								callback: [ self back ];
-								with: 'BACK' ].
-					html horizontalRule.
-					html paragraph: 'DATOS DEL PLOT: '.
-					html paragraph: 'ID Numbre: ' , plot id.
-					html paragraph: 'Description: ' , plot description.
-					html
-						paragraph: [ html text: 'Is Hothouse: '.
-							html text: plot hothouse ].
-					html break.
-					html break.
-					html break.
-					table renderContentOn: html.
-					html break.
-					html break  
+	html break.
+	html tbsButton
+		class: 'addFarmButtom';
+		with: [ html anchor
+				callback: [ self addEvent ];
+				with: 'ADD EVENT' ].
+	html space.
+	self backButton: html.	html paragraph: 'DATOS DEL PLOT: '.
+	html paragraph: 'ID Numbre: ' , plot id.
+	html paragraph: 'Description: ' , plot description.
+	html
+		paragraph: [ html text: 'Is Hothouse: '.
+			html text: plot hothouse ].
+	html break.
+	html break.
+	html break.
+	table renderContentOn: html.
+	html break.
+	html break
 ]
 
 { #category : #initialization }

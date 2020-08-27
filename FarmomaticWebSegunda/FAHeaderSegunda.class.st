@@ -28,6 +28,27 @@ titleHeader := 'Farmomatic'
 ]
 
 { #category : #rendering }
+FAHeaderSegunda >> renderButtons:html [
+	html div
+				id: 'changeUser';
+				with: [ html tbsButton
+						class: 'changeUser';
+						with: [ html anchor
+								callback: [ self switchToExpert ];
+								with: 'Expert user' ].
+					html tbsButton
+						class: 'changeUser';
+						with: [ html anchor
+								callback: [ self switchToProducer ];
+								with: 'Producer user' ].
+					html tbsButton
+						class: 'changeUser';
+						with: [ html anchor
+								callback: [ self switchToProducerEmpty ];
+								with: 'Empty producer user' ] ].
+]
+
+{ #category : #rendering }
 FAHeaderSegunda >> renderContentOn: html [
 	html div
 		id: 'headerContainer';
@@ -36,25 +57,8 @@ FAHeaderSegunda >> renderContentOn: html [
 				with: [ html heading
 						level: 1;
 						with: titleHeader ].
-			html div
-				id: 'changeUser';
-				with: [ html tbsButton
-						class: 'changeUser';
-						with: [ html anchor
-								callback: [ self switchToExpert ];
-								with: 'Expert user' ].
-						html tbsButton
-						class: 'changeUser';
-						with: [
-						html anchor
-						callback: [ self switchToProducer ];
-						with: 'Producer user' ].
-					html tbsButton
-						class: 'changeUser';
-						with: [ html anchor
-								callback: [ self switchToProducerEmpty ];
-								with: 'Empty producer user' ]].
-						html horizontalRule]
+		self renderButtons: html.
+			html horizontalRule ]
 ]
 
 { #category : #rendering }

@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 FAProblemForm >> form: html [
-html break.
+	html break.
 	html strong: 'ScientificName *'.
 	html break.
 	html textInput
@@ -22,8 +22,7 @@ html break.
 	html break.
 	html textInput
 		placeholder: 'Enter a url';
-		callback: [ :value | url := value ];
-		required
+		callback: [ :value | url := value ]
 ]
 
 { #category : #accessing }

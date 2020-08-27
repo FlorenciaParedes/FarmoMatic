@@ -21,6 +21,17 @@ FAScreenComponentSegunda >> back [
 self answer 
 ]
 
+{ #category : #'as yet unclassified' }
+FAScreenComponentSegunda >> backButton:html [ 
+	html tbsButton
+		class: 'addFarmButtom';
+		with: [ html anchor
+				callback: [ self back ];
+				with: 'BACK' ].
+	html horizontalRule.
+	html break.
+]
+
 { #category : #initialization }
 FAScreenComponentSegunda >> children [
    ^ OrderedCollection with: mainMenu with: header .
@@ -56,12 +67,12 @@ FAScreenComponentSegunda >> renderContentOn: html [
 			html
 				tbsColumn: [ html div
 						id: 'mainHeader';
-						with: [ html render: (FAHeaderSegunda  withSystem: farmomatic container: self) ].
-
-					
-					user ifNotNil: [ 
-					self renderComponent: html ]]
-				mediumSize: 8]
+						with: [ html
+								render: (FAHeaderSegunda withSystem: farmomatic container: self) ].
+					user
+						ifNotNil: [
+							self renderComponent: html ] ]
+				mediumSize: 8 ]
 ]
 
 { #category : #initialization }

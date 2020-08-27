@@ -42,27 +42,19 @@ FACardsGroupFarmsSegunda >> lookFarm: farm [
 
 { #category : #rendering }
 FACardsGroupFarmsSegunda >> renderComponent: html [
-	
 	html tbsButton
 		class: 'addFarmButtom';
 		with: [ html anchor
 				callback: [ self addFarm ];
 				with: 'ADD FARM' ].
-				html space.
-					html tbsButton
-						class: 'addFarmButtom';
-						with: [ html anchor
-								callback: [ self back ];
-								with: 'BACK' ].
-	html horizontalRule.
-	html break.
+				self backButton: html.
+	html space.
 	user farms
 		do: [ :elem | 
 			html
 				tbsColumn: [ html tbsThumbnail
 						id: 'card';
-						with: [ 
-							html break.
+						with: [ html break.
 							html paragraph: elem name.
 							html paragraph: elem description.
 							html anchor

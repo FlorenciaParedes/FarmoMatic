@@ -41,21 +41,15 @@ eventsNamesSelected := eventsNamesList.
 ]
 
 { #category : #initialization }
-FAFormEvent >> renderComponent:  html [
-					html tbsButton
-						class: 'addFarmButtom';
-						with: [ html anchor
-								callback: [ self back ];
-								with: 'BACK' ].
-						html horizontalRule.
+FAFormEvent >> renderComponent: html [
+	self backButton: html.
 
-					html heading
-						level: 2;
-						with: 'Add new Event'.
-					self renderEvent: html.
-					html break.
-					strategy
-						ifNotNil: [ self show: (strategy renderVarietyForm: html) ] 
+	html heading
+		level: 2;
+		with: 'Add new Event'.
+	self renderEvent: html.
+	html break.
+	strategy ifNotNil: [ self show: (strategy renderVarietyForm: html) ]
 ]
 
 { #category : #rendering }

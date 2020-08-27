@@ -23,6 +23,26 @@ FAMainMenuComponentSegunda >> expertMenu: html [
 						with: 'Events' ] 
 ]
 
+{ #category : #rendering }
+FAMainMenuComponentSegunda >> generalMenu: html [
+	html horizontalRule.
+	html tbsNav
+		beNavmenuNavigation;
+		with: [ html tbsNavItem
+				beActive;
+				with: [ html anchor: 'News' ].
+			html
+				tbsNavItem: [ html anchor
+						callback: [ self lookFarms ];
+						with: 'Farm' ].
+			html
+				tbsNavItem: [ html anchor
+						callback: [ self lookPlots ];
+						with: 'Plots' ].
+			html tbsNavItem: [ html anchor: 'Reports' ].
+			html tbsNavItem: [ html anchor: 'Contacs' ] ]
+]
+
 { #category : #initialization }
 FAMainMenuComponentSegunda >> lookEvents [
 	container show: (FACardsGroupEvents withUser: user farmomatic: farmomatic)
@@ -54,27 +74,9 @@ FAMainMenuComponentSegunda >> renderContentOn: html [
 				beDefault;
 				with: [ user isNotNil
 						ifTrue: [ self userInformation: html.
-							html horizontalRule.
-							html tbsNav
-								beNavmenuNavigation;
-								with: [ html tbsNavItem
-										beActive;
-										with: [ html anchor: 'News' ].
-									html
-										tbsNavItem: [ html anchor
-												callback: [ self lookFarms ];
-												with: 'Farm' ].
-									html
-										tbsNavItem: [ html anchor
-												callback: [ self lookPlots ];
-												with: 'Plots' ].
-									html tbsNavItem: [ html anchor: 'Reports' ].
-									html tbsNavItem: [ html anchor: 'Contacs' ] ].
+							self generalMenu: html.
 							user expert
-								ifTrue: [ 	html
-		tbsNavItem: [ html anchor
-				callback: [ self lookEvents ];
-				with: 'Events' ] ].
+								ifTrue: [ self expertMenu: html ].
 							html horizontalRule.
 							html heading
 								level: 8;

@@ -13,9 +13,7 @@ Class {
 { #category : #adding }
 FACardsGroupEvents >> addList [
 	self
-		show:
-			(rootComp
-				main: (FAListForm withUser: user root: rootComp farmomatic: farmomatic))
+		show: (FAListForm withUser: user farmomatic: farmomatic)
 
 ]
 
@@ -94,11 +92,20 @@ FACardsGroupEvents >> renderChooseOrder: html [
 
 { #category : #rendering }
 FACardsGroupEvents >> renderComponent: html [
+
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self back ];
+								with: 'BACK' ].
+html space.
 	 html tbsButton
 				class: 'addFarmButtom';
 				with: [ html anchor
 						callback: [ self addList ];
 						with: 'ADD LIST' ].
+html break.
+html break.
 			self renderChooseOrder: html.
 			html space.
 			self renderFilter: html.
@@ -109,13 +116,10 @@ FACardsGroupEvents >> renderComponent: html [
 { #category : #rendering }
 FACardsGroupEvents >> renderEvent: elem [
 	self
-		show:
-			(rootComp
-				main:
-					(FAEventComponent
+		show: (FAEventComponent
 		withUser: user
 		farmomatic: farmomatic
-		event: elem))
+		event: elem)
 
 ]
 

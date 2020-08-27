@@ -52,11 +52,6 @@ Aplication >> getPredefined [
 ]
 
 { #category : #'as yet unclassified' }
-Aplication >> getProduct [ 
-	^ product 
-]
-
-{ #category : #'as yet unclassified' }
 Aplication >> theme: themeOfTheNews [
 "Y si pregunto si son el mismo objeto?"
 	^ product applied: themeOfTheNews 

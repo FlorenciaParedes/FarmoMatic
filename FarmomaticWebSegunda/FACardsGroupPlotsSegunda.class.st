@@ -16,11 +16,19 @@ super initialize
 { #category : #initialization }
 FACardsGroupPlotsSegunda >> lookPlot: plot [
 
-	self show: (FAPlotComponent new withPlot: plot user: user farmomatic: farmomatic  root: rootComp  )
+	self show: (FAPlotComponent new withPlot: plot user: user farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
 FACardsGroupPlotsSegunda >> renderComponent: html [
+	html tbsButton
+	class: 'addFarmButtom';
+	with: [ html anchor
+	callback: [ self back ];
+	with: 'BACK' ].
+	html break.
+	html horizontalRule.
+	
 	
 	user farms
 		do: [ :elem | 
@@ -29,7 +37,7 @@ FACardsGroupPlotsSegunda >> renderComponent: html [
 					html
 						tbsColumn: [ html tbsThumbnail
 								id: 'card';
-								with: [ html image placeHolder: '100%x100%'.
+								with: [ 
 									html break.
 									html strong with: 'ID: '.
 									html paragraph: plot id.

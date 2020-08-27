@@ -3,21 +3,21 @@ Class {
 	#superclass : #WAComponent,
 	#instVars : [
 		'titleHeader',
-		'rootComponent',
-		'farmomatic'
+		'farmomatic',
+		'container'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #rendering }
-FAHeaderSegunda class >> withRoot: root [ 
-
-	^ self new withRoot: root 
+FAHeaderSegunda class >> withSystem: aFarmomatic container: aContainer [
+	^ self new withSystem: aFarmomatic container: aContainer
 ]
 
 { #category : #rendering }
-FAHeaderSegunda class >> withRoot: root andSystem: aFarmomatic [ 
-	^ self new withRoot: root andSystem: aFarmomatic
+FAHeaderSegunda >> back [
+
+container answer
 ]
 
 { #category : #rendering }
@@ -54,12 +54,7 @@ FAHeaderSegunda >> renderContentOn: html [
 						with: [ html anchor
 								callback: [ self switchToProducerEmpty ];
 								with: 'Empty producer user' ]].
-
-			html div
-				id: 'headerB';
-				with: [ html tbsButton
-						class: 'headerButtom';
-						with: [ html anchor with: 'BACK' ] ] ]
+						html horizontalRule]
 ]
 
 { #category : #rendering }
@@ -111,11 +106,8 @@ FAHeaderSegunda >> switchToExpert [
 	| user |
 	user := farmomatic users
 		detect: [ :each | each fullName match: 'Maria González' ].
-	rootComponent
-		main:
-			(FACardsGroupFarmsSegunda
+	container show: (FACardsGroupFarmsSegunda
 				withUser: user
-				root: rootComponent
 				farmomatic: farmomatic)
 ]
 
@@ -124,7 +116,7 @@ FAHeaderSegunda >> switchToProducer [
 	| user |
 	user := farmomatic users
 		detect: [ :each | each fullName match: 'Jorge Schelotto' ].
-	rootComponent main: (FACardsGroupFarmsSegunda withUser: user root: rootComponent farmomatic: farmomatic ).
+	container show: (FACardsGroupFarmsSegunda withUser: user farmomatic: farmomatic ).
 	
 ]
 
@@ -133,22 +125,14 @@ FAHeaderSegunda >> switchToProducerEmpty [
 	| user |
 	user := farmomatic users
 		detect: [ :each | each fullName match: 'Alex Morales' ].
-	rootComponent
-		main:
+	container show:
 			(FACardsGroupFarmsSegunda
 				withUser: user
-				root: rootComponent
 				farmomatic: farmomatic)
 ]
 
 { #category : #rendering }
-FAHeaderSegunda >> withRoot: root [ 
-
-	rootComponent := root
-]
-
-{ #category : #rendering }
-FAHeaderSegunda >> withRoot: root andSystem: aFarmomatic [
-	rootComponent := root.
-	farmomatic:= aFarmomatic 
+FAHeaderSegunda >> withSystem: aFarmomatic container: aContainer [
+	farmomatic:= aFarmomatic. 
+	container := aContainer
 ]

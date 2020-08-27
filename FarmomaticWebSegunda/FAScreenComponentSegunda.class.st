@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'header',
 		'farmomatic',
-		'rootComp',
 		'user',
 		'mainMenu'
 	],
@@ -12,19 +11,14 @@ Class {
 }
 
 { #category : #initialization }
-FAScreenComponentSegunda class >> withSystem: system  root: rootComponent [.
-
-^ self new withSystem: system  root: rootComponent.
-]
-
-{ #category : #initialization }
 FAScreenComponentSegunda class >> withUser: userFarmo farmomatic: aFarmomatic [  
-^self withUser: userFarmo farmomatic: aFarmomatic.
+	^ self new withUser: userFarmo farmomatic: aFarmomatic  
 ]
 
 { #category : #initialization }
-FAScreenComponentSegunda class >> withUser: user root: rootComponent farmomatic: aFarmomatic [
-	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic
+FAScreenComponentSegunda >> back [
+
+self answer 
 ]
 
 { #category : #initialization }
@@ -37,7 +31,7 @@ FAScreenComponentSegunda >> initialize [
 
 super initialize.
 mainMenu := FAMainMenuComponentSegunda new.
-header := FAHeaderSegunda withRoot: rootComp.
+
 
 ]
 
@@ -54,18 +48,20 @@ FAScreenComponentSegunda >> renderContentOn: html [
 								tbsColumn: [ html
 										render:
 											(FAMainMenuComponentSegunda
-												withRoot: rootComp
-												system: farmomatic
-												user: user) ]
+												withSystem: farmomatic
+												user: user
+												container: self) ]
 								mediumSize: 3 ] ]
 				mediumSize: 3.
 			html
 				tbsColumn: [ html div
 						id: 'mainHeader';
-						with: [ html render: (header withRoot: rootComp andSystem: farmomatic) ].
+						with: [ html render: (FAHeaderSegunda  withSystem: farmomatic container: self) ].
+
+					
 					user ifNotNil: [ 
 					self renderComponent: html ]]
-				mediumSize: 9 ]
+				mediumSize: 8]
 ]
 
 { #category : #initialization }
@@ -81,6 +77,16 @@ body {
 	color: #6B7D9C;
 }
 
+a { 
+	text-decoration: none;
+	color: lightgrey;
+ }
+
+a:hover { 
+	text-decoration: none;
+	color: black;
+ }
+
 
 
 h1 { 
@@ -95,7 +101,6 @@ h1 {
 
 button {
   transition-duration: 0.4s;
-	color: #C8C8C8;
 	background: #6B7D9C;
 	margin: .5em 2em 0em 0em;
 
@@ -103,8 +108,8 @@ button {
 }
 
 button:hover {
+	color: black;
   background-color: #e7e7e7; /* Grey */
-  color: #C8C8C8;
 	box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -232,34 +237,7 @@ color: #B0C4DE;
 ]
 
 { #category : #initialization }
-FAScreenComponentSegunda >> withSystem: system  root: rootComponent [.
-
-
-farmomatic := system.
-
-rootComp := rootComponent
-
-]
-
-{ #category : #initialization }
 FAScreenComponentSegunda >> withUser: userFarmo farmomatic: aFarmomatic [  
 	user := userFarmo.
-	farmomatic := aFarmomatic 
-]
-
-{ #category : #initialization }
-FAScreenComponentSegunda >> withUser: userFarmo  root: rootComponent [.
-
-
-user := userFarmo.
-
-rootComp := rootComponent
-
-]
-
-{ #category : #initialization }
-FAScreenComponentSegunda >> withUser: userFarmo root: rootComponent farmomatic: aFarmomatic [  
-	user := userFarmo.
-	rootComp := rootComponent.
 	farmomatic := aFarmomatic 
 ]

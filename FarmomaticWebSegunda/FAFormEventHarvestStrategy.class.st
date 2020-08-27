@@ -21,3 +21,18 @@ farmomatic addHarvestWithAuthor: user Comments: comment  kg: amount variety: pre
 container answer.
 
 ]
+
+{ #category : #initialization }
+FAFormEventHarvestStrategy >> selectPredefined: html [
+
+	html break.
+	html select
+		selected: predefined;
+		list: predefinedList;
+		labels: [ :each | each name ];
+		onChange: 'submit()';
+		callback: [ :value | 
+			self choosePredefined: value.
+			html inform: value className ];
+		required
+]

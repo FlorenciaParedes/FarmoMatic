@@ -256,11 +256,6 @@ Farmomatic >> inviteProducerWithMail: aMail toFarm: aFarm of: producerOwner [
 ]
 
 { #category : #accessing }
-Farmomatic >> predefinedList [
-	^ problemsList
-]
-
-{ #category : #accessing }
 Farmomatic >> problemsList [
 	^ problemsList
 ]

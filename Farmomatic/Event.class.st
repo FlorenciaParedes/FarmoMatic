@@ -32,7 +32,6 @@ Class {
 		'creationDate',
 		'author',
 		'comments',
-		'predefined',
 		'amount'
 	],
 	#category : #Farmomatic

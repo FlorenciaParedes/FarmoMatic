@@ -1,18 +1,19 @@
 Class {
 	#name : #FAFormPlot,
-	#superclass : #FAFormsComponent,
+	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
 		'id',
 		'description',
 		'surface',
-		'hothouse'
+		'hothouse',
+		'plot'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #initialization }
-FAFormPlot class >> withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
-	^ self new withUser: user root: rootComponent farmomatic: aFarmomatic farm: aFarm 
+FAFormPlot class >> withUser: aUser farmomatic: aFarmomatic farm: aFarm [ 
+	^ self new withUser: aUser farmomatic: aFarmomatic farm: aFarm 
 ]
 
 { #category : #actions }
@@ -72,18 +73,15 @@ FAFormPlot >> save [
 		andSurface: surface
 		andIsHothouse: hothouse
 		fromFarm: farm.
-	rootComp
-		main:
+	self show:
 			(FACardsGroupPlotsSegunda 
 				withUser: user
-				root: rootComp
 				farmomatic: farmomatic).
 ]
 
 { #category : #initialization }
-FAFormPlot >> withUser: aUser root: rootComponent farmomatic: aFarmomatic farm: aFarm [ 
+FAFormPlot >> withUser: aUser farmomatic: aFarmomatic farm: aFarm [ 
 	user := aUser.
 	farmomatic := aFarmomatic.
-	rootComp := rootComponent.
 	farm := aFarm.
 ]

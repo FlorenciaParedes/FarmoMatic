@@ -99,7 +99,7 @@ FarmomaticTest >> testaddHarvestWithAuthorCommentskgvarietyfromPlot [
 	self assert: (system events at: 2) equals: tomatoHarvest.
 	self assert: tomatoHarvest author equals: user1.
 	self assert: tomatoHarvest amount equals: 50.
-	self assert: tomatoHarvest getVariety equals: variety1.
+	self assert: tomatoHarvest getPredefined  equals: variety1.
 	self assert: tomatoHarvest comments equals: 'tomato harvest'
 ]
 
@@ -119,7 +119,7 @@ FarmomaticTest >> testaddPlantationWithAuthorCommentsAmountSpeciefromPlot [
 		assert: plantationTomato comments
 		equals: 'Tomato plant plantation'.
 	self assert: plantationTomato amount equals: 10.
-	self assert: plantationTomato getSpecies equals: specie1
+	self assert: plantationTomato getPredefined equals: specie1
 ]
 
 { #category : #eventTesting }
@@ -129,7 +129,7 @@ FarmomaticTest >> testaddProblemWithAuthorCommentsProblemfromPlot [
 	self
 		assert: fungusProblem comments
 		equals: 'fung: early blight in tomato plant'.
-	self assert: fungusProblem getProblem equals: problem1
+	self assert: fungusProblem getPredefined equals: problem1
 ]
 
 { #category : #predefinedListsTesting }
@@ -198,7 +198,7 @@ FarmomaticTest >> testaddaplicationWithAuthorCommentsAmountProductfromPlot [
 		assert: fungicideApplication comments
 		equals: 'fungicide for tomato planting'.
 	self assert: fungicideApplication amount equals: 30.
-	self assert: fungicideApplication getProduct equals: product1.
+	self assert: fungicideApplication getPredefined equals: product1.
 ]
 
 { #category : #sorting }

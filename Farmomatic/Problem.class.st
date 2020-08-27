@@ -43,11 +43,6 @@ Problem >> getPredefined [
 ]
 
 { #category : #'as yet unclassified' }
-Problem >> getProblem [
-	^ problem
-]
-
-{ #category : #'as yet unclassified' }
 Problem >> name [
 	^ problem
 ]

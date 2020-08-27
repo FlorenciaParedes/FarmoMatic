@@ -52,11 +52,6 @@ Harvest >> getPredefined [
 ]
 
 { #category : #forTesting }
-Harvest >> getVariety [ 
- ^ variety 
-]
-
-{ #category : #forTesting }
 Harvest >> theme: themeOfTheNews [
 	^ variety applied: themeOfTheNews 
 ]

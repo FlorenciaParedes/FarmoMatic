@@ -2,23 +2,16 @@ Class {
 	#name : #FAMainMenuComponentSegunda,
 	#superclass : #WAComponent,
 	#instVars : [
-		'profile140x140',
 		'user',
 		'farmomatic',
-		'rootComp'
+		'container'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #rendering }
-FAMainMenuComponentSegunda class >> withRoot: aRootComp [
-
-^self new withRoot: aRootComp
-]
-
-{ #category : #rendering }
-FAMainMenuComponentSegunda class >> withRoot: aRootComp system: aFarmomatic user: aUser [
-	^ self new withRoot: aRootComp system: aFarmomatic user: aUser
+FAMainMenuComponentSegunda class >> withSystem: aFarmomatic user: aUser container: aContainer [ 
+	^ self new withSystem: aFarmomatic user: aUser container: aContainer 
 ]
 
 { #category : #'as yet unclassified' }
@@ -30,44 +23,25 @@ FAMainMenuComponentSegunda >> expertMenu: html [
 						with: 'Events' ] 
 ]
 
-{ #category : #rendering }
-FAMainMenuComponentSegunda >> initialize [ 
-super initialize. 
-profile140x140 := 'MyFileLibrary / profile.jpg'
-]
-
 { #category : #initialization }
 FAMainMenuComponentSegunda >> lookEvents [
-	rootComp
-		main:
-			(FACardsGroupEvents withUser: user root: rootComp  farmomatic: farmomatic)
+	container show: (FACardsGroupEvents withUser: user farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
 FAMainMenuComponentSegunda >> lookFarms [
-	rootComp
-		main:
+	container show: 
 			(FACardsGroupFarmsSegunda
-				withUser:
-					user
-				root: rootComp
+				withUser: user
 				farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
 FAMainMenuComponentSegunda >> lookPlots [
-	rootComp
-		main:
+	container show: 
 			(FACardsGroupPlotsSegunda
 				withUser: user
-				root: rootComp
 				farmomatic: farmomatic)	
-]
-
-{ #category : #accessing }
-FAMainMenuComponentSegunda >> profile140x140 [
-
-^ profile140x140 
 ]
 
 { #category : #rendering }
@@ -182,14 +156,8 @@ FAMainMenuComponentSegunda >> userInformation: html [
 ]
 
 { #category : #rendering }
-FAMainMenuComponentSegunda >> withRoot: aRootComp [
-
-	rootComp:= aRootComp 
-]
-
-{ #category : #rendering }
-FAMainMenuComponentSegunda >> withRoot: aRootComp system: aFarmomatic user: aUser [
-	rootComp := aRootComp.
+FAMainMenuComponentSegunda >> withSystem: aFarmomatic user: aUser container: aContainer [ 
 	farmomatic := aFarmomatic.
-	user := aUser 
+	user := aUser. 
+	container := aContainer
 ]

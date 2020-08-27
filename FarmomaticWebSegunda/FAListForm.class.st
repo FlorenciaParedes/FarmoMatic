@@ -1,6 +1,6 @@
 Class {
 	#name : #FAListForm,
-	#superclass : #FAFormsComponent,
+	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
 		'name',
 		'description',
@@ -17,19 +17,15 @@ FAListForm >> determineStrategy [
 	list = 'Problems'
 		ifTrue: [ strategy := FAProblemForm
 				withUser: user
-				root: rootComp
 				farmomatic: farmomatic ].
 	list = 'Products'
 		ifTrue: [ strategy := FAProductForm withUser: user
-				root: rootComp
 				farmomatic: farmomatic ].
 	list = 'Species'
 		ifTrue: [ strategy := FASpecieForm withUser: user
-				root: rootComp
 				farmomatic: farmomatic ].
 	list = 'Variety'
 		ifTrue: [ strategy := FAVarietyForm withUser: user
-				root: rootComp
 				farmomatic: farmomatic ]
 ]
 

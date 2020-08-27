@@ -42,6 +42,12 @@ eventsNamesSelected := eventsNamesList.
 
 { #category : #initialization }
 FAFormEvent >> renderComponent:  html [
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self back ];
+								with: 'BACK' ].
+						html horizontalRule.
 
 					html heading
 						level: 2;

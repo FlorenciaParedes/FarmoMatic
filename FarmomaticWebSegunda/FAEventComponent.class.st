@@ -49,8 +49,14 @@ FAEventComponent >> ifNotExpertRender: html [
 
 { #category : #initialization }
 FAEventComponent >> renderComponent: html [
+
+	html tbsButton
+	class: 'addFarmButtom';
+	with: [ html anchor
+	callback: [ self back ];
+	with: 'BACK' ].
+	html break.
 	self selectStrategy.
-					html break.
 					html horizontalRule.
 					html break.
 					html strong with: 'Type: '.

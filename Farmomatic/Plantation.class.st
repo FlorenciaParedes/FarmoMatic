@@ -52,11 +52,6 @@ Plantation >> getPredefined [
 ^species 
 ]
 
-{ #category : #forTesting }
-Plantation >> getSpecies [ 
-^species 
-]
-
 { #category : #accessing }
 Plantation >> theme: themeOfTheNews [
 	^ species  applied: themeOfTheNews 

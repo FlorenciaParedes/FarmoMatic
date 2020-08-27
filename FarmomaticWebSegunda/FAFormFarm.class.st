@@ -1,16 +1,24 @@
 Class {
 	#name : #FAFormFarm,
-	#superclass : #FAFormsComponent,
+	#superclass : #FAScreenComponentSegunda,
 	#instVars : [
 		'name',
 		'description',
-		'address'
+		'address',
+		'farm'
 	],
 	#category : #FarmomaticWebSegunda
 }
 
 { #category : #initialization }
 FAFormFarm >> renderComponent: html [
+
+					html tbsButton
+						class: 'addFarmButtom';
+						with: [ html anchor
+								callback: [ self back ];
+								with: 'BACK' ].
+						html horizontalRule.
 	
 					html heading
 						level: 2;
@@ -50,12 +58,8 @@ FAFormFarm >> save [
 		andDescription: description
 		andAddress: address
 		ofProducer: user.
-	rootComp
-		main:
-			(FACardsGroupFarmsSegunda
-				withUser:
-					user
-				root: rootComp
+	self show: (FACardsGroupFarmsSegunda
+				withUser: user
 				farmomatic: farmomatic).
 	^ farm
 ]

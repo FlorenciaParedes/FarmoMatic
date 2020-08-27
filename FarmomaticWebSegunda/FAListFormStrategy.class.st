@@ -37,11 +37,8 @@ FAListFormStrategy >> renderForm: html [
 
 { #category : #handling }
 FAListFormStrategy >> return [ 
-	rootComp
-		main:
-			(FACardsGroupEvents
+	self show: (FACardsGroupEvents
 				withUser: user
-				root: rootComp
 				farmomatic: farmomatic)
 ]
 

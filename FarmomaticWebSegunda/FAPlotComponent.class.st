@@ -13,8 +13,8 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-FAPlotComponent class >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot [ 
-	^ self new withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot
+FAPlotComponent class >> withPlot: aPlot user: aUser farmomatic: aFarmomatic [
+	^ self new withPlot: aPlot user: aUser farmomatic: aFarmomatic
 ]
 
 { #category : #initialization }
@@ -108,9 +108,8 @@ FAPlotComponent >> typeDesceding [
 ]
 
 { #category : #initialization }
-FAPlotComponent >> withPlot: aPlot user: aUser farmomatic: aFarmomatic  root: aRoot [
+FAPlotComponent >> withPlot: aPlot user: aUser farmomatic: aFarmomatic [
 	plot := aPlot .
 	user :=aUser .
 	farmomatic :=aFarmomatic .
-	rootComp := aRoot 
 ]

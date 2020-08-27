@@ -20,3 +20,18 @@ container answer.
 
 
 ]
+
+{ #category : #initialization }
+FAFormEventAplicationStrategy >> selectPredefined: html [
+
+	html break.
+	html select
+		selected: predefined;
+		list: predefinedList;
+		labels: [ :each | each name ];
+		onChange: 'submit()';
+		callback: [ :value | 
+			self choosePredefined: value.
+			html inform: value className ];
+		required
+]

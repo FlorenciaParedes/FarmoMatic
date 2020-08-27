@@ -16,17 +16,6 @@ Class {
 }
 
 { #category : #initialization }
-FAFormEventStrategy class >> withList: aList [
-^self new withList: aList
-]
-
-{ #category : #initialization }
-FAFormEventStrategy class >> withSistem: farmomatic activeUser: user plot: plot [
-
-^self new withSistem: farmomatic activeUser: user plot: plot.
-]
-
-{ #category : #initialization }
 FAFormEventStrategy class >> withSistem: aFarmomatic activeUser: aUser plot: aPlot container: aContainer [ 
 
 ^self new withSistem: aFarmomatic activeUser: aUser plot: aPlot container: aContainer 
@@ -84,32 +73,9 @@ FAFormEventStrategy >> saveButton: html [
 ]
 
 { #category : #initialization }
-FAFormEventStrategy >> selectPredefined: html [
-	html break.
-	html select
-		selected: predefinedList first;
-		list: predefinedList;
-		labels: [ :each | each name ];
-		onChange: 'submit()';
-		callback: [ :value | 
-			self choosePredefined: value.
-			html inform: value className ];
-		required
-]
-
-{ #category : #initialization }
 FAFormEventStrategy >> withList: aList [
 
 	predefinedList := aList
-]
-
-{ #category : #initialization }
-FAFormEventStrategy >> withSistem: aFarmomatic activeUser: aUser plot: aPlot [
-
-farmomatic := aFarmomatic.
-user := aUser.
-plot := aPlot.
-
 ]
 
 { #category : #initialization }

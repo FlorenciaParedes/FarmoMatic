@@ -10,17 +10,15 @@ Class {
 }
 
 { #category : #initialization }
-FAFarmComponent class >> withFarm: selectedFarm user: aUser farmomatic: system root: rootComponent [ 
+FAFarmComponent class >> withFarm: selectedFarm user: aUser farmomatic: system [
 
-^self new withFarm: selectedFarm  user: aUser  farmomatic: system root: rootComponent 
+^self new withFarm: selectedFarm  user: aUser  farmomatic: system
 ]
 
 { #category : #adding }
 FAFarmComponent >> addPlot [
 	self
-		show:
-			(rootComp 
-				main: (FAFormPlot withUser: user root: rootComp  farmomatic: farmomatic farm: farm  ))
+		show: (FAFormPlot withUser: user farmomatic: farmomatic farm: farm  )
 ]
 
 { #category : #initialization }
@@ -32,11 +30,8 @@ FAFarmComponent >> date [
 FAFarmComponent >> deleteFarm [
 
 	user removeFarm: farm.
-		rootComp
-		main:
-			(FACardsGroupFarmsSegunda
+	self show: (FACardsGroupFarmsSegunda
 				withUser: user
-				root: rootComp
 				farmomatic: farmomatic).
 ]
 
@@ -54,20 +49,26 @@ FAFarmComponent >> lookPlot: plot [
 			(FAPlotComponent new
 				withPlot: plot
 				user: user
-				farmomatic: farmomatic
-				root: rootComp)
+				farmomatic: farmomatic)
 ]
 
 { #category : #initialization }
 FAFarmComponent >> renderComponent: html [
-	html break.
+html tbsRow: [ 
+	html tbsButton
+	class: 'addFarmButtom';
+	with: [ html anchor
+	callback: [ self back ];
+	with: 'BACK' ].
+	html space.
 	html div
 		id: 'farmMenu';
 		with: [ html tbsButton
 				class: 'addPlotButtom';
 				with: [ html anchor
 						callback: [ self addPlot ];
-						with: 'ADD PLOT' ].
+						with: 'ADD PLOT' ]. 
+			html space.
 			html
 				form: [ html strong: 'INVITE USER WITH EMAIL '.
 					html emailInput
@@ -78,11 +79,12 @@ FAFarmComponent >> renderComponent: html [
 						class: 'inviteUserButtom';
 						callback: [ self inviteUser: email ];
 						with: 'invite' ].
+					html space.
 			html tbsButton
 				class: 'deleteFarmButton';
 				with: [ html anchor
 						callback: [ self deleteFarm ];
-						with: 'DELETE FARM' ] ].
+						with: 'DELETE FARM' ] ]]. 
 	html horizontalRule.
 	html break.
 	html heading
@@ -113,9 +115,8 @@ FAFarmComponent >> renderComponent: html [
 ]
 
 { #category : #initialization }
-FAFarmComponent >> withFarm: selectedFarm  user: aUser farmomatic: system root: rootComponent [ 
+FAFarmComponent >> withFarm: selectedFarm  user: aUser farmomatic: system [
 	user:= aUser .
 	farm := selectedFarm.
 	farmomatic := system.
-	rootComp := rootComponent
 ]
